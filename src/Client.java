@@ -1,72 +1,46 @@
-package test;
+public class Client {
+    private long ID;
+    private String firstName;
+    private String lastName;
+    private Account account;
 
-import java.util.ArrayList;
-import java.util.List;
+    public Client() {
+    }
 
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
-import org.hibernate.cfg.Configuration;
-import org.hibernate.service.ServiceRegistry;
+    public Client(String firstName, String lastName) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
 
-public class Clients {
-	private SessionFactory sf;
+    public long getID() {
+        return ID;
+    }
 
-	public Clients() {
-		Configuration configuration = new Configuration();
-		configuration.configure();
+    public void setID(long ID) {
+        this.ID = ID;
+    }
 
-		ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties()).build();
-		sf = configuration.buildSessionFactory(serviceRegistry);
-	}
+    public String getFirstName() {
+        return firstName;
+    }
 
-	public void add(Client client) {
-		Session session = null;
-		try {
-			session = sf.openSession();
-			session.beginTransaction();
-			session.save(client);
-			session.getTransaction().commit();
-		} finally {
-			if (session != null && session.isOpen())
-				session.close();
-		}
-	}
-	public void delete(Client client){
-		Session session = null;
-		try{
-			session = sf.openSession();
-			session.beginTransaction();
-			session.delete(client);
-			session.getTransaction().commit();
-		}finally{
-			if (session !=null && session.isOpen())
-			session.close();
-		}
-		}
-		@SuppressWarnings("unchecked")
-		public List<Client> getAll(){
-			Session session = null;
-			List<Client> clients = new ArrayList<Client>();
-			try{
-				session = sf.openSession();
-				clients = (List<Client>) session.createCriteria(Client.class).list();
-			}finally{
-				if (session != null && session.isOpen())
-					session.close();
-			}
-			return clients;		
-			}
-		public Client getById(int id){
-				Session session = null;
-				Client res = null;
-				try{
-					session = sf.openSession();
-					res = (Client) session.get(Client.class, id);
-				}finally{
-					if (session != null && session.isOpen())
-						session.close();
-					}
-				return res;
-		}
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public Account getAccount() {
+        return account;
+    }
+
+    public void setAccount(Account account) {
+        this.account = account;
+    }
 }

@@ -1,8 +1,20 @@
+import javax.persistence.*;
+
+@Entity
+@Table(name="CLIENTS")
 public class Client {
-    private long ID;
+
+    @Id
+    @GeneratedValue
+    @Column(name="ID")
+    protected int ID;
+
+    @Column(name="FIRST_NAME")
     private String firstName;
+
+    @Column(name="LAST_NAME")
     private String lastName;
-    private Account account;
+
 
     public Client() {
     }
@@ -14,10 +26,6 @@ public class Client {
 
     public long getID() {
         return ID;
-    }
-
-    public void setID(long ID) {
-        this.ID = ID;
     }
 
     public String getFirstName() {
@@ -36,11 +44,12 @@ public class Client {
         this.lastName = lastName;
     }
 
-    public Account getAccount() {
-        return account;
-    }
-
-    public void setAccount(Account account) {
-        this.account = account;
+    @Override
+    public String toString() {
+        return "Client{" +
+                "ID=" + ID +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                '}';
     }
 }

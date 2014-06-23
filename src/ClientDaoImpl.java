@@ -8,10 +8,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ClientDaoImpl {
-
     private SessionFactory sf;
 
-    public ClientDaoImpl () {
+
+    public ClientDaoImpl() {
         Configuration configuration = new Configuration();
         configuration.configure();
 
@@ -31,38 +31,42 @@ public class ClientDaoImpl {
                 session.close();
         }
     }
-    public void delete(Client client){
+
+    public void delete(Client client) {
         Session session = null;
-        try{
+        try {
             session = sf.openSession();
             session.beginTransaction();
             session.delete(client);
             session.getTransaction().commit();
-        }finally{
-            if (session !=null && session.isOpen())
+        } finally {
+            if (session != null && session.isOpen())
                 session.close();
         }
     }
-    @SuppressWarnings("unchecked")
-    public List<Client> getAll(){
+
+    public ArrayList<Client> getAll() {
         Session session = null;
-        List<Client> clients = new ArrayList<Client>();
-        try{
+        ArrayList<Client> clients = new ArrayList<Client>();
+        try {
             session = sf.openSession();
-            clients = (List<Client>) session.createCriteria(Client.class).list();
-        }finally{
+            clients = (ArrayList)session.createCriteria(Client.class).list();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        } finally {
             if (session != null && session.isOpen())
                 session.close();
         }
         return clients;
     }
-    public Client getById(int id){
+
+    public Client getById(int id) {
         Session session = null;
         Client res = null;
-        try{
+        try {
             session = sf.openSession();
             res = (Client) session.get(Client.class, id);
-        }finally{
+        } finally {
             if (session != null && session.isOpen())
                 session.close();
         }

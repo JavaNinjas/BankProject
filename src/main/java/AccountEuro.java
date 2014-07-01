@@ -1,5 +1,3 @@
-package client;
-
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
@@ -17,7 +15,7 @@ public class AccountEuro extends Account {
 		this.euro = euro;
 		date = new SimpleDateFormat("dd-MM-yyyy HH:mm").format(Calendar
 				.getInstance().getTime());
-		this.accountId = ++count;
+		this.accountId = ++accountId;
 	}
 
 	public double putMoney(double quantity) {
@@ -50,9 +48,10 @@ public class AccountEuro extends Account {
 		this.date = date;
 	}
 
-	public double getEuro() {
-		return euro;
-	}
+
+//    public double getEuro() {
+//		return euro;
+//	}
 
 	public void setEuro(double euro) {
 		this.euro = euro;

@@ -17,6 +17,7 @@ public class ClientDaoImpl {
 
         ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties()).build();
         sf = configuration.buildSessionFactory(serviceRegistry);
+
     }
 
     public void add(Client client) {
@@ -45,14 +46,12 @@ public class ClientDaoImpl {
         }
     }
 
-    public ArrayList<Client> getAll() {
+    public List<Client> getAll() {
         Session session = null;
-        ArrayList<Client> clients = new ArrayList<Client>();
+        List<Client> clients = new ArrayList<Client>();
         try {
             session = sf.openSession();
             clients = (ArrayList)session.createCriteria(Client.class).list();
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
         } finally {
             if (session != null && session.isOpen())
                 session.close();
@@ -71,5 +70,23 @@ public class ClientDaoImpl {
                 session.close();
         }
         return res;
+    }
+
+    public void deleteById(int id) {
+        Session session = null;
+        Client res = null;
+        try {
+            session = sf.openSession();
+            res = (Client) session.get(Client.class, id);
+            System.out.println(res);
+            delete(res);
+        } finally {
+            if (session != null && session.isOpen())
+                session.close();
+        }
+    }
+
+    public void destroy() {
+        sf.close();
     }
 }

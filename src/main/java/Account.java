@@ -24,7 +24,7 @@ public class Account {
 
     @Override
     public String toString() {
-        return "Account{" +
+        return "main.java.Account{" +
                 "clientID=" + clientID +
                 ", date='" + date + '\'' +
                 ", UAH='" + UAH + '\'' +

@@ -14,7 +14,7 @@ public class Transaction {
         this.from = from;
         this.to = to;
         this.amount = amount;
-        date = date = new SimpleDateFormat("dd-MM-yyyy HH:mm").format(Calendar.getInstance().getTime());
+        date = new SimpleDateFormat("dd-MM-yyyy HH:mm").format(Calendar.getInstance().getTime());
     }
 
     public Client getFrom() {

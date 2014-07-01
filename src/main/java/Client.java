@@ -1,4 +1,6 @@
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name="CLIENTS")
@@ -15,13 +17,13 @@ public class Client {
     @Column(name="LAST_NAME")
     private String lastName;
 
-
     public Client() {
     }
 
     public Client(String firstName, String lastName) {
         this.firstName = firstName;
         this.lastName = lastName;
+
     }
 
     public long getID() {
@@ -46,10 +48,7 @@ public class Client {
 
     @Override
     public String toString() {
-        return "Client{" +
-                "ID=" + ID +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                '}';
+        return "Client №" + ID +
+                ": " + firstName + " " + lastName;
     }
 }

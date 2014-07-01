@@ -1,8 +1,0 @@
-
-public class Account {
-	public static long count = 0;   
-	public Account(){
-		   
-	   }
-}
-

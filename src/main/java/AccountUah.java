@@ -1,46 +1,42 @@
-
-
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
-public class AccountUsd extends Account {
+public class AccountUah extends Account {
 	public long clientId;
 	public String date;
-	public double usd;
+	public double uah;
 	public long accountId;
-	
 
-	public AccountUsd() {
-		
+	public AccountUah() {
 	}
 
-
-	public AccountUsd(long clientId, double usd) {
+	public AccountUah(long clientId, double uah) {
 		this.clientId = clientId;
-		this.usd = usd;
+		this.uah = uah;
 		this.date = new SimpleDateFormat("dd-MM-yyyy HH:mm").format(Calendar
 				.getInstance().getTime());
-		this.accountId  = ++count;
+		this.accountId = ++accountId;
 	}
 
-	public void putMoney(double quantity) {
-		usd += quantity;
-		setUsd(usd);
+	public double putMoney(double quantity) {
+		uah += quantity;
+		setUah(uah);
+		return uah;
 	}
 
 	public void takeMoney(double quantity) {
-		usd -= quantity;
-		setUsd(usd);
+		uah -= quantity;
 	}
 
 	@Override
 	public String toString() {
 		StringBuilder sb;
 		sb = new StringBuilder()
-				.append("      { USD=" + usd)
+				.append("      { UAH=" + uah)
 				.append(", date=" + date)
 				.append(", AccountId = " + getAccountId())
 				.append("}");
+				
 		return sb.toString();
 	}
 
@@ -52,16 +48,15 @@ public class AccountUsd extends Account {
 		this.date = date;
 	}
 
-	public double getUsd() {
-		return usd;
+	public double getUah() {
+		return uah;
 	}
 
-	public void setUsd(double usd) {
-		this.usd = usd;
+	public void setUah(double uah) {
+		this.uah = uah;
 	}
 
 	public long getAccountId() {
 		return accountId;
 	}
-
 }

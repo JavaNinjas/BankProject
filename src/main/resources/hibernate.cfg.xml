@@ -7,10 +7,10 @@
  <session-factory>
 
   <!-- Database connection settings -->
-  <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
-  <property name="connection.url">jdbc:mysql://localhost:3306/test</property>
-  <property name="connection.username">root</property>
-  <property name="connection.password">root</property>
+  <property name="connection.driver_class">org.postgresql.Driver</property>
+  <property name="connection.url">postgres://irxqkcrptwpxgk:RE5VZdhVvJS89fs_TqRb0BfDO6@ec2-54-225-102-235.compute-1.amazonaws.com:5432/d9m6pvgliqfkgt</property>
+  <property name="connection.username">irxqkcrptwpxgk</property>
+  <property name="connection.password">RE5VZdhVvJS89fs_TqRb0BfDO6</property>
 
 
   <!-- JDBC connection pool (use the built-in) -->
@@ -39,4 +39,5 @@
   <mapping class="Client"/>
 
  </session-factory>
+
 </hibernate-configuration>

@@ -1,16 +1,18 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core" %>
-<%@ taglib uri="http://bootstrapjsp.org/" prefix="b" %>
 
+<!Doctype html>
 <html>
 <head>
+    <meta charset="utf-8">
     <title>Bank Project</title>
-    <b:kickstart></b:kickstart>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css">
 </head>
 <body>
 
 
-<b:container>
+<div class ="container">
 <div class="row">
     <div class="col-md-6">
         <h1>Bank</h1>
@@ -35,11 +37,10 @@
 
 
     </div>
-
-
-    </b:container>
-
      </div>
+
+    <script src="http://code.jquery.com/jquery.min.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
 
 </body>
 </html>

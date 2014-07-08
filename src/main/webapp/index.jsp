@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core" %>
 <%@ taglib uri="http://bootstrapjsp.org/" prefix="b" %>
 
 <html>
@@ -7,23 +8,41 @@
     <b:kickstart></b:kickstart>
 </head>
 <body>
+
+
 <b:container>
+<div class="row">
+    <div class="col-md-6">
+        <h1>Bank</h1>
 
-<h1>Bank</h1>
-<h3>Add client</h3>
+        <h3>Add client</h3>
 
 
-<form name="input" action="/add" method="post">
-    <input type="text" name="firstName" class="form-control" value="First name"><br>
-    <input type="text" name="lastName" class="form-control" value="Last name"><br>
-    <input type="submit" name="add" class="btn btn-success btn-large" value="Add">
-</form>
+        <form name="input" action="/add" method="post">
+            <input type="text" name="firstName" class="form-control" value="First name"><br>
+            <input type="text" name="lastName" class="form-control" value="Last name"><br>
+            <input type="submit" name="add" class="btn btn-success btn-large" value="Add">
+        </form>
 
-<h3>Show all clients</h3>
+        <h3>Show all clients</h3>
 
-<form name="submit" action="/index" method="get">
-    <input type="submit" name ="showAll" class="btn btn-success btn-large" value="Show all"/>
-</form>
-</b:container>
+        <form name="submit" action="/index" method="get">
+            <input type="submit" name="showAll" class="btn btn-success btn-large" value="Show all"/>
+        </form>
+    </div>
+    <div class="col-md-6">
+
+
+
+    </div>
+
+
+    </b:container>
+
+    Server Version: <%= application.getServerInfo() %><br> Servlet Version: <%= application.getMajorVersion() %>.<%= application.getMinorVersion() %> JSP Version: <%= JspFactory.getDefaultFactory().getEngineInfo().getSpecificationVersion() %> <br>
+     </div>
+
+    <c:out value="${test}"/>
+
 </body>
 </html>

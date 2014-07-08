@@ -1,3 +1,5 @@
+package parser;
+
 public class Content {
 	public void GetContent() {
 		try {

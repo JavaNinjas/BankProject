@@ -2,6 +2,7 @@
 <%@ taglib uri="http://bootstrapjsp.org/" prefix="b" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core" %>
 
+
 <html>
 <head>
     <title>Bank Project</title>
@@ -18,7 +19,7 @@
         <c:forEach var="client" items="${clients}">
             <tr>
                 <td>
-                    <c:out value="${client}"/>
+                    <c:out value="${clients}"/>
                 </td>
                 <td>
                     <form name="submit" action="/delete" method="get">

@@ -27,7 +27,7 @@ public class MainServlet extends HttpServlet {
 
         impl.destroy();
 
-        ArrayList<Integer> getRates = new ArrayList<Integer>();
+     /*   ArrayList<Integer> getRates = new ArrayList<Integer>();
 
         Exchange ex = new Exchange();
         ContentUsdUah us = new ContentUsdUah();
@@ -37,20 +37,20 @@ public class MainServlet extends HttpServlet {
             eu.downloadContent();
         } catch (Exception e) {
             e.printStackTrace();
-        }
+        }*/
 
 
 
         request.getSession().setAttribute("clients", clients);
 
-        request.getSession().setAttribute("usdRate", ex.fromUSDtoUAH(1.00));
-        request.getSession().setAttribute("euroRate", ex.fromEURtoUAH(1.00));
+  /*      request.getSession().setAttribute("usdRate", ex.fromUSDtoUAH(1.00));
+        request.getSession().setAttribute("euroRate", ex.fromEURtoUAH(1.00));*/
 
 
 
 
 
-        RequestDispatcher view = getServletContext().getRequestDispatcher("/result1.jsp");
+        RequestDispatcher view = getServletContext().getRequestDispatcher("/result.jsp");
         view.forward(request, response);
     }
 

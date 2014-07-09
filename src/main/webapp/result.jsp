@@ -20,7 +20,7 @@
         <c:forEach var="client" items="${clients}">
             <tr>
                 <td>
-                    <c:out value="${clients}"/>
+                    <c:out value="${client}"/>
                 </td>
                 <td>
                     <form name="submit" action="/delete" method="get">

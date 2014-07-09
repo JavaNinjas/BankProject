@@ -8,7 +8,7 @@
 
   <!-- Database connection settings -->
   <property name="connection.driver_class">org.postgresql.Driver</property>
-  <property name="connection.url">postgres://compute-1.amazonaws.com:5432/d9m6pvgliqfkgt</property>
+  <property name="connection.url">postgres://irxqkcrptwpxgk:RE5VZdhVvJS89fs_TqRb0BfDO6@ec2-54-225-102-235.compute-1.amazonaws.com:5432/d9m6pvgliqfkgt</property>
   <property name="connection.username">irxqkcrptwpxgk</property>
   <property name="connection.password">RE5VZdhVvJS89fs_TqRb0BfDO6</property>
 

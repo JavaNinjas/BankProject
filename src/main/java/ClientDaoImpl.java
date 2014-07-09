@@ -13,7 +13,7 @@ public class ClientDaoImpl {
 
     public ClientDaoImpl() {
         Configuration configuration = new Configuration();
-        configuration.configure("resources/hibernate/cfg.xml");
+        configuration.configure("/resources/hibernate/cfg.xml");
 
         ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties()).build();
         sf = configuration.buildSessionFactory(serviceRegistry);

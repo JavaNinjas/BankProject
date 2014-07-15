@@ -1,3 +1,5 @@
+package servlets;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -7,6 +9,10 @@ import java.io.IOException;
 
 public class AddServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+    }
+
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Client client = new Client(request.getParameter("firstName"), request.getParameter("lastName"));
         ClientDaoImpl impl = new ClientDaoImpl();
         String clientAdded = request.getParameter("firstName") + " " + request.getParameter("lastName");
@@ -16,10 +22,6 @@ public class AddServlet extends HttpServlet {
         request.getSession().setAttribute("clientAdded", clientAdded);
         RequestDispatcher view = getServletContext().getRequestDispatcher("/added.jsp");
         view.forward(request, response);
-    }
-
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
     }
 }
 

@@ -1,9 +1,12 @@
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
+import org.hibernate.cfg.AnnotationConfiguration;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
 
+import java.lang.annotation.Annotation;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,7 +16,8 @@ public class ClientDaoImpl {
 
     public ClientDaoImpl() {
         Configuration configuration = new Configuration();
-        configuration.configure("src/main/webapp/hibernate.cfg.xml");
+        configuration.configure("hibernate-local.cfg.xml");
+
 
         ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties()).build();
         sf = configuration.buildSessionFactory(serviceRegistry);

@@ -3,42 +3,38 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 @Entity
-@Table
+@Table(name="ACCOUNTS")
 public class Account {
 
-    private int clientID;
+    @Id
+    @GeneratedValue
+    @Column(name="ID")
+    protected int ID;
+
+    @Column(name="CREATED")
     private String date;
-    private String UAH;
-    private String USD;
-    private String Euro;
+
+    @ManyToOne
+    @JoinColumn(name="ID")
+    private Client client;
+
+    @Column(name="QUANTITY")
+    private int quantity;
 
     public Account() {
     }
 
-    public Account(String UAH) {
-        this.UAH = UAH;
-        USD = "US Dollars";
-        Euro = "Euro";
-        date = new SimpleDateFormat("dd-MM-yyyy HH:mm").format(Calendar.getInstance().getTime());
+    public Account(int clientID, String date, int quantity) {
+        this.date = new SimpleDateFormat("dd-MM-yyyy HH:mm").format(Calendar.getInstance().getTime());
+        this.quantity = quantity;
     }
 
-    @Override
-    public String toString() {
-        return "main.java.Account{" +
-                "clientID=" + clientID +
-                ", date='" + date + '\'' +
-                ", UAH='" + UAH + '\'' +
-                ", USD='" + USD + '\'' +
-                ", Euro='" + Euro + '\'' +
-                '}';
+    public int getID() {
+        return ID;
     }
 
-    public int getClientID() {
-        return clientID;
-    }
-
-    public void setClientID(int clientID) {
-        this.clientID = clientID;
+    public void setID(int ID) {
+        this.ID = ID;
     }
 
     public String getDate() {
@@ -49,28 +45,22 @@ public class Account {
         this.date = date;
     }
 
-    public String getUAH() {
-        return UAH;
+    public int getQuantity() {
+        return quantity;
     }
 
-    public void setUAH(String UAH) {
-        this.UAH = UAH;
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
 
-    public String getUSD() {
-        return USD;
-    }
-
-    public void setUSD(String USD) {
-        this.USD = USD;
-    }
-
-    public String getEuro() {
-        return Euro;
-    }
-
-    public void setEuro(String euro) {
-        Euro = euro;
+    @Override
+    public String toString() {
+        return "Account{" +
+                "ID=" + ID +
+                ", client=" + client +
+                ", date='" + date + '\'' +
+                ", quantity=" + quantity +
+                '}';
     }
 }
 

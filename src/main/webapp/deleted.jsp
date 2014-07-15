@@ -21,7 +21,7 @@
     <form name="submit" action="/index" method="get">
         <input type="submit" name ="showAll" class="btn btn-success btn-large" value="Show all"/>
     </form>
-</div
+</div>
 
 <script src="http://code.jquery.com/jquery.min.js"></script>
 <script src="bootstrap/js/bootstrap.min.js"></script>

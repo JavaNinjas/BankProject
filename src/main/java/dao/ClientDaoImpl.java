@@ -1,66 +1,24 @@
+package dao;
+
+import entity.Client;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
-import org.hibernate.cfg.AnnotationConfiguration;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
 
-import java.lang.annotation.Annotation;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ClientDaoImpl {
-    private SessionFactory sf;
+public class ClientDaoImpl extends GenericDaoImpl {
 
+    private SessionFactory sf;
 
     public ClientDaoImpl() {
         Configuration configuration = new Configuration();
         configuration.configure("hibernate-local.cfg.xml");
-
-
         ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties()).build();
         sf = configuration.buildSessionFactory(serviceRegistry);
-
-    }
-
-    public void add(Client client) {
-        Session session = null;
-        try {
-            session = sf.openSession();
-            session.beginTransaction();
-            session.save(client);
-            session.getTransaction().commit();
-        } finally {
-            if (session != null && session.isOpen())
-                session.close();
-        }
-    }
-
-    public void delete(Client client) {
-        Session session = null;
-        try {
-            session = sf.openSession();
-            session.beginTransaction();
-            session.delete(client);
-            session.getTransaction().commit();
-        } finally {
-            if (session != null && session.isOpen())
-                session.close();
-        }
-    }
-
-    public List<Client> getAll() {
-        Session session = null;
-        List<Client> clients = new ArrayList<Client>();
-        try {
-            session = sf.openSession();
-            clients = (ArrayList)session.createCriteria(Client.class).list();
-        } finally {
-            if (session != null && session.isOpen())
-                session.close();
-        }
-        return clients;
     }
 
     public Client getById(int id) {
@@ -76,21 +34,49 @@ public class ClientDaoImpl {
         return res;
     }
 
+    @Override
+    public void update(Object object) {
+        Session session = null;
+        try {
+            session = sf.openSession();
+            session.beginTransaction();
+            System.out.println("saving");
+            session.saveOrUpdate(object);
+            session.getTransaction().commit();
+        } finally {
+
+            if (session != null && session.isOpen())
+                session.close();
+        }
+    }
+
+
+
+    @Override
+    public List<Client> read() {
+        Session session = null;
+        List<Client> objects = new ArrayList<Client>();
+        try {
+            session = sf.openSession();
+            objects = (ArrayList) session.createCriteria(Client.class).list();
+        } finally {
+            if (session != null && session.isOpen())
+                session.close();
+        }
+        return objects;
+    }
+
     public void deleteById(int id) {
         Session session = null;
         Client res = null;
         try {
             session = sf.openSession();
             res = (Client) session.get(Client.class, id);
-            System.out.println(res);
+            session.close();
             delete(res);
         } finally {
             if (session != null && session.isOpen())
                 session.close();
         }
-    }
-
-    public void destroy() {
-        sf.close();
     }
 }

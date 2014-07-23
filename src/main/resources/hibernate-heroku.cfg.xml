@@ -36,7 +36,7 @@
      <property name="cache.provider_class">org.hibernate.cache.internal.NoCachingRegionFactory</property>
 
   <!-- Mapping files -->
-  <mapping class="Client"/>
+  <mapping class="entity.Client"/>
 
  </session-factory>
 

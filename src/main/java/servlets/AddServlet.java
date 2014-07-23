@@ -1,4 +1,7 @@
 package servlets;
+import dao.ClientDaoImpl;
+import dao.GenericDaoImpl;
+import entity.Client;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -16,7 +19,7 @@ public class AddServlet extends HttpServlet {
         Client client = new Client(request.getParameter("firstName"), request.getParameter("lastName"));
         ClientDaoImpl impl = new ClientDaoImpl();
         String clientAdded = request.getParameter("firstName") + " " + request.getParameter("lastName");
-        impl.add(client);
+        impl.create(client);
         impl.destroy();
 
         request.getSession().setAttribute("clientAdded", clientAdded);

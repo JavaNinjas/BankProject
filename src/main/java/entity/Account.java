@@ -1,3 +1,5 @@
+package entity;
+
 import javax.persistence.*;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -8,23 +10,23 @@ public class Account {
 
     @Id
     @GeneratedValue
-    @Column(name="ID")
+    @Column(name="ACCOUNT_ID")
     protected int ID;
 
     @Column(name="CREATED")
     private String date;
 
-    @ManyToOne
-    @JoinColumn(name="ID")
-    private Client client;
-
     @Column(name="QUANTITY")
     private int quantity;
+
+    @ManyToOne(fetch=FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinColumn(name = "CLIENT_ID", nullable = false)
+    private Client client;
 
     public Account() {
     }
 
-    public Account(int clientID, String date, int quantity) {
+    public Account(int quantity) {
         this.date = new SimpleDateFormat("dd-MM-yyyy HH:mm").format(Calendar.getInstance().getTime());
         this.quantity = quantity;
     }
@@ -55,9 +57,8 @@ public class Account {
 
     @Override
     public String toString() {
-        return "Account{" +
+        return "entity.Account{" +
                 "ID=" + ID +
-                ", client=" + client +
                 ", date='" + date + '\'' +
                 ", quantity=" + quantity +
                 '}';

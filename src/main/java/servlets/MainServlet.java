@@ -1,10 +1,8 @@
 package servlets;
 
-
-import parser.ContentEurUah;
-import parser.ContentUsdUah;
-import parser.Exchange;
-import parser.RateEurUah;
+import dao.ClientDaoImpl;
+import dao.GenericDaoImpl;
+import entity.Client;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
@@ -23,7 +21,7 @@ public class MainServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         ArrayList<Client> clients = new ArrayList<Client>();
         ClientDaoImpl impl = new ClientDaoImpl();
-        clients = (ArrayList)impl.getAll();
+        clients = (ArrayList)impl.read();
 
         impl.destroy();
 

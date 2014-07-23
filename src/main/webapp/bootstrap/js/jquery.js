@@ -77,7 +77,7 @@ var jQuery = function( selector, context ) {
 	trim = String.prototype.trim,
 	indexOf = Array.prototype.indexOf,
 
-	// [[Class]] -> type pairs
+	// [[Test]] -> type pairs
 	class2type = {};
 
 jQuery.fn = jQuery.prototype = {

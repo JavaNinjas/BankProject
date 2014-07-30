@@ -1,0 +1,16 @@
+public class DownloadRates {
+    public static void main(String[] args) throws Exception {
+
+        Content euruah = new Content();
+        RateEurUah courseEurUah = new RateEurUah();
+        courseEurUah.findRate(euruah.downloadContent("https://finance.yahoo.com/q?s=EURUAH=x"));
+
+        Content usduah = new Content();
+        RateUsdUah courseUsdUah = new RateUsdUah();
+        courseUsdUah.findRate(usduah.downloadContent("https://finance.yahoo.com/q?s=usduah=x"));
+
+        Content eurusd = new Content();
+        RateEurUsd courseEurUsd = new RateEurUsd();
+        courseEurUsd.findRate(eurusd.downloadContent("https://finance.yahoo.com/q?s=EURUSD=x"));
+        }
+}

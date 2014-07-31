@@ -30,6 +30,12 @@ public class Account {
         this.date = new SimpleDateFormat("dd-MM-yyyy HH:mm").format(Calendar.getInstance().getTime());
         this.quantity = quantity;
     }
+    public void sendMoney(int number, int ToId){
+        setQuantity(getQuantity() - number);//зменшуємо баланс того акаунта з якого ми визиваємо метод sendMoney
+        AccountDaoImpl toAccount = new AccountDaoImpl();
+        Account recipient = toAccount.getById(ToId);//для створеного обєкта класа AccountDaoImpl визиваєм метод getById(ToId) і передаєм туди іd рахунка отримувача
+        recipient.setQuantity(getQuantity() + number);//пусля того як ми отримали акаунт отримувача, збільшуємо його баланс
+    }
 
     public int getID() {
         return ID;

@@ -1,5 +1,7 @@
 package entity;
 
+import dao.AccountDaoImpl;
+
 import javax.persistence.*;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -8,10 +10,13 @@ import java.util.Calendar;
 @Table(name="ACCOUNTS")
 public class Account {
 
+    @Column(name="CLIENT_ID")
+    private int client_id ;
+
     @Id
     @GeneratedValue
     @Column(name="ACCOUNT_ID")
-    protected int ID;
+    protected int account_id;
 
     @Column(name="CREATED")
     private String date;
@@ -19,14 +24,11 @@ public class Account {
     @Column(name="QUANTITY")
     private int quantity;
 
-    @ManyToOne(fetch=FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinColumn(name = "CLIENT_ID", nullable = false)
-    private Client client;
-
     public Account() {
     }
 
-    public Account(int quantity) {
+    public Account(int client_id, int quantity) {
+        this.client_id = client_id;
         this.date = new SimpleDateFormat("dd-MM-yyyy HH:mm").format(Calendar.getInstance().getTime());
         this.quantity = quantity;
     }
@@ -37,12 +39,12 @@ public class Account {
         recipient.setQuantity(getQuantity() + number);//пусля того як ми отримали акаунт отримувача, збільшуємо його баланс
     }
 
-    public int getID() {
-        return ID;
+    public int getAccount_id() {
+        return account_id;
     }
 
-    public void setID(int ID) {
-        this.ID = ID;
+    public void setAccount_id(int ID) {
+        this.account_id = ID;
     }
 
     public String getDate() {
@@ -64,7 +66,7 @@ public class Account {
     @Override
     public String toString() {
         return "entity.Account{" +
-                "ID=" + ID +
+                "ID=" + account_id +
                 ", date='" + date + '\'' +
                 ", quantity=" + quantity +
                 '}';

@@ -10,15 +10,20 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-public class AddServlet extends HttpServlet {
+public class CreateServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        Client client = new Client(request.getParameter("firstName"), request.getParameter("lastName"));
+        Client client = new Client(request.getParameter("firstName"),
+                request.getParameter("lastName"),
+                request.getParameter("email"),
+                request.getParameter("password"));
+
         ClientDaoImpl impl = new ClientDaoImpl();
         String clientAdded = request.getParameter("firstName") + " " + request.getParameter("lastName");
+
         impl.create(client);
         impl.destroy();
 

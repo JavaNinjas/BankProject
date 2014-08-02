@@ -1,10 +1,10 @@
 package entity;
 
-import dao.AccountDaoImpl;
 import dao.ClientDaoImpl;
 
 import javax.persistence.*;
-import java.util.Random;
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -14,7 +14,7 @@ public class Client {
     @Id
     @GeneratedValue
     @Column(name = "CLIENT_ID")
-    protected int ID;
+    protected int client_id;
 
     @Column(name = "FIRST_NAME")
     private String firstName;
@@ -22,49 +22,27 @@ public class Client {
     @Column(name = "LAST_NAME")
     private String lastName;
 
-    @OneToMany(mappedBy = "client", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    private Set<Account> accounts;
+    @Column(name="EMAIL")
+    private String email;
 
+    @Column(name="PASSWORD")
+    private String password;
+
+    @ElementCollection
+    private Set<Account> accounts;
 
     public Client() {
     }
 
-    public Client(String firstName, String lastName) {
+    public Client(String firstName, String lastName, String email, String password) {
         this.firstName = firstName;
         this.lastName = lastName;
+        this.email = email;
+        this.password = password;
     }
 
-    public static void main(String[] args) {
-        /*String[] names = {"Eugene", "Thomas", "Dave", "William", "Robert", "Nancy", "Mary", "Ann", "Seth"};
-        String[] surnames = {"Bolt", "Gale", "Wayne", "Shaun", "Dope", "Cope", "Plan", "Bush"};
-
-
-
-
-        ClientDaoImpl i = new ClientDaoImpl();
-        Random random = new Random();
-
-
-        for (int j = 0; j < 10; j++) {
-            for (String name : names) {
-                i.create(new Client(name, surnames[random.nextInt(surnames.length)]));
-            }
-        }
-*/
-
-        ClientDaoImpl impl = new ClientDaoImpl();
-
-        Account a = new Account(300);
-        impl.getById(1).addAccount(a);
-
-
-
-
-        impl.destroy();
-    }
-
-    public long getID() {
-        return ID;
+    public long getClient_id() {
+        return client_id;
     }
 
     public String getFirstName() {
@@ -83,14 +61,24 @@ public class Client {
         this.lastName = lastName;
     }
 
-    @Override
-    public String toString() {
-        return "entity.Client №" + ID +
-                ": " + firstName + " " + lastName;
+    public String getEmail() {
+        return email;
     }
 
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
 
     public void addAccount(Account account) {
         accounts.add(account);
     }
+
 }

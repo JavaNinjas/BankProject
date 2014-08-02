@@ -125,9 +125,10 @@
                     Provide your credentials to enter service. In case client is not found your profile will be created automatically.
                 </p>
 
-                <input type="text" name="firstName" placeholder="First name">
-                <input type="text" name="lastName" placeholder="Last name"><br>
+                <input type="email" name="email" placeholder="Email">
+                <input type="password" name="password" placeholder="Password"><br>
                 <button class="btn btn-inverse" type="submit">Sign in</button>
+                <a href="/create.jsp" class="btn btn-inverse">Register</a>
             </form>
         </div>
     </div>

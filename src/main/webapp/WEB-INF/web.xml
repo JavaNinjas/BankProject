@@ -16,8 +16,8 @@
     </servlet>
 
     <servlet>
-        <servlet-name>add</servlet-name>
-        <servlet-class>servlets.AddServlet</servlet-class>
+        <servlet-name>create</servlet-name>
+        <servlet-class>servlets.CreateServlet</servlet-class>
     </servlet>
 
     <servlet>
@@ -31,8 +31,8 @@
     </servlet-mapping>
 
     <servlet-mapping>
-        <servlet-name>add</servlet-name>
-        <url-pattern>/add</url-pattern>
+        <servlet-name>create</servlet-name>
+        <url-pattern>/create</url-pattern>
     </servlet-mapping>
 
     <servlet-mapping>

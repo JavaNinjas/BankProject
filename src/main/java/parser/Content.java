@@ -1,5 +1,8 @@
 package parser;
 
+import java.io.*;
+import java.net.URL;
+
 public class Content {
 	
 public String downloadContent(String adress) throws Exception {

@@ -67,7 +67,11 @@ public class Account {
         this.quantity = quantity;
     }
 
-    p
+    public String getCurrency(){return currency;}
+
+    public void setCurrency(String currency){
+        this.currency = currency;
+    }
     @Override
     public String toString() {
         return "entity.Account{" +

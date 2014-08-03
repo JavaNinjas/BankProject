@@ -24,13 +24,17 @@ public class Account {
     @Column(name="QUANTITY")
     private int quantity;
 
+    @Column(name="CURRENCY")
+    private String currency;
+
     public Account() {
     }
 
-    public Account(int client_id, int quantity) {
+    public Account(int client_id, int quantity, String currency) {
         this.client_id = client_id;
         this.date = new SimpleDateFormat("dd-MM-yyyy HH:mm").format(Calendar.getInstance().getTime());
         this.quantity = quantity;
+        this.currency = currency;
     }
     public void sendMoney(int number, int ToId){
         setQuantity(getQuantity() - number);//зменшуємо баланс того акаунта з якого ми визиваємо метод sendMoney
@@ -63,6 +67,7 @@ public class Account {
         this.quantity = quantity;
     }
 
+    p
     @Override
     public String toString() {
         return "entity.Account{" +

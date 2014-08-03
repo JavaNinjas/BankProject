@@ -33,6 +33,19 @@ public class ClientDaoImpl extends GenericDaoImpl {
         }
         return res;
     }
+    public Client getByEmail(String email) {
+        Session session = null;
+        Client res = null;
+        try {
+            session = sf.openSession();
+            res = (Client) session.get(Client.class, email);
+        } finally {
+            if (session != null && session.isOpen())
+                session.close();
+        }
+        return res;
+    }
+
 
     @Override
     public void update(Object object) {

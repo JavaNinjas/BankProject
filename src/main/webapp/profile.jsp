@@ -87,14 +87,14 @@
                 <fieldset>
                     <legend>UAH</legend>
                     Account status: active<br>
-                    Account balance: 1337.00<br>
+                    Account balance:
+                    <c:out value="${account.getquantity}"></c:out>
+                    <br>
                     <br>
 
                     <div class="control-group">
                         <div class="controls form-inline">
-                            <button id="singlebutton1" name="singlebutton1" class="btn btn-inverse">Open account</button>
-                            <button id="singlebutton2" name="singlebutton2" class="btn btn-inverse disabled">Close
-                                account
+                            <button id="singlebutton1" name="singlebutton1" class="btn btn-inverse">Open account
                             </button>
                         </div>
                     </div>
@@ -103,106 +103,108 @@
         </div>
 
 
-        <div class="span4">
-            <div class="form-actions form-inline">
-                <fieldset>
-                    <legend>USD</legend>
-                    Account status: active<br>
-                    Account balance: 1337.00<br>
-                    <br>
+        <%-- <div class="span4">
+             <div class="form-actions form-inline">
+                 <fieldset>
+                     <legend>USD</legend>
+                     Account status: active<br>
+                     Account balance: 1337.00<br>
+                     <br>
 
-                    <div class="control-group">
-                        <div class="controls form-inline">
-                            <button id="singlebutton" name="singlebutton" class="btn btn-inverse">Open account</button>
-                            <button id="singlebutton" name="singlebutton" class="btn btn-inverse disabled">Close
-                                account
-                            </button>
-                        </div>
-                    </div>
-                </fieldset>
-            </div>
-        </div>
-
-
-        <div class="span4">
-            <div class="form-actions form-inline">
-                <fieldset>
-                    <legend>RUB</legend>
-                    Account status: active<br>
-                    Account balance: 1337.00<br>
-                    <br>
-
-                    <div class="control-group">
-                        <div class="controls form-inline">
-                            <button id="singlebutton" name="singlebutton" class="btn btn-inverse">Open account</button>
-                            <button id="singlebutton" name="singlebutton" class="btn btn-inverse disabled">Close
-                                account
-                            </button>
-                        </div>
-                    </div>
-                </fieldset>
-            </div>
-        </div>
-    </div>
+                     <div class="control-group">
+                         <div class="controls form-inline">
+                             <button id="singlebutton" name="singlebutton" class="btn btn-inverse">Open account</button>
+                             <button id="singlebutton" name="singlebutton" class="btn btn-inverse disabled">Close
+                                 account
+                             </button>
+                         </div>
+                     </div>
+                 </fieldset>
+             </div>
+         </div>
 
 
-    <legend>Operations</legend>
-    <div class="control-group">
+         <div class="span4">
+             <div class="form-actions form-inline">
+                 <fieldset>
+                     <legend>RUB</legend>
+                     Account status: active<br>
+                     Account balance: 1337.00<br>
+                     <br>
 
-        <label class="control-label">Choose currency:</label>
+                     <div class="control-group">
+                         <div class="controls form-inline">
+                             <button id="singlebutton" name="singlebutton" class="btn btn-inverse">Open account</button>
+                             <button id="singlebutton" name="singlebutton" class="btn btn-inverse disabled">Close
+                                 account
+                             </button>
+                         </div>
+                     </div>
+                 </fieldset>
+             </div>
+         </div>
+     </div>
+ --%>
 
-        <div class="control-group form-horizontal">
-            <label class="radio" for="radios-0">
-                <input type="radio" name="radios" id="radios-0" value="Option one" checked="checked">
-                UAH
-            </label>
-            <label class="radio" for="radios-1">
-                <input type="radio" name="radios" id="radios-1" value="Option two">
-                USD
-            </label>
-            <label class="radio" for="radios-1">
-                <input type="radio" name="radios" id="radios-1" value="Option two">
-                RUB
-            </label>
-        </div>
-
+        <legend>Operations</legend>
         <div class="control-group">
-            <label class="control-label" for="textinput">Amount:</label>
 
-            <div class="controls form-horizontal">
-                <input type="text" class="input" placeholder="0.00" id="inputKey">
+            <label class="control-label">Choose currency:</label>
+
+            <div class="control-group form-horizontal">
+                <label class="radio" for="radios-0">
+                    <input type="radio" name="radios" id="radios-0" value="Option one" checked="checked">
+                    UAH
+                </label>
+                <label class="radio" for="radios-1">
+                    <input type="radio" name="radios" id="radios-1" value="Option two">
+                    USD
+                </label>
+                <label class="radio" for="radios-1">
+                    <input type="radio" name="radios" id="radios-1" value="Option two">
+                    RUB
+                </label>
+            </div>
+
+            <div class="control-group">
+                <label class="control-label" for="textinput">Amount:</label>
+
+                <div class="controls form-horizontal">
+                    <input type="text" class="input" placeholder="0.00" id="inputKey">
+                </div>
+            </div>
+
+
+            <div class="control-group">
+                <div class="control-group">
+                    <label class="control-label" for="textinput">Recipient:</label>
+                    <input type="text" class="input" placeholder="Leave blank if recepient is you" id="inputKey">
+
+                </div>
+                <div class="control-group">
+
+                    <button id="singlebutton" name="singlebutton" class="btn btn-inverse">Send money</button>
+                </div>
+
+
             </div>
         </div>
 
 
-        <div class="control-group">
-            <div class="control-group">
-                <label class="control-label" for="textinput">Recipient:</label>
-                <input type="text" class="input" placeholder="Leave blank if recepient is you" id="inputKey">
+        <div id="theme_switcher">
+            <style>
+                .container {
+                    width: 970px
+                }
 
-            </div>
-            <div class="control-group">
-
-                <button id="singlebutton" name="singlebutton" class="btn btn-inverse">Send money</button>
-            </div>
-
+                #theme_switcher {
+                    left: 10px;
+                    position: fixed;
+                    top: 10px;
+                }
+            </style>
 
         </div>
-    </div>
-
-
-    <div id="theme_switcher">
-        <style>
-            .container {
-                width: 970px
-            }
-
-            #theme_switcher {
-                left: 10px;
-                position: fixed;
-                top: 10px;
-            }
-        </style>
 
     </div>
 
@@ -213,34 +215,22 @@
 <script src="bootstrap/js/bootstrap.min.js"></script>
 
 
-
-
 <script>
-    var buttonToSwitch1 = $('#singlebutton1')
-    var buttonToSwitch2 = $('#singlebutton2')
 
-
-    $(document).ready(function () {
-        $('.btn-inverse').click(
+    $(document).ready(function (e) {
+        $('#singlebutton1').click(
                 function () {
-                    switch (true) {
-                        case(buttonToSwitch1.hasClass('disabled')):
-                            buttonToSwitch1.removeClass('disabled');
-                            buttonToSwitch2.addClass('disabled');
-                            $.ajax({
-                                url: "/added",
-                                data: "data",
-                                success: function() {
-                                  window.location.replace("/added.jsp")
-                                }
-                            })
-                            break;
-                        case(buttonToSwitch2.hasClass('disabled')):
-                            buttonToSwitch2.removeClass('disabled');
-                            buttonToSwitch1.addClass('disabled');
-                    }
-//            $(this).addClass('disabled');
-//            $('#singlebutton2').removeClass('disabled');
+                    if ($(this).hasClass('disabled'))
+                        e.preventDefault();
+                    $(this).addClass('disabled');
+
+                    $.ajax({
+                        type: "GET",
+                        url: "/createAcc",
+                        //data: "data",
+                        success: function () {
+                        }
+                    })
                 });
     });
 </script>

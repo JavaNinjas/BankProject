@@ -10,7 +10,7 @@ import java.util.Calendar;
 @Table(name="ACCOUNTS")
 public class Account {
 
-    @Column(name="CLIENT_ID")
+    @JoinColumn(name="CLIENT_ID")
     private int client_id ;
 
     @Id
@@ -30,8 +30,8 @@ public class Account {
     public Account() {
     }
 
-    public Account(int client_id, int quantity, String currency) {
-        this.client_id = client_id;
+    public Account(Client client, int quantity, String currency) {
+        this.client_id = (int)client.getClient_id();
         this.date = new SimpleDateFormat("dd-MM-yyyy HH:mm").format(Calendar.getInstance().getTime());
         this.quantity = quantity;
         this.currency = currency;

@@ -1,5 +1,10 @@
 package servlets;
 
+import dao.AccountDaoImpl;
+import dao.ClientDaoImpl;
+import entity.Account;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -14,7 +19,17 @@ public class CreateAcc extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        PrintWriter printWriter = response.getWriter();
-        printWriter.write("creating");
+
+        ClientDaoImpl impl = new ClientDaoImpl();
+
+        Account account = new Account(impl.getByEmail("gryaznov.eugene@gmail.com"), 300, "UAH");
+
+        impl.destroy();
+
+        AccountDaoImpl impl2 = new AccountDaoImpl();
+        impl2.create(account);
+        impl2.destroy();
+
+
     }
 }

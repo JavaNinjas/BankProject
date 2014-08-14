@@ -89,7 +89,7 @@
                         <td>
                             <form name="submit" action="/delete" method="get">
                                 <button class="btn btn-inverse">Delete</button>
-                                <input type="hidden" name="deleteThisRow" value="<c:out value='${client.ID}'/>"/>
+                                <input type="hidden" name="deleteThisRow" value="<c:out value='${client.client_id}'/>"/>
                             </form>
                         </td>
                     </tr>

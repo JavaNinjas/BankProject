@@ -25,6 +25,11 @@
         <servlet-class>servlets.DeleteServlet</servlet-class>
     </servlet>
 
+    <servlet>
+        <servlet-name>createAcc</servlet-name>
+        <servlet-class>servlets.CreateAcc</servlet-class>
+    </servlet>
+
     <servlet-mapping>
         <servlet-name>main</servlet-name>
         <url-pattern>/index</url-pattern>
@@ -38,6 +43,11 @@
     <servlet-mapping>
         <servlet-name>delete</servlet-name>
         <url-pattern>/delete</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>createAcc</servlet-name>
+        <url-pattern>/createAcc</url-pattern>
     </servlet-mapping>
 
 

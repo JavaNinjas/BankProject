@@ -5,6 +5,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
+import org.hibernate.criterion.Restrictions;
 import org.hibernate.service.ServiceRegistry;
 
 import java.util.ArrayList;
@@ -33,12 +34,15 @@ public class ClientDaoImpl extends GenericDaoImpl {
         }
         return res;
     }
+
     public Client getByEmail(String email) {
         Session session = null;
         Client res = null;
         try {
             session = sf.openSession();
-            res = (Client) session.get(Client.class, email);
+            List<Client> list = session.createCriteria(Client.class)
+            .add(Restrictions.like("email", email)).list();
+            res = list.get(0);
         } finally {
             if (session != null && session.isOpen())
                 session.close();

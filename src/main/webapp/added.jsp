@@ -12,7 +12,7 @@
 
     <!-- Le styles -->
     <link href="bootstrap/css/bootstrap.css" rel="stylesheet">
-    <link id="switch_style" href="bootstrap/css/silver/bootstrap.min.css" rel="stylesheet">
+    <link id="switch_style" href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
     <link href="bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
     <link href="css/docs.css" rel="stylesheet">

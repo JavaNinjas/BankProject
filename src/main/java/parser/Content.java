@@ -5,8 +5,8 @@ import java.net.URL;
 
 public class Content {
 	
-public String downloadContent(String adress) throws Exception {
-        URL url = new URL(adress);
+public String downloadContent(String address) throws Exception {
+        URL url = new URL(address);
         InputStream in = url.openStream();
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         try {

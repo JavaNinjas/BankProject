@@ -1,10 +1,6 @@
 package entity;
 
-import dao.ClientDaoImpl;
-
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -81,4 +77,15 @@ public class Client {
         accounts.add(account);
     }
 
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder("Client{");
+        sb.append("client_id=").append(client_id);
+        sb.append(", firstName='").append(firstName).append('\'');
+        sb.append(", lastName='").append(lastName).append('\'');
+        sb.append(", email='").append(email).append('\'');
+        sb.append(", password='").append(password).append('\'');
+        sb.append('}');
+        return sb.toString();
+    }
 }

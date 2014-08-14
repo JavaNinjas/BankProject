@@ -12,7 +12,7 @@
 
     <!-- Le styles -->
     <link href="bootstrap/css/bootstrap.css" rel="stylesheet">
-    <link id="switch_style" href="bootstrap/css/silver/bootstrap.min.css" rel="stylesheet">
+    <link id="switch_style" href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
     <link href="bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
     <link href="css/docs.css" rel="stylesheet">
@@ -118,7 +118,7 @@
         <div class="span5">
             <img src="pictures/stock1.jpg"/><br/><br/>
 
-            <form name="input" action="/add" method="get" class="well">
+            <form name="input" action="/index" method="get" class="well">
                 <h3>Welcome to our bank</h3>
 
                 <p style="text-align:justify">

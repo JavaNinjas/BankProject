@@ -27,7 +27,12 @@
 
     <servlet>
         <servlet-name>createAcc</servlet-name>
-        <servlet-class>servlets.CreateAcc</servlet-class>
+        <servlet-class>servlets.CreateAccountServlet</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>send</servlet-name>
+        <servlet-class>servlets.SendMoneyServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
@@ -46,8 +51,13 @@
     </servlet-mapping>
 
     <servlet-mapping>
-        <servlet-name>createAcc</servlet-name>
-        <url-pattern>/createAcc</url-pattern>
+    <servlet-name>createAcc</servlet-name>
+    <url-pattern>/createAcc</url-pattern>
+</servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>send</servlet-name>
+        <url-pattern>/send</url-pattern>
     </servlet-mapping>
 
 

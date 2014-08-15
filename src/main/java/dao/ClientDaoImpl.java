@@ -44,9 +44,9 @@ public class ClientDaoImpl extends GenericDaoImpl {
             .add(Restrictions.like("email", email)).list();
             res = list.get(0);
         } finally {
-            if (session != null && session.isOpen())
-                session.close();
-        }
+           /* if (session != null && session.isOpen())
+                session.close();*/
+    }
         return res;
     }
 
@@ -62,8 +62,8 @@ public class ClientDaoImpl extends GenericDaoImpl {
             session.getTransaction().commit();
         } finally {
 
-            if (session != null && session.isOpen())
-                session.close();
+        /*    if (session != null && session.isOpen())
+                session.close();*/
         }
     }
 

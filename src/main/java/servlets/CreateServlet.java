@@ -22,13 +22,13 @@ public class CreateServlet extends HttpServlet {
                 request.getParameter("password"));
 
         ClientDaoImpl impl = new ClientDaoImpl();
-        String clientAdded = request.getParameter("firstName") + " " + request.getParameter("lastName");
+        String clientName = request.getParameter("firstName") + " " + request.getParameter("lastName");
 
         impl.create(client);
         impl.destroy();
 
-        request.getSession().setAttribute("clientAdded", clientAdded);
-        RequestDispatcher view = getServletContext().getRequestDispatcher("/added.jsp");
+        request.getSession().setAttribute("clientName", clientName);
+        RequestDispatcher view = getServletContext().getRequestDispatcher("/profile.jsp");
         view.forward(request, response);
     }
 }

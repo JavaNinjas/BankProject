@@ -79,6 +79,7 @@
         <!-- /navbar-inner -->
     </div>
 
+    <h3>Welcome, <c:out value="${clientName}"/></h3>
 
     <div class="row-fluid">
 
@@ -167,26 +168,23 @@
             </div>
 
             <div class="control-group">
-                <label class="control-label" for="textinput">Amount:</label>
+                <label class="control-label">Amount:</label>
 
                 <div class="controls form-horizontal">
-                    <input type="text" class="input" placeholder="0.00" id="inputKey">
+                    <input type="text" name="amount" class="input" placeholder="0.00">
                 </div>
             </div>
 
-
             <div class="control-group">
                 <div class="control-group">
-                    <label class="control-label" for="textinput">Recipient:</label>
-                    <input type="text" class="input" placeholder="Leave blank if recepient is you" id="inputKey">
+                    <label class="control-label">Recipient:</label>
+                    <input type="text" name="recipient" class="input" placeholder="Leave blank if recepient is you">
+
 
                 </div>
                 <div class="control-group">
-
-                    <button id="singlebutton" name="singlebutton" class="btn btn-inverse">Send money</button>
+                    <button id="sendMoney" class="btn btn-inverse">Send money</button>
                 </div>
-
-
             </div>
         </div>
 
@@ -216,7 +214,6 @@
 
 
 <script>
-
     $(document).ready(function (e) {
         $('#singlebutton1').click(
                 function () {
@@ -229,6 +226,21 @@
                         url: "/createAcc",
                         //data: "data",
                         success: function () {
+                        }
+                    })
+                });
+    });
+</script>
+
+<script>
+    $(document).ready(function () {
+        $('#sendMoney').click(
+                function () {
+                    $.ajax({
+                        type: "GET",
+                        url: "/send",
+                        success: function () {
+
                         }
                     })
                 });

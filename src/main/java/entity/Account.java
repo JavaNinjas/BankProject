@@ -9,14 +9,14 @@ import java.util.Calendar;
 @Entity
 @Table(name="ACCOUNTS")
 public class Account {
-
-    @JoinColumn(name="CLIENT_ID")
-    private int client_id ;
-
     @Id
     @GeneratedValue
     @Column(name="ACCOUNT_ID")
     protected int account_id;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name="CLIENT_ID")
+    private Client client;
 
     @Column(name="CREATED")
     private String date;
@@ -31,16 +31,16 @@ public class Account {
     }
 
     public Account(Client client, int quantity, String currency) {
-        this.client_id = (int)client.getClient_id();
+        this.client = client;
         this.date = new SimpleDateFormat("dd-MM-yyyy HH:mm").format(Calendar.getInstance().getTime());
         this.quantity = quantity;
         this.currency = currency;
     }
     public void sendMoney(int number, int ToId){
-        setQuantity(getQuantity() - number);//зменшуємо баланс того акаунта з якого ми визиваємо метод sendMoney
-        AccountDaoImpl toAccount = new AccountDaoImpl();
-        Account recipient = toAccount.getById(ToId);//для створеного обєкта класа AccountDaoImpl визиваєм метод getById(ToId) і передаєм туди іd рахунка отримувача
-        recipient.setQuantity(getQuantity() + number);//пусля того як ми отримали акаунт отримувача, збільшуємо його баланс
+        setQuantity(getQuantity() + number);
+       /* AccountDaoImpl toAccount = new AccountDaoImpl();
+        Account recipient = toAccount.getById(ToId);
+        recipient.setQuantity(getQuantity() + number);*/
     }
 
     public int getAccount_id() {

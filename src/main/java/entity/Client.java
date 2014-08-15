@@ -24,7 +24,7 @@ public class Client {
     @Column(name="PASSWORD")
     private String password;
 
-    @ElementCollection
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "account_id")
     private Set<Account> accounts;
 
     public Client() {
@@ -74,7 +74,13 @@ public class Client {
     }
 
     public void addAccount(Account account) {
-        accounts.add(account);
+
+            accounts.add(account);
+
+    }
+
+    public Set<Account> getAccounts() {
+        return accounts;
     }
 
     @Override

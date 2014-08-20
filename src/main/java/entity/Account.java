@@ -1,7 +1,5 @@
 package entity;
 
-import dao.AccountDaoImpl;
-
 import javax.persistence.*;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -15,7 +13,7 @@ public class Account {
     protected int account_id;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="CLIENT_ID")
+    @JoinColumn
     private Client client;
 
     @Column(name="CREATED")
@@ -36,27 +34,13 @@ public class Account {
         this.quantity = quantity;
         this.currency = currency;
     }
-    public void sendMoney(int number, int ToId){
-        setQuantity(getQuantity() + number);
-       /* AccountDaoImpl toAccount = new AccountDaoImpl();
-        Account recipient = toAccount.getById(ToId);
-        recipient.setQuantity(getQuantity() + number);*/
-    }
 
     public int getAccount_id() {
         return account_id;
     }
 
-    public void setAccount_id(int ID) {
-        this.account_id = ID;
-    }
-
     public String getDate() {
         return date;
-    }
-
-    public void setDate(String date) {
-        this.date = date;
     }
 
     public int getQuantity() {
@@ -69,9 +53,6 @@ public class Account {
 
     public String getCurrency(){return currency;}
 
-    public void setCurrency(String currency){
-        this.currency = currency;
-    }
     @Override
     public String toString() {
         return "entity.Account{" +

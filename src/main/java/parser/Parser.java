@@ -5,8 +5,9 @@ import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
 
 public class Parser {
+    static int tries = 3;
 
-    public static  double getRate(String exchangeRate) {
+    public static double getRate(String exchangeRate) {
         /**
          * Possible values for exchangeRate are:
          * USDUAH, USDEUR, USDRUB, RUBUAH, UAHEUR etc.
@@ -18,7 +19,8 @@ public class Parser {
             Document doc = Jsoup.connect(sb.toString()).get();
             data = doc.select("span.time_rtq_ticker");
         } catch (Exception e) {
-            e.getStackTrace();
+            getRate(exchangeRate);
+            tries--;
         }
         return Double.parseDouble(data.text());
     }

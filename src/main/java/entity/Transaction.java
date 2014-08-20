@@ -1,53 +1,64 @@
 package entity;
 
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
+import javax.persistence.*;
 
+@Entity
+@Table(name="TRANSACTIONS")
 public class Transaction {
-    private Client from;
-    private Client to;
-    private String date;
+
+    @Id
+    @GeneratedValue
+    @Column(name="T_ID")
+    protected int transactionId;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn
+    private Client sender;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn
+    private Client receiver;
+
+    @Column(name="CURRENCY")
+    private String currency;
+
+    @Column(name="AMOUNT")
     private String amount;
+
+    @Column(name="DATE")
+    private String date;
 
     public Transaction() {
     }
 
-    public Transaction(Client from, Client to, String amount) {
-        this.from = from;
-        this.to = to;
-        this.amount = amount;
-        date = new SimpleDateFormat("dd-MM-yyyy HH:mm").format(Calendar.getInstance().getTime());
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder("Transaction{");
+        sb.append("from=").append(sender);
+        sb.append(", to=").append(receiver);
+        sb.append(", date='").append(date).append('\'');
+        sb.append(", amount='").append(amount).append('\'');
+        sb.append('}');
+        return sb.toString();
     }
 
-    public Client getFrom() {
-        return from;
+    public Client getSender() {
+        return sender;
     }
 
-    public void setFrom(Client from) {
-        this.from = from;
+    public Client getReceiver() {
+        return receiver;
     }
 
-    public Client getTo() {
-        return to;
-    }
-
-    public void setTo(Client to) {
-        this.to = to;
-    }
-
-    public String getDate() {
-        return date;
-    }
-
-    public void setDate(String date) {
-        this.date = date;
+    public String getCurrency() {
+        return currency;
     }
 
     public String getAmount() {
         return amount;
     }
 
-    public void setAmount(String amount) {
-        this.amount = amount;
+    public String getDate() {
+        return date;
     }
 }

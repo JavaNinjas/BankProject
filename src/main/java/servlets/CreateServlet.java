@@ -25,7 +25,7 @@ public class CreateServlet extends HttpServlet {
         String clientName = request.getParameter("firstName") + " " + request.getParameter("lastName");
 
         impl.create(client);
-        impl.destroy();
+
 
         request.getSession().setAttribute("clientName", clientName);
         RequestDispatcher view = getServletContext().getRequestDispatcher("/profile.jsp");

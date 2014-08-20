@@ -1,6 +1,8 @@
 package dao;
 
 import entity.Account;
+import entity.Client;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
@@ -24,7 +26,11 @@ public class AccountDaoImpl extends GenericDaoImpl {
         Session session = null;
         Account res = null;
         try {
-            session = sf.openSession();
+            if (sf.getCurrentSession() != null) {
+                session = sf.getCurrentSession();
+            } else {
+                session = sf.openSession();
+            }
             res = (Account) session.get(Account.class, id);
         } finally {
             if (session != null && session.isOpen())
@@ -33,8 +39,24 @@ public class AccountDaoImpl extends GenericDaoImpl {
         return res;
     }
 
+    public List getByClient(Client client, String currency) {
+        Session session = null;
+        List list = null;
+        try {
+            session = sf.openSession();
+            String hql = "from Account a where a.id=" + client.getClient_id();
+            Query query = session.createQuery(hql);
+            list = query.list();
+        } finally {
+            if (session != null && session.isOpen()) {
+                session.close();
+            }
+        }
+        return list;
+    }
+
     @Override
-    public List<Account> read() {
+    public List<Account> getAll() {
         Session session = null;
         List<Account> objects = new ArrayList<Account>();
         try {
@@ -53,11 +75,11 @@ public class AccountDaoImpl extends GenericDaoImpl {
         try {
             session = sf.openSession();
             res = (Account) session.get(Account.class, id);
-            session.close();
-            delete(res);
         } finally {
-            if (session != null && session.isOpen())
+            if (session != null && session.isOpen()) {
                 session.close();
+            }
+            delete(res);
         }
     }
 }

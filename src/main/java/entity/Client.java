@@ -45,53 +45,24 @@ public class Client {
         return firstName;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
     public String getLastName() {
         return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
     }
 
     public String getEmail() {
         return email;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
     public String getPassword() {
         return password;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public void addAccount(Account account) {
-
-            accounts.add(account);
-
-    }
-
-    public Set<Account> getAccounts() {
-        return accounts;
-    }
-
     @Override
     public String toString() {
-        final StringBuilder sb = new StringBuilder("Client{");
-        sb.append("client_id=").append(client_id);
-        sb.append(", firstName='").append(firstName).append('\'');
-        sb.append(", lastName='").append(lastName).append('\'');
-        sb.append(", email='").append(email).append('\'');
-        sb.append(", password='").append(password).append('\'');
-        sb.append('}');
+        final StringBuilder sb = new StringBuilder();
+        sb.append(client_id).append(" |");
+        sb.append(" ").append(firstName);
+        sb.append(" ").append(lastName);
         return sb.toString();
     }
 }

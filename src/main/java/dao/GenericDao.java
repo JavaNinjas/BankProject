@@ -4,12 +4,11 @@ import java.util.List;
 
 public interface GenericDao<T> {
 
-    public void create(T obj);
+    void create(T obj);
 
-    public List<T> read();
+    List<T> getAll();
 
-    public void update(T obj);
+    void update(T obj);
 
-    public void delete(T obj);
-
+    void delete(T obj);
 }

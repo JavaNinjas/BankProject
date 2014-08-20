@@ -22,7 +22,7 @@ public class DeleteServlet extends HttpServlet {
         String clientDeleted = impl.getById(Integer.valueOf(id)).getFirstName() + " " + impl.getById(Integer.valueOf(id)).getLastName();
 
         impl.deleteById(Integer.valueOf(id));
-        impl.destroy();
+
 
         request.getSession().setAttribute("clientDeleted", clientDeleted);
 

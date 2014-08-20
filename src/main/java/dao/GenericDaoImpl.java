@@ -5,12 +5,9 @@ import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
-
-import java.util.ArrayList;
 import java.util.List;
 
 public abstract class GenericDaoImpl<T> implements GenericDao<T> {
-
     private SessionFactory sf;
 
     public GenericDaoImpl() {
@@ -33,7 +30,7 @@ public abstract class GenericDaoImpl<T> implements GenericDao<T> {
         }
     }
 
-    public abstract List<T> read();
+    public abstract List<T> getAll();
 
     public void update(T obj) {
         Session session = null;
@@ -43,7 +40,6 @@ public abstract class GenericDaoImpl<T> implements GenericDao<T> {
             session.saveOrUpdate(obj);
             session.getTransaction().commit();
         } finally {
-
             if (session != null && session.isOpen())
                 session.close();
         }
@@ -60,10 +56,6 @@ public abstract class GenericDaoImpl<T> implements GenericDao<T> {
             if (session != null && session.isOpen())
                 session.close();
         }
-    }
-
-    public void destroy() {
-        sf.close();
     }
 }
 

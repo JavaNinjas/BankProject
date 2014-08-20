@@ -25,7 +25,7 @@ public class CreateAccountServlet extends HttpServlet {
         Account account = new Account(client, 0, "UAH");
         AccountDaoImpl accountDao = new AccountDaoImpl();
         accountDao.create(account);
-        clientDao.destroy();
+
     }
 
 /*    public static void main(String[] args) {

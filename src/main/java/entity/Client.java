@@ -1,6 +1,7 @@
 package entity;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -24,8 +25,8 @@ public class Client {
     @Column(name="PASSWORD")
     private String password;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "account_id")
-    private Set<Account> accounts;
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "client")
+    private Set<Account> accounts = new HashSet<>();
 
     public Client() {
     }
@@ -55,6 +56,10 @@ public class Client {
 
     public String getPassword() {
         return password;
+    }
+
+    public Set<Account> getAccounts() {
+        return accounts;
     }
 
     @Override

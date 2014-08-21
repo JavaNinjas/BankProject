@@ -12,8 +12,8 @@ public class Account {
     @Column(name="ACCOUNT_ID")
     protected int account_id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn
+    @ManyToOne
+    @JoinColumn (name = "client_id", nullable = false)
     private Client client;
 
     @Column(name="CREATED")

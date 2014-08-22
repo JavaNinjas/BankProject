@@ -40,7 +40,7 @@
         <!-- Mapping files -->
         <mapping class="entity.Client"/>
         <mapping class="entity.Account"/>
-        <!--mapping class="entity.Transaction"/-->
+        <mapping class="entity.Transaction"/>
 
     </session-factory>
 </hibernate-configuration>

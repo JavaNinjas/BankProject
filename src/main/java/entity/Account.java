@@ -5,24 +5,24 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 @Entity
-@Table(name="ACCOUNTS")
+@Table(name = "ACCOUNTS")
 public class Account {
     @Id
     @GeneratedValue
-    @Column(name="ACCOUNT_ID")
+    @Column(name = "ACCOUNT_ID")
     protected int account_id;
 
     @ManyToOne
-    @JoinColumn (name = "client_id", nullable = false)
+    @JoinColumn(name = "client_id", nullable = false)
     private Client client;
 
-    @Column(name="CREATED")
+    @Column(name = "CREATED")
     private String date;
 
-    @Column(name="QUANTITY")
+    @Column(name = "QUANTITY")
     private int quantity;
 
-    @Column(name="CURRENCY")
+    @Column(name = "CURRENCY")
     private String currency;
 
     public Account() {
@@ -51,15 +51,22 @@ public class Account {
         this.quantity = quantity;
     }
 
-    public String getCurrency(){return currency;}
+    public Client getClient() {
+        return client;
+    }
+
+    public String getCurrency() {
+        return currency;
+    }
 
     @Override
     public String toString() {
-        return "entity.Account{" +
-                "ID=" + account_id +
-                ", date='" + date + '\'' +
-                ", quantity=" + quantity +
-                '}';
+        StringBuilder sb = new StringBuilder();
+        sb.append(client.getLastName());
+        sb.append("'s account | ");
+        sb.append(currency);
+        sb.append(" ").append(quantity);
+        return sb.toString();
     }
 }
 

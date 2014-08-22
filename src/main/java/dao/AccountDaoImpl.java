@@ -22,6 +22,27 @@ public class AccountDaoImpl extends GenericDaoImpl {
         sf = configuration.buildSessionFactory(serviceRegistry);
     }
 
+    @Override
+    public void create(Object obj) {
+        Session session = null;
+        try {
+            sf.openSession();
+            Account account = (Account) obj;
+            Client client = account.getClient();
+            if (client.getAccounts().size() > 3) {
+                throw new IndexOutOfBoundsException("Only 3 accounts allowed");
+            } else {
+                session = sf.openSession();
+                session.beginTransaction();
+                session.save(obj);
+                session.getTransaction().commit();
+            }
+        } finally {
+            if (session != null && session.isOpen())
+                session.close();
+        }
+    }
+
     public Account getById(int id) {
         Session session = null;
         Account res = null;

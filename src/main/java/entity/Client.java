@@ -28,6 +28,9 @@ public class Client {
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "client")
     private Set<Account> accounts = new HashSet<>();
 
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "sender")
+    private Set<Transaction> transactions = new HashSet<>();
+
     public Client() {
     }
 

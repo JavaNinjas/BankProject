@@ -11,7 +11,7 @@ public class Client {
     @Id
     @GeneratedValue
     @Column(name = "CLIENT_ID")
-    protected int client_id;
+    private int client_id;
 
     @Column(name = "FIRST_NAME")
     private String firstName;
@@ -29,7 +29,10 @@ public class Client {
     private Set<Account> accounts = new HashSet<>();
 
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "sender")
-    private Set<Transaction> transactions = new HashSet<>();
+    private Set<Transaction> senderTransactions = new HashSet<>();
+
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "receiver")
+    private Set<Transaction> receiverTransactions = new HashSet<>();
 
     public Client() {
     }
@@ -41,7 +44,7 @@ public class Client {
         this.password = password;
     }
 
-    public long getClient_id() {
+    public int getClient_id() {
         return client_id;
     }
 

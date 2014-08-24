@@ -10,7 +10,7 @@ public class Account {
     @Id
     @GeneratedValue
     @Column(name = "ACCOUNT_ID")
-    protected int account_id;
+    private int account_id;
 
     @ManyToOne
     @JoinColumn(name = "client_id", nullable = false)

@@ -1,5 +1,6 @@
 package dao;
 
+import entity.Account;
 import entity.Client;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;

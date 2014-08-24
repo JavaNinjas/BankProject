@@ -18,7 +18,7 @@ public abstract class GenericDaoImpl<T> implements GenericDao<T> {
         sf = configuration.buildSessionFactory(serviceRegistry);
     }
 
-    public void create(T obj) {
+    public void save(T obj) {
         Session session = null;
         try {
             session = sf.openSession();

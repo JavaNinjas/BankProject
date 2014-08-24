@@ -10,6 +10,7 @@ import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class AccountDaoImpl extends GenericDaoImpl {
@@ -23,7 +24,7 @@ public class AccountDaoImpl extends GenericDaoImpl {
     }
 
     @Override
-    public void create(Object obj) {
+    public void save(Object obj) {
         Session session = null;
         try {
             sf.openSession();
@@ -60,20 +61,21 @@ public class AccountDaoImpl extends GenericDaoImpl {
         return res;
     }
 
-    public List getByClient(Client client, String currency) {
+    public Account getByClient(Client client) {
         Session session = null;
-        List list = null;
+        Account res = null;
         try {
             session = sf.openSession();
-            String hql = "from Account a where a.id=" + client.getClient_id();
+            String hql = "from Account a where a.client.id=" + client.getClient_id();
             Query query = session.createQuery(hql);
-            list = query.list();
+            System.out.println(query.list());
+            res = (Account)query.list().get(0);
         } finally {
             if (session != null && session.isOpen()) {
                 session.close();
             }
         }
-        return list;
+        return res;
     }
 
     @Override

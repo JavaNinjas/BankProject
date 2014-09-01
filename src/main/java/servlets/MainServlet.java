@@ -25,6 +25,8 @@ public class MainServlet extends HttpServlet {
             if (client.getPassword().equals(password)) {
                 RequestDispatcher view = getServletContext().getRequestDispatcher("/profile.jsp");
                 request.getSession().setAttribute("client", client);
+                String rate = String.valueOf(Parser.getRate("USDUAH"));
+                request.getSession().setAttribute("rate", rate);
                 view.forward(request, response);
             } else {
 
@@ -40,11 +42,11 @@ public class MainServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        String test = "testtest123";
-        request.getSession().setAttribute("test", test);
-
         RequestDispatcher rd = getServletContext().getRequestDispatcher("/index.jsp");
-        rd.include(request, response);
+
+        String rate = String.valueOf(Parser.getRate("USDUAH"));
+        request.getSession().setAttribute("rate", rate);
         rd.forward(request, response);
+
     }
 }

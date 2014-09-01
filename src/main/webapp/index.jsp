@@ -42,10 +42,9 @@
             <h1>Bank Project</h1>
         </div>
         <div class="span3"><br/>
-
-            <div class="pull-right">
-                <p>USD EUR RUB
-                    <c:out value="${o}"/></p>
+          <div class="pull-right">
+                <p onclick="test()">USD EUR RUB
+                    <c:out value="${rate}"/></p>
 
                 <br/>
             </div>
@@ -214,6 +213,16 @@
                 }
         );
     });
+</script>
+
+<script>
+    function test() {
+        $.ajax({
+            type: "GET",
+            url: "/index"
+            //data: "data",
+        })
+    };
 </script>
 
 </body>

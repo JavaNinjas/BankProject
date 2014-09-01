@@ -79,7 +79,8 @@
         <!-- /navbar-inner -->
     </div>
 
-    <h3>Welcome, <c:out value="${clientName}"/></h3>
+    <h3>Welcome, <c:out value="${client}"/></h3>
+    <p>Доллар сегодня стоит <c:out value="${rate}" /> гривни</p>
 
     <div class="row-fluid">
 

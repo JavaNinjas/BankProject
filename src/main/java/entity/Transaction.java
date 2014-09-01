@@ -2,13 +2,12 @@ package entity;
 
 import dao.AccountDaoImpl;
 import dao.TransactionDaoImpl;
-
 import javax.persistence.*;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 @Entity
-@Table(name = "TRANSACTIONS")
+@Table(name = "transactions")
 public class Transaction {
 
     @Id
@@ -17,21 +16,21 @@ public class Transaction {
     private int transactionId;
 
     @ManyToOne
-    @JoinColumn(name = "sender_id", nullable = false)
+    @JoinColumn(name = "sender", nullable = false)
     private Client sender;
 
     @ManyToOne
-    @JoinColumn(name = "receiver_id", nullable = false)
+    @JoinColumn(name = "receiver", nullable = false)
     private Client receiver;
 
-    @Column(name = "CURRENCY")
+    @Column(name = "currency")
     private String currency;
 
-    @Column(name = "AMOUNT")
+    @Column(name = "amount")
     private int amount;
 
-    @Column(name = "OCCURRED")
-    private String occurred = new SimpleDateFormat("dd-MM-yyyy HH:mm").format(Calendar.getInstance().getTime());
+    @Column(name = "occured")
+    private String occurred;
 
     public Transaction() {
     }
@@ -41,6 +40,7 @@ public class Transaction {
         this.receiver = receiver;
         this.amount = amount;
         this.currency = currency;
+        this.occurred = new SimpleDateFormat("dd-MM-yyyy HH:mm").format(Calendar.getInstance().getTime());
 
         AccountDaoImpl accountDao = new AccountDaoImpl();
 

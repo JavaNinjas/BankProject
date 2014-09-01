@@ -1,6 +1,5 @@
 package dao;
 
-import entity.Account;
 import entity.Client;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -34,6 +33,7 @@ public class ClientDaoImpl extends GenericDaoImpl {
         return res;
     }
 
+    @SuppressWarnings("unchecked")
     public Client getByEmail(String email) {
         Session session = null;
         Client res = null;
@@ -64,6 +64,7 @@ public class ClientDaoImpl extends GenericDaoImpl {
     }
 
     @Override
+    @SuppressWarnings("unchecked")
     public List<Client> getAll() {
         Session session = null;
         List<Client> objects = new ArrayList<>();
@@ -77,6 +78,7 @@ public class ClientDaoImpl extends GenericDaoImpl {
         return objects;
     }
 
+    @SuppressWarnings("unchecked")
     public void deleteById(int id) {
         Session session = null;
         Client res = null;

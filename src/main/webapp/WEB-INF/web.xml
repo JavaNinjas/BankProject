@@ -13,6 +13,7 @@
     <servlet>
         <servlet-name>main</servlet-name>
         <servlet-class>servlets.MainServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
     </servlet>
 
     <servlet>

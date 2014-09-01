@@ -71,8 +71,7 @@ public class Client {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
-        sb.append(client_id).append(" |");
-        sb.append(" ").append(firstName);
+        sb.append(firstName);
         sb.append(" ").append(lastName);
         return sb.toString();
     }

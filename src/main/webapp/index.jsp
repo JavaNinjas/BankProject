@@ -34,9 +34,8 @@
     <script src="bootstrap/js/application.js"></script>
 </head>
 <body>
+
 <div class="container">
-
-
     <div class="row-fluid">
         <div class="span9"><br/>
 
@@ -45,9 +44,10 @@
         <div class="span3"><br/>
 
             <div class="pull-right">
-                <a href="#" original-title="facebook"><img src="bootstrap/icon/soc1.png" alt="facebook"></a>
-                <a href="#" original-title="Delicious"><img src="bootstrap/icon/soc2.png" alt="Delicious"></a>
-                <a href="#" original-title="myspace"><img src="bootstrap/icon/soc3.png" alt="myspace"></a><br/><br/>
+                <p>USD EUR RUB
+                    <c:out value="${o}"/></p>
+
+                <br/>
             </div>
         </div>
     </div>
@@ -118,11 +118,12 @@
         <div class="span5">
             <img src="pictures/stock1.jpg"/><br/><br/>
 
-            <form name="input" action="/index" method="get" class="well">
+            <form name="input" action="/index" method="post" class="well">
                 <h3>Welcome to our bank</h3>
 
                 <p style="text-align:justify">
-                    Provide your credentials to enter service. In case client is not found your profile will be created automatically.
+                    Provide your credentials to enter service. In case client is not found your profile will be created
+                    automatically.
                 </p>
 
                 <input type="email" name="email" placeholder="Email">
@@ -202,13 +203,13 @@
         </style>
 
     </div>
-    </div>
+</div>
 
 <script>
-    $(function() {
+    $(function () {
         $('#theme_switcher ul li a').bind('click',
-                function(e) {
-                    $("#switch_style").attr("href", "css/"+$(this).attr('rel')+"/bootstrap.min.css");
+                function (e) {
+                    $("#switch_style").attr("href", "css/" + $(this).attr('rel') + "/bootstrap.min.css");
                     return false;
                 }
         );

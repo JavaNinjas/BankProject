@@ -104,52 +104,52 @@
         </div>
 
 
-        <%-- <div class="span4">
-             <div class="form-actions form-inline">
-                 <fieldset>
-                     <legend>USD</legend>
-                     Account status: active<br>
-                     Account balance: 1337.00<br>
-                     <br>
+        <div class="span4">
+            <div class="form-actions form-inline">
+                <fieldset>
+                    <legend>USD</legend>
+                    Account status: active<br>
+                    Account balance: 1337.00<br>
+                    <br>
 
-                     <div class="control-group">
-                         <div class="controls form-inline">
-                             <button id="singlebutton" name="singlebutton" class="btn btn-inverse">Open account</button>
-                             <button id="singlebutton" name="singlebutton" class="btn btn-inverse disabled">Close
-                                 account
-                             </button>
-                         </div>
-                     </div>
-                 </fieldset>
-             </div>
-         </div>
+                    <div class="control-group">
+                        <div class="controls form-inline">
+                            <button id="singlebutton" name="singlebutton" class="btn btn-inverse">Open account</button>
+                            <button id="singlebutton" name="singlebutton" class="btn btn-inverse disabled">Close
+                                account
+                            </button>
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+        </div>
 
 
-         <div class="span4">
-             <div class="form-actions form-inline">
-                 <fieldset>
-                     <legend>RUB</legend>
-                     Account status: active<br>
-                     Account balance: 1337.00<br>
-                     <br>
+        <div class="span4">
+            <div class="form-actions form-inline">
+                <fieldset>
+                    <legend>RUB</legend>
+                    Account status: active<br>
+                    Account balance: 1337.00<br>
+                    <br>
 
-                     <div class="control-group">
-                         <div class="controls form-inline">
-                             <button id="singlebutton" name="singlebutton" class="btn btn-inverse">Open account</button>
-                             <button id="singlebutton" name="singlebutton" class="btn btn-inverse disabled">Close
-                                 account
-                             </button>
-                         </div>
-                     </div>
-                 </fieldset>
-             </div>
-         </div>
-     </div>
- --%>
+                    <div class="control-group">
+                        <div class="controls form-inline">
+                            <button id="singlebutton" name="singlebutton" class="btn btn-inverse">Open account</button>
+                            <button id="singlebutton" name="singlebutton" class="btn btn-inverse disabled">Close
+                                account
+                            </button>
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+        </div>
+    </div>
 
-        <legend>Operations</legend>
-        <div class="control-group">
 
+    <div class="row-fluid">
+        <div class="control-group span4">
+            <legend>Operations</legend>
             <label class="control-label">Choose currency:</label>
 
             <div class="control-group form-horizontal">
@@ -184,27 +184,33 @@
                 </div>
                 <div class="control-group">
                     <button id="sendMoney" class="btn btn-inverse">Send money</button>
+
+                </div>
+                <div class="control-group">
+                    <button id="sendMoney" class="btn btn-inverse">Payment history</button>
+
                 </div>
             </div>
         </div>
+    </div>
 
 
-        <div id="theme_switcher">
-            <style>
-                .container {
-                    width: 970px
-                }
+    <div id="theme_switcher">
+        <style>
+            .container {
+                width: 970px
+            }
 
-                #theme_switcher {
-                    left: 10px;
-                    position: fixed;
-                    top: 10px;
-                }
-            </style>
-
-        </div>
+            #theme_switcher {
+                left: 10px;
+                position: fixed;
+                top: 10px;
+            }
+        </style>
 
     </div>
+
+</div>
 
 </div>
 

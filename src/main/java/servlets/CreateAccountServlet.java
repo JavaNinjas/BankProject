@@ -19,7 +19,7 @@ public class CreateAccountServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         ClientDaoImpl clientDao = new ClientDaoImpl();
         Client client = clientDao.getByEmail(request.getParameter("email"));
-        Account account = new Account(client, 0, "UAH");
+        Account account = new Account(client, "0", "UAH");
         AccountDaoImpl accountDao = new AccountDaoImpl();
         accountDao.save(account);
 

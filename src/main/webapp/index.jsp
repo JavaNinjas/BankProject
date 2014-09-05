@@ -3,21 +3,19 @@
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <title>Bank Project</title>
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
-
-    <!-- Le styles -->
     <link href="bootstrap/css/bootstrap.css" rel="stylesheet">
     <link id="switch_style" href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
     <link href="bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
     <link href="css/docs.css" rel="stylesheet">
     <link href="js/google-code-prettify/prettify.css" rel="stylesheet">
-
     <script src="bootstrap/js/jquery.js"></script>
     <script src="bootstrap/js/bootstrap-transition.js"></script>
     <script src="bootstrap/js/bootstrap-alert.js"></script>
@@ -33,6 +31,7 @@
     <script src="bootstrap/js/bootstrap-typeahead.js"></script>
     <script src="bootstrap/js/application.js"></script>
 </head>
+
 <body>
 
 <div class="container">
@@ -42,9 +41,13 @@
             <h1>Bank Project</h1>
         </div>
         <div class="span3"><br/>
-          <div class="pull-right">
-                <p onclick="test()">USD EUR RUB
-                    <c:out value="${rate}"/></p>
+
+            <div class="pull-right">
+                <p>
+                    USD: <c:out value="${USD}"/>
+                    EUR: <c:out value="${EUR}"/>
+                    RUB: <c:out value="${RUB}"/>
+                </p>
 
                 <br/>
             </div>
@@ -142,7 +145,7 @@
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">×</button>
                         <h3>Modal header</h3>
-                        <img src="http://placehold.it/600x300" style="width:600px; height:300px"/>
+                        <img src="pictures/bb1.gif" style="width:600px; height:300px"/>
                     </div>
                 </div>
                 <br/><br/>
@@ -158,7 +161,7 @@
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">×</button>
                         <h3>Modal header</h3>
-                        <img src="http://placehold.it/600x300" style="width:600px; height:300px"/>
+                        <img src="pictures/bb2.gif" style="width:600px; height:300px"/>
                     </div>
                 </div>
                 <br/><br/>
@@ -170,13 +173,13 @@
 
         <div class="span4">
             <center>
-                <a data-toggle="modal" href="#myModal2"><img src="pictures/stock2.jpg"/></a>
+                <a data-toggle="modal" href="#myModal1"><img src="pictures/stock2.jpg"/></a>
 
-                <div class="modal hide" id="myModal2">
+                <div class="modal hide" id="myModal1">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">×</button>
                         <h3>Modal header</h3>
-                        <img src="http://placehold.it/600x300" style="width:600px; height:300px"/>
+                        <img src="pictures/bb2.gif" style="width:600px; height:300px"/>
                     </div>
                 </div>
                 <br/><br/>
@@ -204,26 +207,7 @@
     </div>
 </div>
 
-<script>
-    $(function () {
-        $('#theme_switcher ul li a').bind('click',
-                function (e) {
-                    $("#switch_style").attr("href", "css/" + $(this).attr('rel') + "/bootstrap.min.css");
-                    return false;
-                }
-        );
-    });
-</script>
 
-<script>
-    function test() {
-        $.ajax({
-            type: "GET",
-            url: "/index"
-            //data: "data",
-        })
-    };
-</script>
 
 </body>
 </html>

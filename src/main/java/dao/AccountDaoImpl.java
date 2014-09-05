@@ -7,6 +7,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
+import org.hibernate.criterion.Restrictions;
 import org.hibernate.service.ServiceRegistry;
 
 import java.util.ArrayList;
@@ -30,8 +31,8 @@ public class AccountDaoImpl extends GenericDaoImpl {
             sf.openSession();
             Account account = (Account) obj;
             Client client = account.getClient();
-            if (client.getAccounts().size() > 3) {
-                throw new IndexOutOfBoundsException("Only 3 accounts allowed");
+            if (client.getAccounts().size() > 4) {
+                throw new IndexOutOfBoundsException("Only 4 accounts allowed");
             } else {
                 session = sf.openSession();
                 session.beginTransaction();
@@ -69,7 +70,7 @@ public class AccountDaoImpl extends GenericDaoImpl {
             String hql = "from Account a where a.client.id=" + client.getClient_id();
             Query query = session.createQuery(hql);
             System.out.println(query.list());
-            res = (Account)query.list().get(0);
+            res = (Account) query.list().get(0);
         } finally {
             if (session != null && session.isOpen()) {
                 session.close();
@@ -77,6 +78,28 @@ public class AccountDaoImpl extends GenericDaoImpl {
         }
         return res;
     }
+
+    public Account getByCurrency(Client client, String currency) {
+        Session session = null;
+        Account res = null;
+        try {
+            session = sf.openSession();
+            String hql = "from Account a where a.client.id=" + client.getClient_id();
+            Query query = session.createQuery(hql);
+            List<Account> accountList = (ArrayList<Account>) query.list();
+            for (Account account : accountList) {
+                if (account.getCurrency().equals(currency)) {
+                    res = account;
+                }
+            }
+        } finally {
+            if (session != null && session.isOpen()) {
+                session.close();
+            }
+        }
+        return res;
+    }
+
 
     @Override
     public List<Account> getAll() {

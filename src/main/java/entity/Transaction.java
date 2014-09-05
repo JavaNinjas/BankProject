@@ -1,7 +1,12 @@
 package entity;
 
 import dao.AccountDaoImpl;
+import dao.ClientDaoImpl;
 import dao.TransactionDaoImpl;
+import org.joda.money.Money;
+import parser.Converter;
+import parser.Parser;
+
 import javax.persistence.*;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -16,50 +21,76 @@ public class Transaction {
     private int transactionId;
 
     @ManyToOne
-    @JoinColumn(name = "sender", nullable = false)
+    @JoinColumn(name = "sender_id", nullable = false)
     private Client sender;
 
     @ManyToOne
-    @JoinColumn(name = "receiver", nullable = false)
+    @JoinColumn(name = "receiver_id", nullable = false)
     private Client receiver;
 
-    @Column(name = "currency")
-    private String currency;
+    @Column(name = "amountSent")
+    private String amountSent;
 
-    @Column(name = "amount")
-    private int amount;
+    @Column(name = "currencySent")
+    private String currencySent;
 
-    @Column(name = "occured")
+    @Column(name = "amountReceived")
+    private String amountReceived;
+
+    @Column(name = "currencyReceived")
+    private String currencyReceived;
+
+    @Column(name = "occurred")
     private String occurred;
 
     public Transaction() {
     }
 
-    public Transaction(Client sender, Client receiver, String currency, int amount) {
+    // Sending funds between accounts
+    public Transaction(Client sender, Client receiver, String currencySent, String amountSent, String currencyReceived) {
         this.sender = sender;
         this.receiver = receiver;
-        this.amount = amount;
-        this.currency = currency;
+        this.amountSent = amountSent;
+        this.currencySent = currencySent;
+        this.currencyReceived = currencyReceived;
         this.occurred = new SimpleDateFormat("dd-MM-yyyy HH:mm").format(Calendar.getInstance().getTime());
 
-        AccountDaoImpl accountDao = new AccountDaoImpl();
+        exchange(currencySent, amountSent, currencyReceived);
 
-        Account senderAccount = accountDao.getByClient(sender);
-        Account receiverAccount = accountDao.getByClient(receiver);
+        AccountDaoImpl accountDao = new AccountDaoImpl();
+        Account senderAccount = accountDao.getByCurrency(sender, currencySent);
+        Account receiverAccount = accountDao.getByCurrency(receiver, currencyReceived);
+
         TransactionDaoImpl transactionDao = new TransactionDaoImpl();
-        transactionDao.send(senderAccount, receiverAccount, amount);
+
+        transactionDao.send(senderAccount, receiverAccount, amountSent, amountReceived);
+
         accountDao.update(senderAccount);
         accountDao.update(receiverAccount);
-        transactionDao.save(this);
 
+        transactionDao.save(this);
+    }
+
+    private void exchange(String currencySent, String amountSent, String currencyReceived) {
+        if (currencySent.equals(currencyReceived)) {
+            this.amountReceived = amountSent;
+        } else {
+            Money sent = Money.parse(currencySent + " " + amountSent);
+            double exchangeRate = Parser.getRate(currencySent + currencyReceived);
+            String result = Converter.convert(sent, exchangeRate);
+            this.amountReceived = String.valueOf(Double.parseDouble(result.substring(3)));
+        }
     }
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
         sb.append(sender.getLastName()).append(" send ");
-        sb.append(amount).append(" " + currency);
+        sb.append(amountSent).append(" " + currencySent);
         sb.append(" to ").append(receiver.getLastName());
+        sb.append(" | ").append(receiver.getLastName());
+        sb.append(" received").append(" ").append(amountReceived);
+        sb.append(" ").append(currencyReceived);
         sb.append(" | ").append(occurred);
         return sb.toString();
     }
@@ -72,15 +103,55 @@ public class Transaction {
         return receiver;
     }
 
-    public String getCurrency() {
-        return currency;
+    public String getCurrencySent() {
+        return currencySent;
     }
 
-    public int getAmount() {
-        return amount;
+    public String getCurrencyReceived() {
+        return currencyReceived;
+    }
+
+    public String getAmountSent() {
+        return amountSent;
+    }
+
+    public String getAmountReceived() {
+        return amountReceived;
     }
 
     public String getOccurred() {
         return occurred;
+    }
+
+    public static void main(String[] args) {
+        ClientDaoImpl clientDao = new ClientDaoImpl();
+        Client lennon = clientDao.getById(1);
+//        Client mccartney = clientDao.getById(2);
+//
+//        AccountDaoImpl accountDao = new AccountDaoImpl();
+//        Account lennonUSD = accountDao.getByCurrency(lennon, "USD");
+//        Account lennonUAH = accountDao.getByCurrency(lennon, "UAH");
+//        lennonUAH.setQuantity("150");
+//        accountDao.update(lennonUAH);
+//
+//        lennonUSD.setQuantity("1000");
+//        accountDao.update(lennonUSD);
+
+//
+//        System.out.println(lennonUSD);
+//        System.out.println(lennonUAH);
+
+
+//
+       Transaction transaction = new Transaction(lennon, lennon, "UAH", "150", "USD");
+//
+//        System.out.println(lennonUSD);
+//        System.out.println(lennonUAH);
+
+
+        //TransactionDaoImpl transactionDao = new TransactionDaoImpl();
+        //System.out.println(transactionDao.getAll().get(0));
+
+
     }
 }

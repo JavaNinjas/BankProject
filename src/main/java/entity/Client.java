@@ -1,5 +1,8 @@
 package entity;
 
+import dao.AccountDaoImpl;
+import dao.ClientDaoImpl;
+
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;

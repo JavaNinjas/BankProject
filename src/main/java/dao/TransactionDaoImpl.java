@@ -22,9 +22,28 @@ public class TransactionDaoImpl extends GenericDaoImpl {
         sf = configuration.buildSessionFactory(serviceRegistry);
     }
 
-    public void send(Account sender, Account receiver, int amount) {
-        sender.setQuantity(sender.getQuantity() - amount);
-        receiver.setQuantity(receiver.getQuantity() + amount);
+    public void send(Account sender, Account receiver,String amountSent, String amountReceived) {
+
+        System.out.println(sender.getCurrency());
+        System.out.println(receiver.getCurrency());
+
+        Double amountParsed1 = Double.parseDouble(amountSent);
+        System.out.println("amount sent: " + amountParsed1 );
+
+        Double res1 = Double.parseDouble(sender.getQuantity()) - amountParsed1;
+        System.out.println(res1.toString());
+
+        sender.setQuantity(String.valueOf(res1));
+        System.out.println(sender.getQuantity());
+
+        Double amountParsed2 = Double.parseDouble(amountReceived);
+        System.out.println("amount received: " + amountParsed1 );
+
+        Double res2 = Double.parseDouble(receiver.getQuantity()) + amountParsed2;
+        System.out.println(res2.toString());
+
+        receiver.setQuantity(String.valueOf(res2));
+        System.out.println(receiver.getQuantity());
     }
 
     @Override

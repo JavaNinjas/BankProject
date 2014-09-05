@@ -19,8 +19,8 @@ public class Account {
     @Column(name = "CREATED")
     private String date;
 
-    @Column(name = "QUANTITY")
-    private int quantity;
+    @Column(name = "quantity")
+    private String quantity;
 
     @Column(name = "CURRENCY")
     private String currency;
@@ -28,7 +28,7 @@ public class Account {
     public Account() {
     }
 
-    public Account(Client client, int quantity, String currency) {
+    public Account(Client client, String quantity, String currency) {
         this.client = client;
         this.date = new SimpleDateFormat("dd-MM-yyyy HH:mm").format(Calendar.getInstance().getTime());
         this.quantity = quantity;
@@ -43,11 +43,11 @@ public class Account {
         return date;
     }
 
-    public int getQuantity() {
+    public String getQuantity() {
         return quantity;
     }
 
-    public void setQuantity(int quantity) {
+    public void setQuantity(String quantity) {
         this.quantity = quantity;
     }
 

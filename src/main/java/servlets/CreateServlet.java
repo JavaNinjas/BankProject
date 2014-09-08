@@ -1,5 +1,7 @@
 package servlets;
+import dao.AccountDaoImpl;
 import dao.ClientDaoImpl;
+import entity.Account;
 import entity.Client;
 
 import javax.servlet.RequestDispatcher;
@@ -22,9 +24,13 @@ public class CreateServlet extends HttpServlet {
 
         ClientDaoImpl impl = new ClientDaoImpl();
         String clientName = request.getParameter("firstName") + " " + request.getParameter("lastName");
-
         impl.save(client);
 
+        AccountDaoImpl accountDao = new AccountDaoImpl();
+        String[] currencies = {"UAH", "USD", "EUR", "RUB"};
+        for (String currency: currencies) {
+            accountDao.save(new Account(client, "0", currency));
+        }
 
         request.getSession().setAttribute("clientName", clientName);
         RequestDispatcher view = getServletContext().getRequestDispatcher("/profile.jsp");

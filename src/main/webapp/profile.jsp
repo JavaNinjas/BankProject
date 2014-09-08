@@ -80,9 +80,7 @@
 </div>
 
 <h3>Welcome, <c:out value="${client}"/></h3>
-
-<p>Доллар сегодня стоит <c:out value="${rate}"/> гривни</p>
-
+<a href="/logout">Logout</a>
 
 <div class="row-fluid">
 

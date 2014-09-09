@@ -1,6 +1,8 @@
 package servlets;
 
+import dao.AccountDaoImpl;
 import dao.ClientDaoImpl;
+import entity.Account;
 import entity.Client;
 import org.hibernate.exception.JDBCConnectionException;
 import parser.Parser;
@@ -17,41 +19,33 @@ import java.io.PrintWriter;
 
 public class LoginServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String email = request.getParameter("email");
-        String password = request.getParameter("password");
 
-        ClientDaoImpl i = new ClientDaoImpl();
-        Client client = i.getByEmail(email);
-
-        try {
-            if (client.getPassword().equals(password)) {
-
-                Cookie emailCookie = new Cookie(email, "email");
-                Cookie passwordCookie = new Cookie(password, "password");
-
-                emailCookie.setMaxAge(60*60);
-                passwordCookie.setMaxAge(60*60);
-                response.addCookie(emailCookie);
-                response.addCookie(passwordCookie);
-
-                RequestDispatcher view = getServletContext().getRequestDispatcher("/profile");
-                request.getSession().setAttribute("client", client);
-                view.forward(request, response);
-
-            } else {
-
-                RequestDispatcher rd = getServletContext().getRequestDispatcher("/index.jsp");
-                PrintWriter out= response.getWriter();
-                out.println("<font color=red>Either user name or password is wrong.</font>");
-                rd.include(request, response);
-
-            }
-        } catch (JDBCConnectionException e) {
-            i.destroy();
-            doPost(request, response);
-        }
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        ClientDaoImpl clientDao = new ClientDaoImpl();
+        Cookie[] cookies = request.getCookies();
+
+        for (Cookie cookie : cookies) {
+            if (cookie.getName().equals("email")) {
+                String email = cookie.getValue();
+
+                Client client = clientDao.getByEmail(email);
+                request.setAttribute("client", client);
+
+                AccountDaoImpl accountDao = new AccountDaoImpl();
+                Account UAH = accountDao.getByCurrency(client, "UAH");
+                Account USD = accountDao.getByCurrency(client, "USD");
+                Account EUR = accountDao.getByCurrency(client, "EUR");
+                Account RUB = accountDao.getByCurrency(client, "RUB");
+                request.setAttribute("accountUAH", UAH);
+                request.setAttribute("accountUSD", USD);
+                request.setAttribute("accountEUR", EUR);
+                request.setAttribute("accountRUB", RUB);
+
+                RequestDispatcher view = getServletContext().getRequestDispatcher("/WEB-INF/profile.jsp");
+                view.forward(request, response);
+            }
+        }
     }
 }

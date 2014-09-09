@@ -11,26 +11,26 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <link href="bootstrap/css/bootstrap.css" rel="stylesheet">
-    <link id="switch_style" href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
+    <link href="../bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link id="switch_style" href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
     <link href="css/docs.css" rel="stylesheet">
     <link href="js/google-code-prettify/prettify.css" rel="stylesheet">
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <script src="bootstrap/js/jquery.js"></script>
-    <script src="bootstrap/js/bootstrap-transition.js"></script>
-    <script src="bootstrap/js/bootstrap-alert.js"></script>
-    <script src="bootstrap/js/bootstrap-modal.js"></script>
-    <script src="bootstrap/js/bootstrap-dropdown.js"></script>
-    <script src="bootstrap/js/bootstrap-scrollspy.js"></script>
-    <script src="bootstrap/js/bootstrap-tab.js"></script>
-    <script src="bootstrap/js/bootstrap-tooltip.js"></script>
-    <script src="bootstrap/js/bootstrap-popover.js"></script>
-    <script src="bootstrap/js/bootstrap-button.js"></script>
-    <script src="bootstrap/js/bootstrap-collapse.js"></script>
-    <script src="bootstrap/js/bootstrap-carousel.js"></script>
-    <script src="bootstrap/js/bootstrap-typeahead.js"></script>
-    <script src="bootstrap/js/application.js"></script>
+    <script src="jquery.js"></script>
+    <script src="bootstrap-transition.js"></script>
+    <script src="bootstrap-alert.js"></script>
+    <script src="bootstrap-modal.js"></script>
+    <script src="bootstrap-dropdown.js"></script>
+    <script src="bootstrap-scrollspy.js"></script>
+    <script src="bootstrap-tab.js"></script>
+    <script src="bootstrap-tooltip.js"></script>
+    <script src="bootstrap-popover.js"></script>
+    <script src="bootstrap-button.js"></script>
+    <script src="bootstrap-collapse.js"></script>
+    <script src="bootstrap-carousel.js"></script>
+    <script src="bootstrap-typeahead.js"></script>
+    <script src="application.js"></script>
 </head>
 
 <body>
@@ -67,7 +67,7 @@
 
             <div class="nav-collapse">
                 <ul class="nav">
-                    <li class="active"><a href="/index.jsp">Homepage</a></li>
+                    <li class="active"><a href="/WEB-INF/index.jspndex.jsp">Homepage</a></li>
                     <li><a href="/result.jsp">List of clients</a></li>
                     <li><a href="#">Sandbox</a></li>
                     <li><a href="#">About</a></li>
@@ -89,7 +89,7 @@
             <fieldset>
                 <legend>UAH</legend>
                 Account balance:
-                <c:out value="${account.getquantity}"></c:out>
+                <c:out value="${accountUAH.quantity}"></c:out>
                 <br>
                 <br>
 
@@ -110,7 +110,7 @@
             <fieldset>
                 <legend>USD</legend>
                 Account balance:
-                <c:out value="${account.getquantity}"></c:out>
+                <c:out value="${accountUSD.quantity}"></c:out>
                 <br>
                 <br>
 
@@ -146,7 +146,7 @@
             <fieldset>
                 <legend>EUR</legend>
                 Account balance:
-                <c:out value="${account.getquantity}"></c:out>
+                <c:out value="${accountEUR.quantity}"></c:out>
                 <br>
                 <br>
 
@@ -168,7 +168,7 @@
             <fieldset>
                 <legend>RUB</legend>
                 Account balance:
-                <c:out value="${account.getquantity}"></c:out>
+                <c:out value="${accountRUB.quantity}"></c:out>
                 <br>
                 <br>
 
@@ -256,7 +256,7 @@
 
 
 <script src="http://code.jquery.com/jquery.min.js"></script>
-<script src="bootstrap/js/bootstrap.min.js"></script>
+<script src="bootstrap.min.js"></script>
 
 
 <script>

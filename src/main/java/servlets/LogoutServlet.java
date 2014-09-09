@@ -10,18 +10,21 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 public class LogoutServlet extends HttpServlet {
-
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        Cookie[] cookies = request.getCookies();
-        for (Cookie cookie : cookies) {
-            cookie.setMaxAge(0);
-        }
-
-        RequestDispatcher view = getServletContext().getRequestDispatcher("/index");
-        view.forward(request, response);
-
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        Cookie[] cookies = request.getCookies();
+        request.getRequestDispatcher("/WEB-INF/index.jsp").include(request, response);
+
+        for (Cookie cookie : cookies) {
+            if (cookie.getName().equals("email")) {
+                cookie.setMaxAge(0);
+                response.addCookie(cookie);
+            }
+
+
+        }
     }
 }
+

@@ -19,6 +19,7 @@ public class Account {
     @Column(name = "CREATED")
     private String date;
 
+    //TODO rename to balance
     @Column(name = "quantity")
     private String quantity;
 

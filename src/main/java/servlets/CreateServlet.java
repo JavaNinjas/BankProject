@@ -33,7 +33,7 @@ public class CreateServlet extends HttpServlet {
         }
 
         request.getSession().setAttribute("clientName", clientName);
-        RequestDispatcher view = getServletContext().getRequestDispatcher("/profile.jsp");
+        RequestDispatcher view = getServletContext().getRequestDispatcher("/WEB-INF/profile.jsp");
         view.forward(request, response);
     }
 }

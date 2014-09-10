@@ -67,10 +67,8 @@
 
             <div class="nav-collapse">
                 <ul class="nav">
-                    <li class="active"><a href="/WEB-INF/index.jspndex.jsp">Homepage</a></li>
-                    <li><a href="/result.jsp">List of clients</a></li>
-                    <li><a href="#">Sandbox</a></li>
-                    <li><a href="#">About</a></li>
+                    <li class="active"><a href="/WEB-INF/index.jsp">Homepage</a></li>
+                    <li><a href="https://github.com/JavaNinjas/BankProject" target="_blank">GitHub</a></li>
                 </ul>
             </div>
             <!-- /.nav-collapse -->
@@ -125,8 +123,8 @@
                                 <a tabindex="-1" href="#">More options</a>
 
 
-                                </ul>
-                            </li>
+                        </ul>
+                        </li>
                         </ul>
 
                         <button id="singlebutton1" name="singlebutton1" class="btn btn-inverse">Confirm
@@ -138,7 +136,7 @@
             </fieldset>
         </div>
     </div>
-      </div>
+</div>
 <div class="row-fluid">
 
     <div class="span6">

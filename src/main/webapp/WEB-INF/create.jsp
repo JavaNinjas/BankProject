@@ -66,9 +66,7 @@
                 <div class="nav-collapse">
                     <ul class="nav">
                         <li class="active"><a href="/WEB-INF/index.jsp">Homepage</a></li>
-                        <li><a href="/result.jsp">List of clients</a></li>
-                        <li><a href="#">Sandbox</a></li>
-                        <li><a href="#">About</a></li>
+                        <li><a href="https://github.com/JavaNinjas/BankProject" target="_blank">GitHub</a></li>
                     </ul>
                 </div>
                 <!-- /.nav-collapse -->

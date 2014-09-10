@@ -20,10 +20,9 @@ public class CreateServlet extends HttpServlet {
         Client client = new Client(request.getParameter("firstName"),
                 request.getParameter("lastName"),
                 request.getParameter("email"),
-                request.getParameter("password"));
+                PasswordService.getInstance().encrypt(request.getParameter("password")));
 
         ClientDaoImpl impl = new ClientDaoImpl();
-        String clientName = request.getParameter("firstName") + " " + request.getParameter("lastName");
         impl.save(client);
 
         AccountDaoImpl accountDao = new AccountDaoImpl();
@@ -32,8 +31,8 @@ public class CreateServlet extends HttpServlet {
             accountDao.save(new Account(client, "0", currency));
         }
 
-        request.getSession().setAttribute("clientName", clientName);
-        RequestDispatcher view = getServletContext().getRequestDispatcher("/WEB-INF/profile.jsp");
+        request.getSession().setAttribute("client", client);
+        RequestDispatcher view = getServletContext().getRequestDispatcher("/WEB-INF/added.jsp");
         view.forward(request, response);
     }
 }

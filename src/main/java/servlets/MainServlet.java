@@ -21,7 +21,7 @@ public class MainServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String email = request.getParameter("email");
-        String password = request.getParameter("password");
+        String password = PasswordService.getInstance().encrypt(request.getParameter("password"));
         ClientDaoImpl clientDao = new ClientDaoImpl();
         Client client = clientDao.getByEmail(email);
 

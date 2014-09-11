@@ -2,6 +2,7 @@ package servlets;
 
 import dao.AccountDaoImpl;
 import dao.ClientDaoImpl;
+import dao.TransactionDaoImpl;
 import entity.Account;
 import entity.Client;
 import org.hibernate.exception.JDBCConnectionException;
@@ -31,7 +32,7 @@ public class LoginServlet extends HttpServlet {
                 String email = cookie.getValue();
 
                 Client client = clientDao.getByEmail(email);
-                request.setAttribute("client", client);
+                request.getSession().setAttribute("client", client);
 
                 AccountDaoImpl accountDao = new AccountDaoImpl();
                 Account UAH = accountDao.getByCurrency(client, "UAH");
@@ -42,6 +43,7 @@ public class LoginServlet extends HttpServlet {
                 request.setAttribute("accountUSD", USD);
                 request.setAttribute("accountEUR", EUR);
                 request.setAttribute("accountRUB", RUB);
+
 
                 RequestDispatcher view = getServletContext().getRequestDispatcher("/WEB-INF/profile.jsp");
                 view.forward(request, response);

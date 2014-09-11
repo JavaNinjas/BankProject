@@ -7,15 +7,17 @@
 <head>
     <meta charset="utf-8">
     <title>Bank Project</title>
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
+
     <link href="bootstrap/css/bootstrap.css" rel="stylesheet">
     <link id="switch_style" href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
     <link href="css/docs.css" rel="stylesheet">
     <link href="js/google-code-prettify/prettify.css" rel="stylesheet">
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script src="bootstrap/js/jquery.js"></script>
     <script src="bootstrap/js/bootstrap-transition.js"></script>
     <script src="bootstrap/js/bootstrap-alert.js"></script>
@@ -35,158 +37,107 @@
 <body>
 
 <div class="container" width="970px">
-
-<div class="row-fluid">
-    <div class="span9"><br/>
-
-        <h1>Bank Project</h1>
-    </div>
-    <div class="span3"><br/>
-
-        <div class="pull-right">
-            <p>
-                USD: <c:out value="${USD}"/>
-                EUR: <c:out value="${EUR}"/>
-                RUB: <c:out value="${RUB}"/>
-            </p>
-            <br/>
+    <div class="row-fluid">
+        <div class="span9"><br/>
+            <h1>Bank Project</h1>
         </div>
-    </div>
-</div>
-
-
-<div class="navbar">
-    <div class="navbar-inner">
-        <div class="container">
-            <a data-target=".nav-collapse" data-toggle="collapse" class="btn btn-navbar">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </a>
-
-            <div class="nav-collapse">
-                <ul class="nav">
-                    <li class="active"><a href="/main">Homepage</a></li>
-                    <li><a href="https://github.com/JavaNinjas/BankProject" target="_blank">GitHub</a></li>
-                </ul>
+        <div class="span3"><br/>
+            <div class="pull-right">
+                <p>
+                    USD: <c:out value="${USD}"/>
+                    EUR: <c:out value="${EUR}"/>
+                    RUB: <c:out value="${RUB}"/>
+                </p>
+                <br/>
             </div>
-            <!-- /.nav-collapse -->
         </div>
     </div>
-    <!-- /navbar-inner -->
-</div>
 
-<h3>Welcome, <c:out value="${client}"/></h3>
-<a href="/logout">Logout</a>
 
-<div class="row-fluid">
-    <div class="span6">
-        <div class="form-actions form-inline">
-            <fieldset>
+    <div class="navbar">
+        <div class="navbar-inner">
+            <div class="container">
+                <a data-target=".nav-collapse" data-toggle="collapse" class="btn btn-navbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </a>
+
+                <div class="nav-collapse">
+                    <ul class="nav">
+                        <li class="active"><a href="/main">Homepage</a></li>
+                        <li><a href="https://github.com/JavaNinjas/BankProject" target="_blank">GitHub</a></li>
+                    </ul>
+                </div>
+                <!-- /.nav-collapse -->
+            </div>
+        </div>
+        <!-- /navbar-inner -->
+    </div>
+
+    <h3>Welcome, <c:out value="${client}"/>
+    </h3> <a href="/logout">Logout</a>
+    <br>
+    <br>
+
+    <div class="row-fluid">
+        <div class="span6">
+            <form name="input" action="/send" method="get" class="well">
                 <legend>UAH</legend>
                 Account balance:
                 <c:out value="${accountUAH.balance}"></c:out>
-                <div class="control-group">
-                    <div class="controls form-inline">
-                        <input type="text" name="recipient" class="input-small" placeholder="0.00">
-                        <button id="singlebutton1" name="singlebutton1" class="btn btn-inverse">Add funds</button>
-                        <button id="singlebutton1" name="singlebutton1" class="btn btn-inverse">Send money</button>
-                        </button>
-                    </div>
+                <div class="control-group form-inline">
+                    <input type="text" name="recipient" class="input-small" placeholder="0.00">
+                    <button id="singlebutton1" name="singlebutton1" class="btn btn-inverse">Add funds</button>
+                    <button id="singlebutton1" name="singlebutton1" class="btn btn-inverse">Send money</button>
                 </div>
-            </fieldset>
+            </form>
         </div>
-    </div>
-
-    <div class="span6">
-        <div class="form-actions form-inline">
-            <fieldset>
+        <div class="span6">
+            <form name="input" action="/send" method="get" class="well">
                 <legend>USD</legend>
                 Account balance:
                 <c:out value="${accountUSD.balance}"></c:out>
-                <br>
-                <br>
-
-                <div class="control-group">
-                    <div class="controls form-inline">
-
-                        <input type="text" name="recipient" class="input-small" placeholder="0.00">
-
-                        <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-                            ...
-                            <li class="dropdown-submenu">
-                                <a tabindex="-1" href="#">More options</a>
-
-
-                        </ul>
-                        </li>
-                        </ul>
-
-                        <button id="singlebutton1" name="singlebutton1" class="btn btn-inverse">Confirm
-                        </button>
-
-                    </div>
+                <div class="control-group form-inline">
+                    <input type="text" name="recipient" class="input-small" placeholder="0.00">
+                    <button id="singlebutton1" name="singlebutton1" class="btn btn-inverse">Add funds</button>
+                    <button id="singlebutton1" name="singlebutton1" class="btn btn-inverse">Send money</button>
                 </div>
-
-            </fieldset>
+            </form>
         </div>
     </div>
-</div>
-<div class="row-fluid">
 
-    <div class="span6">
-        <div class="form-actions form-inline">
-            <fieldset>
+    <div class="row-fluid">
+        <div class="span6">
+            <form name="input" action="/send" method="get" class="well">
                 <legend>EUR</legend>
                 Account balance:
                 <c:out value="${accountEUR.balance}"></c:out>
-                <br>
-                <br>
-
-                <div class="control-group">
-                    <div class="controls form-inline">
-
-                        <input type="text" name="recipient" class="input-small" placeholder="0.00">
-                        <button id="singlebutton1" name="singlebutton1" class="btn btn-inverse">Add funds
-                        </button>
-                    </div>
+                <div class="control-group form-inline">
+                    <input type="text" name="recipient" class="input-small" placeholder="0.00">
+                    <button id="singlebutton1" name="singlebutton1" class="btn btn-inverse">Add funds</button>
+                    <button id="singlebutton1" name="singlebutton1" class="btn btn-inverse">Send money</button>
                 </div>
-            </fieldset>
+            </form>
         </div>
-    </div>
-
-
-    <div class="span6">
-        <div class="form-actions form-inline">
-            <fieldset>
+        <div class="span6">
+            <form name="input" action="/send" method="get" class="well">
                 <legend>RUB</legend>
                 Account balance:
                 <c:out value="${accountRUB.balance}"></c:out>
-                <br>
-                <br>
-
-                <div class="control-group">
-                    <div class="controls form-inline">
-
-                        <input type="text" name="recipient" class="input-small" placeholder="0.00">
-                        <button id="singlebutton1" name="singlebutton1" class="btn btn-inverse">Add funds
-                        </button>
-                    </div>
+                <div class="control-group form-inline">
+                    <input type="text" name="recipient" class="input-small" placeholder="0.00">
+                    <button id="singlebutton1" name="singlebutton1" class="btn btn-inverse">Add funds</button>
+                    <button id="singlebutton1" name="singlebutton1" class="btn btn-inverse">Send money</button>
                 </div>
-
-
-            </fieldset>
+            </form>
         </div>
     </div>
-</div>
 
-<div class="row-fluid">
-    <div class="control-group">
-        <legend>Payment history</legend>
-
-                <button id="sendMoney" class="btn btn-inverse">Show transactions</button>
-
-
+    <div class="row-fluid">
+        <div class="control-group">
+            <legend>Payment history</legend>
+            <a href="/show" class="btn btn-inverse">Show transactions</a>
         </div>
     </div>
 </div>

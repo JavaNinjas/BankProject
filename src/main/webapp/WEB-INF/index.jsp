@@ -10,13 +10,14 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
+
     <link href="bootstrap/css/bootstrap.css" rel="stylesheet">
     <link id="switch_style" href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
     <link href="css/docs.css" rel="stylesheet">
     <link href="js/google-code-prettify/prettify.css" rel="stylesheet">
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script src="bootstrap/js/jquery.js"></script>
     <script src="bootstrap/js/bootstrap-transition.js"></script>
     <script src="bootstrap/js/bootstrap-alert.js"></script>
@@ -38,18 +39,15 @@
 <div class="container">
     <div class="row-fluid">
         <div class="span9"><br/>
-
             <h1>Bank Project</h1>
         </div>
         <div class="span3"><br/>
-
             <div class="pull-right">
                 <p>
                     USD: <c:out value="${USD}"/>
                     EUR: <c:out value="${EUR}"/>
                     RUB: <c:out value="${RUB}"/>
                 </p>
-
                 <br/>
             </div>
         </div>

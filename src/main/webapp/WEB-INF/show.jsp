@@ -4,20 +4,17 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
     <meta charset="utf-8">
     <title>Bank Project</title>
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
-
     <link href="bootstrap/css/bootstrap.css" rel="stylesheet">
     <link id="switch_style" href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
     <link href="css/docs.css" rel="stylesheet">
     <link href="js/google-code-prettify/prettify.css" rel="stylesheet">
-
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
     <script src="bootstrap/js/jquery.js"></script>
     <script src="bootstrap/js/bootstrap-transition.js"></script>
     <script src="bootstrap/js/bootstrap-alert.js"></script>
@@ -32,7 +29,6 @@
     <script src="bootstrap/js/bootstrap-carousel.js"></script>
     <script src="bootstrap/js/bootstrap-typeahead.js"></script>
     <script src="bootstrap/js/application.js"></script>
-
 </head>
 <body>
 
@@ -66,8 +62,9 @@
 
                 <div class="nav-collapse">
                     <ul class="nav">
-                        <li class="active"><a href="/WEB-INF/index.jsp">Homepage</a></li>
+                        <li class="active"><a href="/main">Homepage</a></li>
                         <li><a href="https://github.com/JavaNinjas/BankProject" target="_blank">GitHub</a></li>
+
                     </ul>
                 </div>
                 <!-- /.nav-collapse -->
@@ -77,67 +74,26 @@
     </div>
 
 
+
+
+
+
+
     <div class="row-fluid">
-
-
         <div class="span7">
+            <h3>Welcome <c:out value="${client}"/>, you may now <a href="/index">login</a> into your account.</h3>
 
-
-
-            <form class="form-actions" action="/create" method="get">
-                <fieldset>
-
-                    <!-- Form Name -->
-                    <legend>Registration Form</legend>
-
-                    <!-- First name input-->
-                    <div class="control-group">
-                        <div class="controls">
-                            <input name="firstName" type="text" placeholder="First name" class="input-xlarge">
-                        </div>
-                    </div>
-
-                    <!-- Last name input-->
-                    <div class="control-group">
-                        <div class="controls">
-                            <input name="lastName" type="text" placeholder="Last name" class="input-xlarge">
-                        </div>
-                    </div>
-
-                    <!-- E-mail input-->
-                    <div class="control-group">
-                        <div class="controls">
-                            <input name="email" type="email" placeholder="E-mail" class="input-xlarge">
-                        </div>
-                    </div>
-
-                    <!-- Password input-->
-                    <div class="control-group">
-                        <div class="controls">
-                            <input name="password" type="password" placeholder="Type password" class="input-xlarge">
-                        </div>
-                    </div>
-
-                    <!-- Password repeat-->
-                    <div class="control-group">
-                        <div class="controls">
-                            <input name="passwordConfirm" type="password" placeholder="Re-type password" class="input-xlarge">
-                        </div>
-                    </div>
-
-                    <!-- Button -->
-                    <div class="control-group">
-                        <div class="controls">
-                            <button id="singlebutton" name="singlebutton" class="btn btn-inverse">Confirm</button>
-                        </div>
-                    </div>
-
-                </fieldset>
+            <form name="submit" action="/index" method="get">
+                <input type="submit" name="showAll" class="btn btn-inverse" value="Show all"/>
             </form>
-
-
         </div>
     </div>
+
+
+
+
+
+
 
 
     <div id="theme_switcher">

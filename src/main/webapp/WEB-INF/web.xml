@@ -23,6 +23,11 @@
     </servlet>
 
     <servlet>
+        <servlet-name>show</servlet-name>
+        <jsp-file>/WEB-INF/show.jsp</jsp-file>
+    </servlet>
+
+    <servlet>
         <servlet-name>mainPage</servlet-name>
         <jsp-file>/WEB-INF/index.jsp</jsp-file>
     </servlet>
@@ -75,8 +80,13 @@
         <url-pattern>/main</url-pattern>
     </servlet-mapping>
 
+    <servlet-mapping>
+        <servlet-name>show</servlet-name>
+        <url-pattern>/show</url-pattern>
+    </servlet-mapping>
+
     <welcome-file-list>
-        <welcome-file>/main</welcome-file>
+        <welcome-file>/WEB-INF/index.jsp</welcome-file>
     </welcome-file-list>
 
 </web-app>

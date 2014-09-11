@@ -1,7 +1,5 @@
 package entity;
 
-import dao.ClientDaoImpl;
-
 import javax.persistence.*;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;

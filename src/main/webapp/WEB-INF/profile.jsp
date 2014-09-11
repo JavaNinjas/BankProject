@@ -9,28 +9,27 @@
     <title>Bank Project</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
-    <meta name="author" content="">
-
-    <link href="../bootstrap/css/bootstrap.css" rel="stylesheet">
-    <link id="switch_style" href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="../bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
+    <link href="bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link id="switch_style" href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
     <link href="css/docs.css" rel="stylesheet">
     <link href="js/google-code-prettify/prettify.css" rel="stylesheet">
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <script src="jquery.js"></script>
-    <script src="bootstrap-transition.js"></script>
-    <script src="bootstrap-alert.js"></script>
-    <script src="bootstrap-modal.js"></script>
-    <script src="bootstrap-dropdown.js"></script>
-    <script src="bootstrap-scrollspy.js"></script>
-    <script src="bootstrap-tab.js"></script>
-    <script src="bootstrap-tooltip.js"></script>
-    <script src="bootstrap-popover.js"></script>
-    <script src="bootstrap-button.js"></script>
-    <script src="bootstrap-collapse.js"></script>
-    <script src="bootstrap-carousel.js"></script>
-    <script src="bootstrap-typeahead.js"></script>
-    <script src="application.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+    <script src="bootstrap/js/jquery.js"></script>
+    <script src="bootstrap/js/bootstrap-transition.js"></script>
+    <script src="bootstrap/js/bootstrap-alert.js"></script>
+    <script src="bootstrap/js/bootstrap-modal.js"></script>
+    <script src="bootstrap/js/bootstrap-dropdown.js"></script>
+    <script src="bootstrap/js/bootstrap-scrollspy.js"></script>
+    <script src="bootstrap/js/bootstrap-tab.js"></script>
+    <script src="bootstrap/js/bootstrap-tooltip.js"></script>
+    <script src="bootstrap/js/bootstrap-popover.js"></script>
+    <script src="bootstrap/js/bootstrap-button.js"></script>
+    <script src="bootstrap/js/bootstrap-collapse.js"></script>
+    <script src="bootstrap/js/bootstrap-carousel.js"></script>
+    <script src="bootstrap/js/bootstrap-typeahead.js"></script>
+    <script src="bootstrap/js/application.js"></script>
 </head>
 
 <body>
@@ -67,7 +66,7 @@
 
             <div class="nav-collapse">
                 <ul class="nav">
-                    <li class="active"><a href="/WEB-INF/index.jsp">Homepage</a></li>
+                    <li class="active"><a href="/main">Homepage</a></li>
                     <li><a href="https://github.com/JavaNinjas/BankProject" target="_blank">GitHub</a></li>
                 </ul>
             </div>
@@ -81,21 +80,17 @@
 <a href="/logout">Logout</a>
 
 <div class="row-fluid">
-
     <div class="span6">
         <div class="form-actions form-inline">
             <fieldset>
                 <legend>UAH</legend>
                 Account balance:
-                <c:out value="${accountUAH.quantity}"></c:out>
-                <br>
-                <br>
-
+                <c:out value="${accountUAH.balance}"></c:out>
                 <div class="control-group">
                     <div class="controls form-inline">
-
                         <input type="text" name="recipient" class="input-small" placeholder="0.00">
-                        <button id="singlebutton1" name="singlebutton1" class="btn btn-inverse">Add funds
+                        <button id="singlebutton1" name="singlebutton1" class="btn btn-inverse">Add funds</button>
+                        <button id="singlebutton1" name="singlebutton1" class="btn btn-inverse">Send money</button>
                         </button>
                     </div>
                 </div>
@@ -108,7 +103,7 @@
             <fieldset>
                 <legend>USD</legend>
                 Account balance:
-                <c:out value="${accountUSD.quantity}"></c:out>
+                <c:out value="${accountUSD.balance}"></c:out>
                 <br>
                 <br>
 
@@ -144,7 +139,7 @@
             <fieldset>
                 <legend>EUR</legend>
                 Account balance:
-                <c:out value="${accountEUR.quantity}"></c:out>
+                <c:out value="${accountEUR.balance}"></c:out>
                 <br>
                 <br>
 
@@ -166,7 +161,7 @@
             <fieldset>
                 <legend>RUB</legend>
                 Account balance:
-                <c:out value="${accountRUB.quantity}"></c:out>
+                <c:out value="${accountRUB.balance}"></c:out>
                 <br>
                 <br>
 
@@ -186,48 +181,12 @@
 </div>
 
 <div class="row-fluid">
-    <div class="control-group span4">
-        <legend>Operations</legend>
-        <label class="control-label">Choose currency:</label>
+    <div class="control-group">
+        <legend>Payment history</legend>
 
-        <div class="control-group form-horizontal">
-            <label class="radio" for="radios-0">
-                <input type="radio" name="radios" id="radios-0" value="Option one" checked="checked">
-                UAH
-            </label>
-            <label class="radio" for="radios-1">
-                <input type="radio" name="radios" id="radios-1" value="Option two">
-                USD
-            </label>
-            <label class="radio" for="radios-1">
-                <input type="radio" name="radios" id="radios-1" value="Option two">
-                RUB
-            </label>
-        </div>
-
-        <div class="control-group">
-            <label class="control-label">Amount:</label>
-
-            <div class="controls form-horizontal">
-                <input type="text" name="amount" class="input" placeholder="0.00">
-            </div>
-        </div>
-
-        <div class="control-group">
-            <div class="control-group">
-                <label class="control-label">Recipient:</label>
-                <input type="text" name="recipient" class="input" placeholder="Leave blank if recepient is you">
+                <button id="sendMoney" class="btn btn-inverse">Show transactions</button>
 
 
-            </div>
-            <div class="control-group">
-                <button id="sendMoney" class="btn btn-inverse">Send money</button>
-
-            </div>
-            <div class="control-group">
-                <button id="sendMoney" class="btn btn-inverse">Payment history</button>
-
-            </div>
         </div>
     </div>
 </div>

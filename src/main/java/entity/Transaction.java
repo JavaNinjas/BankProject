@@ -131,10 +131,10 @@ public class Transaction {
 //        AccountDaoImpl accountDao = new AccountDaoImpl();
 //        Account lennonUSD = accountDao.getByCurrency(lennon, "USD");
 //        Account lennonUAH = accountDao.getByCurrency(lennon, "UAH");
-//        lennonUAH.setQuantity("150");
+//        lennonUAH.setBalance("150");
 //        accountDao.update(lennonUAH);
 //
-//        lennonUSD.setQuantity("1000");
+//        lennonUSD.setBalance("1000");
 //        accountDao.update(lennonUSD);
 
 //

@@ -1,38 +1,39 @@
 package entity;
 
+import dao.ClientDaoImpl;
+
 import javax.persistence.*;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 @Entity
-@Table(name = "ACCOUNTS")
+@Table(name = "accounts")
 public class Account {
     @Id
     @GeneratedValue
-    @Column(name = "ACCOUNT_ID")
+    @Column(name = "account_id")
     private int account_id;
 
     @ManyToOne
     @JoinColumn(name = "client_id", nullable = false)
     private Client client;
 
-    @Column(name = "CREATED")
+    @Column(name = "created")
     private String date;
 
-    //TODO rename to balance
-    @Column(name = "quantity")
-    private String quantity;
+    @Column(name = "balance")
+    private String balance;
 
-    @Column(name = "CURRENCY")
+    @Column(name = "currency")
     private String currency;
 
     public Account() {
     }
 
-    public Account(Client client, String quantity, String currency) {
+    public Account(Client client, String balance, String currency) {
         this.client = client;
         this.date = new SimpleDateFormat("dd-MM-yyyy HH:mm").format(Calendar.getInstance().getTime());
-        this.quantity = quantity;
+        this.balance = balance;
         this.currency = currency;
     }
 
@@ -44,12 +45,12 @@ public class Account {
         return date;
     }
 
-    public String getQuantity() {
-        return quantity;
+    public String getBalance() {
+        return balance;
     }
 
-    public void setQuantity(String quantity) {
-        this.quantity = quantity;
+    public void setBalance(String quantity) {
+        this.balance = quantity;
     }
 
     public Client getClient() {
@@ -66,7 +67,7 @@ public class Account {
         sb.append(client.getLastName());
         sb.append("'s account | ");
         sb.append(currency);
-        sb.append(" ").append(quantity);
+        sb.append(" ").append(balance);
         return sb.toString();
     }
 }

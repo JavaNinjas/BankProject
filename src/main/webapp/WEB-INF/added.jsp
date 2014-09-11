@@ -8,30 +8,27 @@
     <title>Bank Project</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
-    <meta name="author" content="">
-
-    <!-- Le styles -->
-    <link href="../bootstrap/css/bootstrap.css" rel="stylesheet">
-    <link id="switch_style" href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
-    <link href="../bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
+    <link href="bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link id="switch_style" href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
     <link href="css/docs.css" rel="stylesheet">
     <link href="js/google-code-prettify/prettify.css" rel="stylesheet">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 
-    <script src="jquery.js"></script>
-    <script src="bootstrap-transition.js"></script>
-    <script src="bootstrap-alert.js"></script>
-    <script src="bootstrap-modal.js"></script>
-    <script src="bootstrap-dropdown.js"></script>
-    <script src="bootstrap-scrollspy.js"></script>
-    <script src="bootstrap-tab.js"></script>
-    <script src="bootstrap-tooltip.js"></script>
-    <script src="bootstrap-popover.js"></script>
-    <script src="bootstrap-button.js"></script>
-    <script src="bootstrap-collapse.js"></script>
-    <script src="bootstrap-carousel.js"></script>
-    <script src="bootstrap-typeahead.js"></script>
-    <script src="application.js"></script>
+    <script src="bootstrap/js/jquery.js"></script>
+    <script src="bootstrap/js/bootstrap-transition.js"></script>
+    <script src="bootstrap/js/bootstrap-alert.js"></script>
+    <script src="bootstrap/js/bootstrap-modal.js"></script>
+    <script src="bootstrap/js/bootstrap-dropdown.js"></script>
+    <script src="bootstrap/js/bootstrap-scrollspy.js"></script>
+    <script src="bootstrap/js/bootstrap-tab.js"></script>
+    <script src="bootstrap/js/bootstrap-tooltip.js"></script>
+    <script src="bootstrap/js/bootstrap-popover.js"></script>
+    <script src="bootstrap/js/bootstrap-button.js"></script>
+    <script src="bootstrap/js/bootstrap-collapse.js"></script>
+    <script src="bootstrap/js/bootstrap-carousel.js"></script>
+    <script src="bootstrap/js/bootstrap-typeahead.js"></script>
+    <script src="bootstrap/js/application.js"></script>
 </head>
 <body>
 
@@ -65,10 +62,9 @@
 
                 <div class="nav-collapse">
                     <ul class="nav">
-                        <li class="active"><a href="/WEB-INF/index.jsp">Homepage</a></li>
-                        <li><a href="/result.jsp">List of clients</a></li>
-                        <li><a href="#">Sandbox</a></li>
-                        <li><a href="#">About</a></li>
+                        <li class="active"><a href="/main">Homepage</a></li>
+                        <li><a href="https://github.com/JavaNinjas/BankProject" target="_blank">GitHub</a></li>
+
                     </ul>
                 </div>
                 <!-- /.nav-collapse -->
@@ -80,7 +76,7 @@
 
     <div class="row-fluid">
         <div class="span7">
-            <h3><c:out value="${clientAdded}"/> added</h3>
+            <h3>Welcome <c:out value="${client}"/>, you may now <a href="/index">login</a> into your account.</h3>
 
             <form name="submit" action="/index" method="get">
                 <input type="submit" name="showAll" class="btn btn-inverse" value="Show all"/>

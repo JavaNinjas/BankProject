@@ -30,20 +30,20 @@ public class TransactionDaoImpl extends GenericDaoImpl {
         Double amountParsed1 = Double.parseDouble(amountSent);
         System.out.println("amount sent: " + amountParsed1 );
 
-        Double res1 = Double.parseDouble(sender.getQuantity()) - amountParsed1;
+        Double res1 = Double.parseDouble(sender.getBalance()) - amountParsed1;
         System.out.println(res1.toString());
 
-        sender.setQuantity(String.valueOf(res1));
-        System.out.println(sender.getQuantity());
+        sender.setBalance(String.valueOf(res1));
+        System.out.println(sender.getBalance());
 
         Double amountParsed2 = Double.parseDouble(amountReceived);
         System.out.println("amount received: " + amountParsed1 );
 
-        Double res2 = Double.parseDouble(receiver.getQuantity()) + amountParsed2;
+        Double res2 = Double.parseDouble(receiver.getBalance()) + amountParsed2;
         System.out.println(res2.toString());
 
-        receiver.setQuantity(String.valueOf(res2));
-        System.out.println(receiver.getQuantity());
+        receiver.setBalance(String.valueOf(res2));
+        System.out.println(receiver.getBalance());
     }
 
     @Override

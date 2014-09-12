@@ -109,27 +109,27 @@
                 <a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
                 <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
             </div>
-
-
         </div>
 
         <div class="span5">
-            <img src="../pictures/stock1.jpg"/><br/><br/>
-
+            <img src="/pictures/stock1.jpg"/><br/><br/>
             <form name="input" action="/index" method="get" class="well">
+
                 <h3>Welcome to our bank</h3>
+                <div class ="control-group">
 
                 <p style="text-align:justify">
-                    Provide your credentials to enter service. In case client is not found your profile will be created
-                    automatically.
+                    Provide your credentials to enter service.
                 </p>
 
                 <input type="email" name="email" placeholder="Email">
                 <input type="password" name="password" placeholder="Password"><br>
                 <button class="btn btn-inverse" type="submit">Sign in</button>
                 <a href="/createPage" class="btn btn-inverse">Register</a>
+                  </div>
             </form>
         </div>
+
     </div>
     <div class="row-fluid">
         <div class="span4">

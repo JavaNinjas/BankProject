@@ -69,7 +69,6 @@ public class AccountDaoImpl extends GenericDaoImpl {
             session = sf.openSession();
             String hql = "from Account a where a.client.id=" + client.getClient_id();
             Query query = session.createQuery(hql);
-            System.out.println(query.list());
             res = (Account) query.list().get(0);
         } finally {
             if (session != null && session.isOpen()) {

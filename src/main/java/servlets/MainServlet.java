@@ -23,19 +23,27 @@ public class MainServlet extends HttpServlet {
         String email = request.getParameter("email");
         String password = PasswordService.getInstance().encrypt(request.getParameter("password"));
         ClientDaoImpl clientDao = new ClientDaoImpl();
-        Client client = clientDao.getByEmail(email);
+        try {
+            Client client = clientDao.getByEmail(email);
 
-        if (client.getPassword().equals(password)) {
-            Cookie cookie = new Cookie("email", email);
-            cookie.setMaxAge(60 * 60);
-            response.addCookie(cookie);
-            response.sendRedirect("/login");
-        } else {
-            RequestDispatcher rd = getServletContext().getRequestDispatcher("/WEB-INF/index.jsp");
-            PrintWriter out = response.getWriter();
-            out.println("<font color=red>Either user name or password is wrong.</font>");
-            rd.include(request, response);
+            if (client.getPassword().equals(password)) {
+                Cookie cookie = new Cookie("email", email);
+                cookie.setMaxAge(60 * 60);
+                response.addCookie(cookie);
+                response.sendRedirect("/login");
+            } else {
+                RequestDispatcher rd = getServletContext().getRequestDispatcher("/WEB-INF/index.jsp");
+                PrintWriter out = response.getWriter();
+                out.println("<font color=red>Either user name or password is wrong.</font>");
+                rd.include(request, response);
+            }
+        } catch (IndexOutOfBoundsException e) {
+            RequestDispatcher rd = getServletContext().getRequestDispatcher("/WEB-INF/info.jsp");
+            String message = "No email found. Please register.";
+            request.setAttribute("message", message);
+            rd.forward(request, response);
         }
+
     }
 
     public void init(ServletConfig config) throws ServletException {

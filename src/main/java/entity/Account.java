@@ -1,8 +1,13 @@
 package entity;
 
+import dao.AccountDaoImpl;
+import dao.ClientDaoImpl;
+import dao.TransactionDaoImpl;
+
 import javax.persistence.*;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.List;
 
 @Entity
 @Table(name = "accounts")

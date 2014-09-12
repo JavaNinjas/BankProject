@@ -82,19 +82,21 @@
 
     <div class="row-fluid">
         <div class="span6">
-            <form name="input" action="/send" method="get" class="well">
+            <form name="input" action="/sendPage" method="post" class="well">
                 <legend>UAH</legend>
                 Account balance:
                 <c:out value="${accountUAH.balance}"></c:out>
                 <div class="control-group form-inline">
-                    <input type="text" name="recipient" class="input-small" placeholder="0.00">
-                    <button id="singlebutton1" name="singlebutton1" class="btn btn-inverse">Add funds</button>
-                    <button id="singlebutton1" name="singlebutton1" class="btn btn-inverse">Send money</button>
+                    <input type="text" name="amountUAH" class="input-small" placeholder="0.00">
+                    <button id="addUAH" class="btn btn-inverse">Add funds</button>
+
+                    <button id="sendUAH" type="submit" class="btn btn-inverse">Send money</button>
                 </div>
             </form>
         </div>
+
         <div class="span6">
-            <form name="input" action="/send" method="get" class="well">
+            <form name="input" action="/sendPage" method="get" class="well">
                 <legend>USD</legend>
                 Account balance:
                 <c:out value="${accountUSD.balance}"></c:out>

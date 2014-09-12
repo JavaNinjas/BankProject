@@ -32,8 +32,8 @@ public class RegisterServlet extends HttpServlet {
         }
 
         request.getSession().setAttribute("client", client);
-        RequestDispatcher view = getServletContext().getRequestDispatcher("/WEB-INF/added.jsp");
-        view.forward(request, response);
+        RequestDispatcher rd = getServletContext().getRequestDispatcher("/WEB-INF/added.jsp");
+        rd.forward(request, response);
     }
 }
 

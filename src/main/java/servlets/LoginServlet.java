@@ -32,7 +32,7 @@ public class LoginServlet extends HttpServlet {
                 String email = cookie.getValue();
 
                 Client client = clientDao.getByEmail(email);
-                request.getSession().setAttribute("client", client);
+                request.setAttribute("client", client);
 
                 AccountDaoImpl accountDao = new AccountDaoImpl();
                 Account UAH = accountDao.getByCurrency(client, "UAH");
@@ -44,9 +44,8 @@ public class LoginServlet extends HttpServlet {
                 request.setAttribute("accountEUR", EUR);
                 request.setAttribute("accountRUB", RUB);
 
-
-                RequestDispatcher view = getServletContext().getRequestDispatcher("/WEB-INF/profile.jsp");
-                view.forward(request, response);
+                RequestDispatcher rd = getServletContext().getRequestDispatcher("/WEB-INF/profile.jsp");
+                rd.forward(request, response);
             }
         }
     }

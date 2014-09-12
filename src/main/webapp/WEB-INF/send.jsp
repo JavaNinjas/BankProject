@@ -76,24 +76,14 @@
 
     <div class="row-fluid">
         <div class="span7">
-            <h3>Welcome, <c:out value="${client}"/></h3>
-            </h3> <a href="/logout">Logout</a>
+
+            <h3><c:out value="${accountUAH}"/></h3>
+
             <br>
-            <br>
 
+                <a href ="/main" class="btn btn-inverse">Back</a>
 
-
-            <table class="table-bordered">
-                <c:forEach var="transaction" items="${transactions}">
-                <tr>
-                    <td>
-                        <c:out value="${transaction}"></c:out>
-                    </td>
-                </tr>
-                </c:forEach>
-            </table>
-
-        </div>
+    </div>
     </div>
 
 

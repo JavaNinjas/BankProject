@@ -15,7 +15,8 @@ public class ClientDaoImpl extends GenericDaoImpl {
 
     public ClientDaoImpl() {
         Configuration configuration = new Configuration();
-        configuration.configure("hibernate-local.cfg.xml");
+        //configuration.configure("hibernate-local.cfg.xml");
+        configuration.configure("hibernate-heroku.cfg.xml");
         ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties()).build();
         sf = configuration.buildSessionFactory(serviceRegistry);
     }

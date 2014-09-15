@@ -39,9 +39,11 @@
 <div class="container" width="970px">
     <div class="row-fluid">
         <div class="span9"><br/>
+
             <h1>Bank Project</h1>
         </div>
         <div class="span3"><br/>
+
             <div class="pull-right">
                 <p>
                     USD: <c:out value="${USD}"/>
@@ -52,7 +54,6 @@
             </div>
         </div>
     </div>
-
 
     <div class="navbar">
         <div class="navbar-inner">
@@ -82,28 +83,29 @@
 
     <div class="row-fluid">
         <div class="span6">
-            <form name="input" action="/sendPage" method="post" class="well">
+            <form name="input1" class="well">
                 <legend>UAH</legend>
                 Account balance:
                 <c:out value="${accountUAH.balance}"></c:out>
                 <div class="control-group form-inline">
-                    <input type="text" name="amountUAH" class="input-small" placeholder="0.00">
-                    <button id="addUAH" class="btn btn-inverse">Add funds</button>
-
-                    <button id="sendUAH" type="submit" class="btn btn-inverse">Send money</button>
+                    <input type="text" name="amount" class="input-small" placeholder="0.00">
+                    <input type="hidden" name="currency" value="UAH">
+                    <button formaction="/sendservlet" formmethod="post" class="btn btn-inverse">Add funds</button>
+                    <button type="submit" formaction="/sendPage" formmethod="get" class="btn btn-inverse">Send money</button>
                 </div>
             </form>
         </div>
 
         <div class="span6">
-            <form name="input" action="/sendPage" method="get" class="well">
+            <form name="input" class="well">
                 <legend>USD</legend>
                 Account balance:
                 <c:out value="${accountUSD.balance}"></c:out>
                 <div class="control-group form-inline">
-                    <input type="text" name="recipient" class="input-small" placeholder="0.00">
-                    <button id="singlebutton1" name="singlebutton1" class="btn btn-inverse">Add funds</button>
-                    <button id="singlebutton1" name="singlebutton1" class="btn btn-inverse">Send money</button>
+                    <input type="text" name="amount" class="input-small" placeholder="0.00">
+                    <input type="hidden" name="currency" value="USD">
+                    <button formmethod="post" formaction="/sendservlet" class="btn btn-inverse">Add funds</button>
+                    <button type="submit" formaction="/sendPage" formmethod="get" class="btn btn-inverse">Send money</button>
                 </div>
             </form>
         </div>
@@ -111,26 +113,29 @@
 
     <div class="row-fluid">
         <div class="span6">
-            <form name="input" action="/send" method="get" class="well">
+            <form name="input" class="well">
                 <legend>EUR</legend>
                 Account balance:
                 <c:out value="${accountEUR.balance}"></c:out>
                 <div class="control-group form-inline">
-                    <input type="text" name="recipient" class="input-small" placeholder="0.00">
-                    <button id="singlebutton1" name="singlebutton1" class="btn btn-inverse">Add funds</button>
-                    <button id="singlebutton1" name="singlebutton1" class="btn btn-inverse">Send money</button>
+                    <input type="text" name="amount" class="input-small" placeholder="0.00">
+                    <input type="hidden" name="currency" value="EUR">
+                    <button formmethod="post" formaction="/sendservlet" class="btn btn-inverse">Add funds</button>
+                    <button type="submit" formaction="/sendPage" formmethod="get" class="btn btn-inverse">Send money</button>
                 </div>
             </form>
         </div>
+
         <div class="span6">
-            <form name="input" action="/send" method="get" class="well">
+            <form name="input" class="well">
                 <legend>RUB</legend>
                 Account balance:
                 <c:out value="${accountRUB.balance}"></c:out>
                 <div class="control-group form-inline">
-                    <input type="text" name="recipient" class="input-small" placeholder="0.00">
-                    <button id="singlebutton1" name="singlebutton1" class="btn btn-inverse">Add funds</button>
-                    <button id="singlebutton1" name="singlebutton1" class="btn btn-inverse">Send money</button>
+                    <input type="text" name="amount" class="input-small" placeholder="0.00">
+                    <input type="hidden" name="currency" value="RUB">
+                    <button formmethod="post" formaction="/sendservlet" class="btn btn-inverse">Add funds</button>
+                    <button type="submit" formaction="/sendPage" formmethod="get" class="btn btn-inverse">Send money</button>
                 </div>
             </form>
         </div>
@@ -143,7 +148,6 @@
         </div>
     </div>
 </div>
-
 
 <div id="theme_switcher">
     <style>

@@ -47,9 +47,12 @@
         <div class="span3"><br/>
 
             <div class="pull-right">
-                <a href="#" original-title="facebook"><img src="../bootstrap/icon/soc1.png" alt="facebook"></a>
-                <a href="#" original-title="Delicious"><img src="../bootstrap/icon/soc2.png" alt="Delicious"></a>
-                <a href="#" original-title="myspace"><img src="../bootstrap/icon/soc3.png" alt="myspace"></a><br/><br/>
+                <p>
+                    USD: <c:out value="${USD}"/>
+                    EUR: <c:out value="${EUR}"/>
+                    RUB: <c:out value="${RUB}"/>
+                </p>
+                <br/>
             </div>
         </div>
     </div>
@@ -66,7 +69,7 @@
 
                 <div class="nav-collapse">
                     <ul class="nav">
-                        <li class="active"><a href="/WEB-INF/index.jsp">Homepage</a></li>
+                        <li class="active"><a href="/main">Homepage</a></li>
                         <li><a href="https://github.com/JavaNinjas/BankProject" target="_blank">GitHub</a></li>
                     </ul>
                 </div>

@@ -125,33 +125,10 @@ public class Transaction {
 
     public static void main(String[] args) {
         ClientDaoImpl clientDao = new ClientDaoImpl();
-        Client lennon = clientDao.getById(1);
-//        Client mccartney = clientDao.getById(2);
-//
-//        AccountDaoImpl accountDao = new AccountDaoImpl();
-//        Account lennonUSD = accountDao.getByCurrency(lennon, "USD");
-//        Account lennonUAH = accountDao.getByCurrency(lennon, "UAH");
-//        lennonUAH.setBalance("150");
-//        accountDao.update(lennonUAH);
-//
-//        lennonUSD.setBalance("1000");
-//        accountDao.update(lennonUSD);
+        Client sender = clientDao.getById(25);
+        Client receiver = clientDao.getById(26);
 
-//
-//        System.out.println(lennonUSD);
-//        System.out.println(lennonUAH);
-
-
-//
-       Transaction transaction = new Transaction(lennon, lennon, "UAH", "150", "USD");
-//
-//        System.out.println(lennonUSD);
-//        System.out.println(lennonUAH);
-
-
-        //TransactionDaoImpl transactionDao = new TransactionDaoImpl();
-        //System.out.println(transactionDao.getAll().get(0));
-
+        Transaction transaction = new Transaction(sender, receiver, "UAH", "500", "USD");
 
     }
 }

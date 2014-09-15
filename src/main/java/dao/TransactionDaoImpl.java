@@ -18,7 +18,8 @@ public class TransactionDaoImpl extends GenericDaoImpl {
 
     public TransactionDaoImpl() {
         Configuration configuration = new Configuration();
-        configuration.configure("hibernate-local.cfg.xml");
+        //configuration.configure("hibernate-local.cfg.xml");
+        configuration.configure("hibernate-heroku.cfg.xml");
         ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties()).build();
         sf = configuration.buildSessionFactory(serviceRegistry);
     }

@@ -13,7 +13,8 @@ public abstract class GenericDaoImpl<T> implements GenericDao<T> {
 
     public GenericDaoImpl() {
         Configuration configuration = new Configuration();
-        configuration.configure("hibernate-local.cfg.xml");
+        //configuration.configure("hibernate-local.cfg.xml");
+        configuration.configure("hibernate-heroku.cfg.xml");
         ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties()).build();
         sf = configuration.buildSessionFactory(serviceRegistry);
     }

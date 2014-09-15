@@ -73,17 +73,63 @@
         <!-- /navbar-inner -->
     </div>
 
+    <div class="span7">
 
-    <div class="row-fluid">
-        <div class="span7">
 
-            <h3><c:out value="${accountUAH}"/></h3>
+        <form class="form-actions" action="/sendservlet" method="get">
+            <fieldset>
 
-            <br>
+                <!-- Form Name -->
+                <legend>Send money form</legend>
 
-                <a href ="/main" class="btn btn-inverse">Back</a>
+                <!-- First name input-->
+                <div class="control-group">
+                    <div class="controls">
+                        <input name="senderEmail" type="text" placeholder="Sender's e-mail" class="input-xlarge">
+                    </div>
+                </div>
 
-    </div>
+                <!-- Last name input-->
+                <div class="control-group">
+                    <div class="controls">
+                        <input name="receiverEmail" type="text" placeholder="Receiver's e-mail" class="input-xlarge">
+                    </div>
+                </div>
+
+                <!-- E-mail input-->
+                <div class="control-group">
+                    <div class="controls">
+                        <input name="amount" type="text" placeholder="0.00" class="input-xlarge">
+                    </div>
+                </div>
+
+                <!-- Password input-->
+                <div class="control-group">
+                    <div class="controls">
+                        <input name="senderCurrency" type="text" placeholder="Sender's currency" class="input-xlarge">
+                    </div>
+                </div>
+
+                <!-- Password repeat-->
+                <div class="control-group">
+                    <div class="controls">
+                        <input name="receiverCurrency" type="text" placeholder="Receiver's currency"
+                               class="input-xlarge">
+                    </div>
+                </div>
+
+                <!-- Button -->
+                <div class="control-group">
+                    <div class="controls">
+                        <button id="singlebutton" type="submit" name="singlebutton" class="btn btn-inverse">Confirm</button>
+                        <a href="/login" class="btn btn-inverse">Cancel</a>
+                    </div>
+                </div>
+
+            </fieldset>
+        </form>
+
+
     </div>
 
 

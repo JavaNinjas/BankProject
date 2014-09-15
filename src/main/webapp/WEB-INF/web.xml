@@ -21,13 +21,18 @@
     </servlet>
 
     <servlet>
-        <servlet-name>sendPage</servlet-name>
-        <jsp-file>/WEB-INF/send.jsp</jsp-file>
-    </servlet>
+    <servlet-name>sendPage</servlet-name>
+    <jsp-file>/WEB-INF/send.jsp</jsp-file>
+</servlet>
 
     <servlet>
         <servlet-name>createPage</servlet-name>
         <jsp-file>/WEB-INF/create.jsp</jsp-file>
+    </servlet>
+
+    <servlet>
+        <servlet-name>sendServlet</servlet-name>
+        <servlet-class>servlets.SendServlet</servlet-class>
     </servlet>
 
     <servlet>
@@ -98,8 +103,13 @@
     </servlet-mapping>
 
     <servlet-mapping>
-        <servlet-name>sendPage</servlet-name>
-        <url-pattern>/sendPage</url-pattern>
+    <servlet-name>sendPage</servlet-name>
+    <url-pattern>/sendPage</url-pattern>
+</servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>sendServlet</servlet-name>
+        <url-pattern>/sendservlet</url-pattern>
     </servlet-mapping>
 
     <welcome-file-list>

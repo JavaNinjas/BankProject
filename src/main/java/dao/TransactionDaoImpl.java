@@ -31,6 +31,7 @@ public class TransactionDaoImpl extends GenericDaoImpl {
         Double amountParsed2 = Double.parseDouble(amountReceived);
         Double res2 = Double.parseDouble(receiver.getBalance()) + amountParsed2;
         receiver.setBalance(String.valueOf(res2));
+        destroy();
     }
 
     public List<Transaction> getByClient(Client client) {
@@ -42,8 +43,7 @@ public class TransactionDaoImpl extends GenericDaoImpl {
                 Query query = session.createQuery(hql);
                 objects = query.list();
         } finally {
-            if (session != null && session.isOpen())
-                session.close();
+            destroy();
         }
         return objects;
     }

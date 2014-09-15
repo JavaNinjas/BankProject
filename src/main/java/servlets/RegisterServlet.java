@@ -23,6 +23,7 @@ public class RegisterServlet extends HttpServlet {
                 PasswordService.getInstance().encrypt(request.getParameter("password")));
 
         ClientDaoImpl clientDao = new ClientDaoImpl();
+
         clientDao.save(client);
 
         clientDao.destroy();

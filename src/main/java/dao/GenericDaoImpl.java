@@ -31,8 +31,7 @@ public abstract class GenericDaoImpl<T> implements GenericDao<T> {
             session.save(obj);
             session.getTransaction().commit();
         } finally {
-            if (session != null && session.isOpen())
-                session.close();
+            destroy();
         }
     }
 
@@ -46,8 +45,7 @@ public abstract class GenericDaoImpl<T> implements GenericDao<T> {
             session.saveOrUpdate(obj);
             session.getTransaction().commit();
         } finally {
-            if (session != null && session.isOpen())
-                session.close();
+            destroy();
         }
     }
 
@@ -59,8 +57,7 @@ public abstract class GenericDaoImpl<T> implements GenericDao<T> {
             session.delete(obj);
             session.getTransaction().commit();
         } finally {
-            if (session != null && session.isOpen())
-                session.close();
+            destroy();
         }
     }
 }

@@ -28,8 +28,7 @@ public class ClientDaoImpl extends GenericDaoImpl {
             session = sf.openSession();
             res = (Client) session.get(Client.class, id);
         } finally {
-            if (session != null && session.isOpen())
-                session.close();
+            destroy();
         }
         return res;
     }
@@ -44,8 +43,7 @@ public class ClientDaoImpl extends GenericDaoImpl {
                     .add(Restrictions.like("email", email)).list();
             res = list.get(0);
         } finally {
-            if (session != null && session.isOpen())
-                session.close();
+            destroy();
         }
         return res;
     }
@@ -59,8 +57,7 @@ public class ClientDaoImpl extends GenericDaoImpl {
             session.saveOrUpdate(object);
             session.getTransaction().commit();
         } finally {
-            if (session != null && session.isOpen())
-                session.close();
+            destroy();
         }
     }
 
@@ -73,24 +70,8 @@ public class ClientDaoImpl extends GenericDaoImpl {
             session = sf.openSession();
             objects = (ArrayList) session.createCriteria(Client.class).list();
         } finally {
-            if (session != null && session.isOpen())
-                session.close();
+            destroy();
         }
         return objects;
-    }
-
-    @SuppressWarnings("unchecked")
-    public void deleteById(int id) {
-        Session session = null;
-        Client res = null;
-        try {
-            session = sf.openSession();
-            res = (Client) session.get(Client.class, id);
-        } finally {
-            if (session != null && session.isOpen()) {
-                session.close();
-            }
-            delete(res);
-        }
     }
 }

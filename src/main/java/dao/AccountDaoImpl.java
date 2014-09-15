@@ -41,8 +41,7 @@ public class AccountDaoImpl extends GenericDaoImpl {
                 session.getTransaction().commit();
             }
         } finally {
-            if (session != null && session.isOpen())
-                session.close();
+            destroy();
         }
     }
 
@@ -57,8 +56,7 @@ public class AccountDaoImpl extends GenericDaoImpl {
             }
             res = (Account) session.get(Account.class, id);
         } finally {
-            if (session != null && session.isOpen())
-                session.close();
+            destroy();
         }
         return res;
     }
@@ -72,10 +70,9 @@ public class AccountDaoImpl extends GenericDaoImpl {
             Query query = session.createQuery(hql);
             res = (Account) query.list().get(0);
         } finally {
-            if (session != null && session.isOpen()) {
-                session.close();
+            destroy();
             }
-        }
+
         return res;
     }
 
@@ -93,9 +90,7 @@ public class AccountDaoImpl extends GenericDaoImpl {
                 }
             }
         } finally {
-            if (session != null && session.isOpen()) {
-                session.close();
-            }
+            destroy();
         }
         return res;
     }
@@ -109,23 +104,8 @@ public class AccountDaoImpl extends GenericDaoImpl {
             session = sf.openSession();
             objects = (ArrayList) session.createCriteria(Account.class).list();
         } finally {
-            if (session != null && session.isOpen())
-                session.close();
+            destroy();
         }
         return objects;
-    }
-
-    public void deleteById(int id) {
-        Session session = null;
-        Account res = null;
-        try {
-            session = sf.openSession();
-            res = (Account) session.get(Account.class, id);
-        } finally {
-            if (session != null && session.isOpen()) {
-                session.close();
-            }
-            delete(res);
-        }
     }
 }

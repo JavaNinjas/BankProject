@@ -69,6 +69,10 @@ public class Transaction {
         accountDao.update(receiverAccount);
 
         transactionDao.save(this);
+
+        accountDao.destroy();
+        transactionDao.destroy();
+
     }
 
     private void exchange(String currencySent, String amountSent, String currencyReceived) {

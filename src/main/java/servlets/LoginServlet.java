@@ -44,6 +44,10 @@ public class LoginServlet extends HttpServlet {
                 request.setAttribute("accountEUR", EUR);
                 request.setAttribute("accountRUB", RUB);
 
+                clientDao.destroy();
+                accountDao.destroy();
+
+
                 RequestDispatcher rd = getServletContext().getRequestDispatcher("/WEB-INF/profile.jsp");
                 rd.forward(request, response);
             }

@@ -34,6 +34,8 @@ public class SendServlet extends HttpServlet {
 
         Transaction transaction = new Transaction(sender, sender, currency, amount, currency);
 
+        clientDao.destroy();
+
         request.setAttribute("transaction", transaction);
 
         RequestDispatcher rd = getServletContext().getRequestDispatcher("/WEB-INF/sent.jsp");
@@ -43,19 +45,17 @@ public class SendServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         ClientDaoImpl clientDao = new ClientDaoImpl();
 
-
-
         Client sender = clientDao.getByEmail(request.getParameter("senderEmail"));
         Client receiver = clientDao.getByEmail(request.getParameter("receiverEmail"));
 
         String senderCurrency = request.getParameter("senderCurrency");
         String amount = request.getParameter("amount");
-        String recaiverCurrency = request.getParameter("receiverCurrency");
+        String receiverCurrency = request.getParameter("receiverCurrency");
 
-
-
-        Transaction transaction = new Transaction(sender, receiver, senderCurrency, amount, recaiverCurrency);
+        Transaction transaction = new Transaction(sender, receiver, senderCurrency, amount, receiverCurrency);
         request.setAttribute("transaction", transaction);
+
+        clientDao.destroy();
 
         RequestDispatcher rd = getServletContext().getRequestDispatcher("/WEB-INF/sent.jsp");
         rd.forward(request, response);

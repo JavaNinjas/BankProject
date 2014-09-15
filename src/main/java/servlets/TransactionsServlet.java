@@ -33,10 +33,16 @@ public class TransactionsServlet extends HttpServlet {
 
         Client client = clientDao.getByEmail(email);
         request.setAttribute("client", client);
+
+        clientDao.destroy();
+
         TransactionDaoImpl transactionDao = new TransactionDaoImpl();
         List<Transaction> transactions = transactionDao.getByClient(client);
         request.setAttribute("client", client);
         request.setAttribute("transactions", transactions);
+
+        transactionDao.destroy();
+
         RequestDispatcher rd = getServletContext().getRequestDispatcher("/WEB-INF/show.jsp");
         rd.forward(request, response);
     }

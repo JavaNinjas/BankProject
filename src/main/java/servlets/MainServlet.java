@@ -2,7 +2,6 @@ package servlets;
 
 import dao.ClientDaoImpl;
 import entity.Client;
-import org.hibernate.exception.JDBCConnectionException;
 import parser.Rates;
 
 import javax.servlet.RequestDispatcher;
@@ -37,6 +36,9 @@ public class MainServlet extends HttpServlet {
                 out.println("<font color=red>Either user name or password is wrong.</font>");
                 rd.include(request, response);
             }
+
+            clientDao.destroy();
+
         } catch (IndexOutOfBoundsException e) {
             RequestDispatcher rd = getServletContext().getRequestDispatcher("/WEB-INF/info.jsp");
             String message = "No email found. Please register.";

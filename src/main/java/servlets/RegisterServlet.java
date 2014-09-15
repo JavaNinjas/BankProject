@@ -22,14 +22,18 @@ public class RegisterServlet extends HttpServlet {
                 request.getParameter("email"),
                 PasswordService.getInstance().encrypt(request.getParameter("password")));
 
-        ClientDaoImpl impl = new ClientDaoImpl();
-        impl.save(client);
+        ClientDaoImpl clientDao = new ClientDaoImpl();
+        clientDao.save(client);
+
+        clientDao.destroy();
 
         AccountDaoImpl accountDao = new AccountDaoImpl();
         String[] currencies = {"UAH", "USD", "EUR", "RUB"};
         for (String currency: currencies) {
             accountDao.save(new Account(client, "0", currency));
         }
+
+        accountDao.destroy();
 
         request.getSession().setAttribute("client", client);
         RequestDispatcher rd = getServletContext().getRequestDispatcher("/WEB-INF/added.jsp");

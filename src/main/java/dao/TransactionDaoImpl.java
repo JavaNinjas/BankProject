@@ -35,7 +35,7 @@ public class TransactionDaoImpl extends GenericDaoImpl {
 
     public List<Transaction> getByClient(Client client) {
         Session session = null;
-        List<Transaction> objects = new ArrayList<>();
+        List<Transaction> objects = new ArrayList<Transaction>();
             try {
                 session = sf.openSession();
                 String hql = "from Transaction t where t.sender.id=" + client.getClient_id();

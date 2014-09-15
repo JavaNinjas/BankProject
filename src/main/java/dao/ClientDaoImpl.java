@@ -68,7 +68,7 @@ public class ClientDaoImpl extends GenericDaoImpl {
     @SuppressWarnings("unchecked")
     public List<Client> getAll() {
         Session session = null;
-        List<Client> objects = new ArrayList<>();
+        List<Client> objects = new ArrayList<Client>();
         try {
             session = sf.openSession();
             objects = (ArrayList) session.createCriteria(Client.class).list();

@@ -29,13 +29,13 @@ public class Client {
     private String password;
 
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "client")
-    private Set<Account> accounts = new HashSet<>();
+    private Set<Account> accounts = new HashSet<Account>();
 
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "sender")
-    private Set<Transaction> senderTransactions = new HashSet<>();
+    private Set<Transaction> senderTransactions = new HashSet<Transaction>();
 
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "receiver")
-    private Set<Transaction> receiverTransactions = new HashSet<>();
+    private Set<Transaction> receiverTransactions = new HashSet<Transaction>();
 
     public Client() {
     }

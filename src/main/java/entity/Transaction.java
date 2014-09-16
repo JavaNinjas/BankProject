@@ -2,7 +2,9 @@ package entity;
 
 import dao.AccountDaoImpl;
 import dao.ClientDaoImpl;
+import dao.HibernateUtil;
 import dao.TransactionDaoImpl;
+import org.hibernate.Session;
 import org.joda.money.Money;
 import parser.Converter;
 import parser.Parser;
@@ -64,15 +66,11 @@ public class Transaction {
         TransactionDaoImpl transactionDao = new TransactionDaoImpl();
 
         transactionDao.send(senderAccount, receiverAccount, amountSent, amountReceived);
+        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 
         accountDao.update(senderAccount);
         accountDao.update(receiverAccount);
-
         transactionDao.save(this);
-
-        accountDao.destroy();
-        transactionDao.destroy();
-
     }
 
     private void exchange(String currencySent, String amountSent, String currencyReceived) {
@@ -125,14 +123,5 @@ public class Transaction {
 
     public String getOccurred() {
         return occurred;
-    }
-
-    public static void main(String[] args) {
-        ClientDaoImpl clientDao = new ClientDaoImpl();
-        Client sender = clientDao.getById(25);
-        Client receiver = clientDao.getById(26);
-
-        Transaction transaction = new Transaction(sender, receiver, "UAH", "500", "USD");
-
     }
 }

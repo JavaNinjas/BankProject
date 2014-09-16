@@ -14,37 +14,28 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TransactionDaoImpl extends GenericDaoImpl {
-    private SessionFactory sf;
+    private Session session;
 
     public TransactionDaoImpl() {
-        Configuration configuration = new Configuration();
-        //configuration.configure("hibernate-local.cfg.xml");
-        configuration.configure("hibernate-heroku.cfg.xml");
-        ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties()).build();
-        sf = configuration.buildSessionFactory(serviceRegistry);
     }
 
-    public void send(Account sender, Account receiver,String amountSent, String amountReceived) {
+    public void send(Account sender, Account receiver, String amountSent, String amountReceived) {
         Double amountParsed1 = Double.parseDouble(amountSent);
         Double res1 = Double.parseDouble(sender.getBalance()) - amountParsed1;
         sender.setBalance(String.valueOf(res1));
         Double amountParsed2 = Double.parseDouble(amountReceived);
         Double res2 = Double.parseDouble(receiver.getBalance()) + amountParsed2;
         receiver.setBalance(String.valueOf(res2));
-        destroy();
     }
 
     public List<Transaction> getByClient(Client client) {
-        Session session = null;
+        session = HibernateUtil.getSessionFactory().getCurrentSession();
         List<Transaction> objects = new ArrayList<Transaction>();
-            try {
-                session = sf.openSession();
-                String hql = "from Transaction t where t.sender.id=" + client.getClient_id();
-                Query query = session.createQuery(hql);
-                objects = query.list();
-        } finally {
-            destroy();
-        }
+        session.beginTransaction();
+        String hql = "from Transaction t where t.sender.id=" + client.getClient_id();
+        Query query = session.createQuery(hql);
+        objects = query.list();
+        session.getTransaction().commit();
         return objects;
     }
 

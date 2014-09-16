@@ -33,9 +33,6 @@ public class SendServlet extends HttpServlet {
         Client sender = clientDao.getByEmail(email);
 
         Transaction transaction = new Transaction(sender, sender, currency, amount, currency);
-
-        clientDao.destroy();
-
         request.setAttribute("transaction", transaction);
 
         RequestDispatcher rd = getServletContext().getRequestDispatcher("/WEB-INF/sent.jsp");
@@ -54,8 +51,6 @@ public class SendServlet extends HttpServlet {
 
         Transaction transaction = new Transaction(sender, receiver, senderCurrency, amount, receiverCurrency);
         request.setAttribute("transaction", transaction);
-
-        clientDao.destroy();
 
         RequestDispatcher rd = getServletContext().getRequestDispatcher("/WEB-INF/sent.jsp");
         rd.forward(request, response);

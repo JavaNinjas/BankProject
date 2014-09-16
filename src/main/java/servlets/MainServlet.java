@@ -37,21 +37,18 @@ public class MainServlet extends HttpServlet {
                 rd.include(request, response);
             }
 
-            clientDao.destroy();
-
         } catch (IndexOutOfBoundsException e) {
             RequestDispatcher rd = getServletContext().getRequestDispatcher("/WEB-INF/info.jsp");
             String message = "No email found. Please register.";
             request.setAttribute("message", message);
             rd.forward(request, response);
         }
-
     }
 
     public void init(ServletConfig config) throws ServletException {
-        super.init(config);
         config.getServletContext().setAttribute("USD", Rates.USD.getRate());
         config.getServletContext().setAttribute("EUR", Rates.EUR.getRate());
         config.getServletContext().setAttribute("RUB", Rates.RUB.getRate());
+        super.init(config);
     }
 }

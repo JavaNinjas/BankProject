@@ -43,9 +43,12 @@
         <div class="span3"><br/>
 
             <div class="pull-right">
-                <a href="#" original-title="facebook"><img src="../bootstrap/icon/soc1.png" alt="facebook"></a>
-                <a href="#" original-title="Delicious"><img src="../bootstrap/icon/soc2.png" alt="Delicious"></a>
-                <a href="#" original-title="myspace"><img src="../bootstrap/icon/soc3.png" alt="myspace"></a><br/><br/>
+                <p>
+                    USD: <c:out value="${USD}"/>
+                    EUR: <c:out value="${EUR}"/>
+                    RUB: <c:out value="${RUB}"/>
+                </p>
+                <br/>
             </div>
         </div>
     </div>
@@ -85,7 +88,7 @@
                 <!-- First name input-->
                 <div class="control-group">
                     <div class="controls">
-                        <input name="senderEmail" type="text" placeholder="Sender's e-mail" class="input-xlarge">
+                        <input name="senderEmail" type="text" placeholder="Sender's e-mail" class="input-xlarge" value=<c:out value="${client.email}"></c:out>>
                     </div>
                 </div>
 
@@ -106,15 +109,25 @@
                 <!-- Password input-->
                 <div class="control-group">
                     <div class="controls">
-                        <input name="senderCurrency" type="text" placeholder="Sender's currency" class="input-xlarge">
+                        <select type="text" name="senderCurrency" class="input-xlarge">
+                            <option value="" disabled selected >Sender's currency</option>
+                            <option value="UAH">UAH</option>
+                            <option value="USD">USD</option>
+                            <option value="EUR">EUR</option>
+                            <option value="RUB">RUB</option>
+                        </select>
                     </div>
-                </div>
 
                 <!-- Password repeat-->
                 <div class="control-group">
                     <div class="controls">
-                        <input name="receiverCurrency" type="text" placeholder="Receiver's currency"
-                               class="input-xlarge">
+                        <select type="text" name="receiverCurrency" class="input-xlarge">
+                            <option value="" disabled selected >Receiver's currency</option>
+                            <option value="UAH">UAH</option>
+                            <option value="USD">USD</option>
+                            <option value="EUR">EUR</option>
+                            <option value="RUB">RUB</option>
+                        </select>
                     </div>
                 </div>
 
@@ -150,7 +163,7 @@
 </div>
 
 
-<script src="http://code.jquery.com/jquery.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script src="bootstrap.min.js"></script>
 
 <script>

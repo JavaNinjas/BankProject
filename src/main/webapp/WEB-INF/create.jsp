@@ -37,6 +37,9 @@
 <body>
 
 <div class="container">
+    <style> .container {
+        width: 970px
+    } </style>
 
 
     <div class="row-fluid">
@@ -56,7 +59,6 @@
             </div>
         </div>
     </div>
-
 
     <div class="navbar">
         <div class="navbar-inner">
@@ -81,98 +83,72 @@
 
 
     <div class="row-fluid">
-
-
         <div class="span7">
-
-
-
-            <form class="form-actions" action="/create" method="get">
-                <fieldset>
-
-                    <!-- Form Name -->
+            <form id="register" name="register" action="/create" method="post" class="well">
+                <div class="form-inline">
                     <legend>Registration Form</legend>
+                    <input id="fn" name="firstName" type="text" placeholder="First name" class="input-xlarge">
+                    <br><span class="fn"></span><br>
+                    <input id="ln" name="lastName" type="text" placeholder="Last name" class="input-xlarge">
+                    <br> <span class="ln"></span> <br>
+                    <input id="em" name="email" type="email" placeholder="E-mail" class="input-xlarge">
+                    <br> <span class="em"></span>  <br>
+                    <input id="p1" name="password" type="password" placeholder="Type password" class="input-xlarge">
+                    <br><span class="ps"></span>   <br>
+                    <input id="p2" name="passwordConfirm" type="password" placeholder="Re-type password" class="input-xlarge">
+                    <br><span class="ps"></span>   <br>
+                </div>
 
-                    <!-- First name input-->
-                    <div class="control-group">
-                        <div class="controls">
-                            <input name="firstName" type="text" placeholder="First name" class="input-xlarge">
-                        </div>
-                    </div>
 
-                    <!-- Last name input-->
-                    <div class="control-group">
-                        <div class="controls">
-                            <input name="lastName" type="text" placeholder="Last name" class="input-xlarge">
-                        </div>
-                    </div>
+                <button type="submit" id="submitButton" class="btn btn-inverse">Confirm</button>
 
-                    <!-- E-mail input-->
-                    <div class="control-group">
-                        <div class="controls">
-                            <input name="email" type="email" placeholder="E-mail" class="input-xlarge">
-                        </div>
-                    </div>
-
-                    <!-- Password input-->
-                    <div class="control-group">
-                        <div class="controls">
-                            <input name="password" type="password" placeholder="Type password" class="input-xlarge">
-                        </div>
-                    </div>
-
-                    <!-- Password repeat-->
-                    <div class="control-group">
-                        <div class="controls">
-                            <input name="passwordConfirm" type="password" placeholder="Re-type password" class="input-xlarge">
-                        </div>
-                    </div>
-
-                    <!-- Button -->
-                    <div class="control-group">
-                        <div class="controls">
-                            <button id="singlebutton" name="singlebutton" class="btn btn-inverse">Confirm</button>
-                        </div>
-                    </div>
-
-                </fieldset>
             </form>
-
 
         </div>
     </div>
-
-
-    <div id="theme_switcher">
-        <style>
-            .container {
-                width: 970px
-            }
-
-            #theme_switcher {
-                left: 10px;
-                position: fixed;
-                top: 10px;
-            }
-        </style>
-
-    </div>
 </div>
 
+<style>
 
-<script src="http://code.jquery.com/jquery.min.js"></script>
-<script src="bootstrap.min.js"></script>
+    span {
+        color: #4176c4;
+        font-size: 12px;
+    }
+
+
+</style>
 
 <script>
-    $(function () {
-        $('#theme_switcher ul li a').bind('click',
-                function (e) {
-                    $("#switch_style").attr("href", "css/" + $(this).attr('rel') + "/bootstrap.min.css");
-                    return false;
-                }
-        );
+    $(document).ready(function () {
+        $('#submitButton').click(function () {
+            var fn = $("#fn").val();
+            var ln = $("#ln").val();
+            var em = $("#em").val();
+            var p1 = $("#p1").val();
+            var p2 = $("#p2").val();
+
+            if (fn === "") {
+                $('.fn').text("Enter name").show();
+            }
+
+            if (ln === "") {
+                $('.ln').text("Enter surname").show();
+            }
+
+            if (em === "") {
+                $('.em').text("Enter email").show();
+            }
+
+            if (p1 !== p2) {
+                $('.ps').text("Passwords do not match").show();
+                return false;
+            } else {
+                return;
+            }
+        })
     });
 </script>
+
 
 </body>
 </html>

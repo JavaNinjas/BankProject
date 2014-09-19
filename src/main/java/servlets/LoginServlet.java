@@ -32,7 +32,7 @@ public class LoginServlet extends HttpServlet {
                 String email = cookie.getValue();
 
                 Client client = clientDao.getByEmail(email);
-                request.setAttribute("client", client);
+                request.getSession().setAttribute("client", client);
 
                 AccountDaoImpl accountDao = new AccountDaoImpl();
                 Account UAH = accountDao.getByCurrency(client, "UAH");

@@ -5,8 +5,6 @@ import java.io.File;
 
 public class Main {
     public static void main(String[] args) throws Exception {
-        //String webappDirLocation = "C:/Java/GitHub/BankProject/src/main/webapp";
-        //String webappDirLocation = "C:/Users/Will/IdeaProjects/BankProject/src/main/webapp";
         String webappDirLocation = "src/main/webapp";
         Tomcat tomcat = new Tomcat();
         String webPort = System.getenv("PORT");
@@ -15,7 +13,7 @@ public class Main {
         }
         tomcat.setPort(Integer.valueOf(webPort));
         tomcat.addWebapp("/", new File(webappDirLocation).getAbsolutePath());
-        System.out.println("configuring app with basedir: " + new File("./" + webappDirLocation).getAbsolutePath());
+        System.out.println("configuring app with basedir: " + new File(webappDirLocation).getAbsolutePath());
         tomcat.start();
         tomcat.getServer().await();
     }

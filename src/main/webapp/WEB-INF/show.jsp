@@ -32,6 +32,12 @@
 </head>
 <body>
 
+<style>
+    body {
+        zoom: 110%;
+    }
+</style>
+
 <div class="container">
 
 
@@ -43,9 +49,11 @@
         <div class="span3"><br/>
 
             <div class="pull-right">
-                <a href="#" original-title="facebook"><img src="../bootstrap/icon/soc1.png" alt="facebook"></a>
-                <a href="#" original-title="Delicious"><img src="../bootstrap/icon/soc2.png" alt="Delicious"></a>
-                <a href="#" original-title="myspace"><img src="../bootstrap/icon/soc3.png" alt="myspace"></a><br/><br/>
+                <p>
+                    USD: <c:out value="${USD}"/>
+                    EUR: <c:out value="${EUR}"/>
+                    RUB: <c:out value="${RUB}"/>
+                </p>
             </div>
         </div>
     </div>
@@ -73,28 +81,62 @@
         <!-- /navbar-inner -->
     </div>
 
+    <h3>Welcome, <c:out value="${client}"/></h3>
+    <a href="/logout">Logout</a>
+    <br>
+    <br>
 
     <div class="row-fluid">
-        <div class="span7">
-            <h3>Welcome, <c:out value="${client}"/></h3>
-            </h3> <a href="/logout">Logout</a>
-            <br>
-            <br>
+
+        <div class="span12 well">
 
 
 
-            <table class="table-bordered">
-                <c:forEach var="transaction" items="${transactions}">
+            <legend>Transactions</legend><br>
+
+            <table class="table">
+                <thead>
+                </thead>
+                <tbody>
                 <tr>
-                    <td>
-                        <c:out value="${transaction}"></c:out>
-                    </td>
+                    <td>Date</td>
+                    <td>Sender</td>
+                    <td>Currency, amount</td>
+                    <td>Receiver</td>
+                    <td>Currency, amount</td>
                 </tr>
+
+                <c:forEach var="transaction" items="${transactions}">
+                    <tr>
+                        <td>
+                            <c:out value="${transaction.occurred}"></c:out>
+                        </td>
+                        <td>
+                            <c:out value="${transaction.sender}"></c:out>
+                        </td>
+                        <td>
+                            <c:out value="${transaction.currencySent} ${transaction.amountSent}"></c:out>
+                        </td>
+                        <td>
+                            <c:out value="${transaction.receiver}"></c:out>
+                        </td>
+                        <td>
+                            <c:out value="${transaction.currencyReceived} ${transaction.amountReceived}"></c:out>
+                        </td>
+                    </tr>
                 </c:forEach>
+                </tbody>
             </table>
+
+
 
         </div>
     </div>
+
+    <a href="/login" class="btn btn-inverse">Back</a>
+    </br>
+    </br>
+
 
 
     <div id="theme_switcher">

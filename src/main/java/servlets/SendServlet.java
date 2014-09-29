@@ -1,6 +1,8 @@
 package servlets;
 
+import dao.AccountDaoImpl;
 import dao.ClientDaoImpl;
+import entity.Account;
 import entity.Client;
 import entity.Transaction;
 
@@ -18,7 +20,6 @@ public class SendServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Cookie[] cookies = request.getCookies();
-        request.getRequestDispatcher("/WEB-INF/index.jsp").include(request, response);
 
         for (Cookie cookie : cookies) {
             if (cookie.getName().equals("email")) {
@@ -33,10 +34,23 @@ public class SendServlet extends HttpServlet {
         Client sender = clientDao.getByEmail(email);
 
         Transaction transaction = new Transaction(sender, sender, currency, amount, currency);
-        request.setAttribute("transaction", transaction);
 
-        RequestDispatcher rd = getServletContext().getRequestDispatcher("/WEB-INF/sent.jsp");
-        rd.forward(request, response);
+        AccountDaoImpl accountDao = new AccountDaoImpl();
+        Account UAH = accountDao.getByCurrency(sender, "UAH");
+        Account USD = accountDao.getByCurrency(sender, "USD");
+        Account EUR = accountDao.getByCurrency(sender, "EUR");
+        Account RUB = accountDao.getByCurrency(sender, "RUB");
+        request.setAttribute("accountUAH", UAH);
+        request.setAttribute("accountUSD", USD);
+        request.setAttribute("accountEUR", EUR);
+        request.setAttribute("accountRUB", RUB);
+
+        request.getRequestDispatcher("/WEB-INF/profile.jsp").include(request, response);
+
+//        request.setAttribute("transaction", transaction);
+//
+//        RequestDispatcher rd = getServletContext().getRequestDispatcher("/WEB-INF/sent.jsp");
+//        rd.forward(request, response);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

@@ -32,6 +32,12 @@
 </head>
 <body>
 
+<style>
+    body {
+        zoom: 110%;
+    }
+</style>
+
 <div class="container">
 
 

@@ -36,6 +36,12 @@
 </head>
 <body>
 
+<style>
+    body {
+        zoom: 110%;
+    }
+</style>
+
 <div class="container">
     <style> .container {
         width: 970px
@@ -84,69 +90,86 @@
 
     <div class="row-fluid">
         <div class="span7">
-            <form id="register" name="register" action="/create" method="post" class="well">
+            <form id="register" action="/create" method="post" class="well">
                 <div class="form-inline">
                     <legend>Registration Form</legend>
-                    <input id="fn" name="firstName" type="text" placeholder="First name" class="input-xlarge">
-                    <br><span class="fn"></span><br>
-                    <input id="ln" name="lastName" type="text" placeholder="Last name" class="input-xlarge">
-                    <br> <span class="ln"></span> <br>
-                    <input id="em" name="email" type="email" placeholder="E-mail" class="input-xlarge">
-                    <br> <span class="em"></span>  <br>
-                    <input id="p1" name="password" type="password" placeholder="Type password" class="input-xlarge">
-                    <br><span class="ps"></span>   <br>
-                    <input id="p2" name="passwordConfirm" type="password" placeholder="Re-type password" class="input-xlarge">
-                    <br><span class="ps"></span>   <br>
+
+                    <input id="fname" name="firstName" type="text" placeholder="First name" class="input-xlarge">
+                    <br><span class="fname"></span><br>
+
+                    <input id="lname" name="lastName" type="text" placeholder="Last name" class="input-xlarge">
+                    <br> <span class="lname"></span> <br>
+
+                    <input id="e-mail" name="email" type="email" placeholder="Email" class="input-xlarge">
+                    <br> <span class="email"></span> <br>
+
+                    <input id="pass1" name="password" type="password" placeholder="Type password"
+                           class="input-xlarge">
+                    <br><span class="pass1"></span> <br>
+
+                    <input id="pass2" name="passwordConfirm" type="password" placeholder="Re-type password"
+                           class="input-xlarge">
+                    <br><span class="pass2"></span> <br>
                 </div>
-
-
-                <button type="submit" id="submitButton" class="btn btn-inverse">Confirm</button>
-
+                <button id="submitButton" type="submit" class="btn btn-inverse">Confirm
+                </button>
             </form>
-
         </div>
     </div>
 </div>
 
 <style>
-
     span {
         color: #4176c4;
         font-size: 12px;
     }
-
-
 </style>
 
 <script>
+    function fieldRequired(className, text) {
+        $(className).text(text).fadeIn("slow").delay(2000).fadeOut("slow");
+    }
+
     $(document).ready(function () {
-        $('#submitButton').click(function () {
-            var fn = $("#fn").val();
-            var ln = $("#ln").val();
-            var em = $("#em").val();
-            var p1 = $("#p1").val();
-            var p2 = $("#p2").val();
+        $('#register').submit(function () {
 
-            if (fn === "") {
-                $('.fn').text("Enter name").show();
+            var flag = true;
+
+            if ($('#fname').val() === "") {
+                flag = false;
+                fieldRequired(".fname", "Enter name");
             }
 
-            if (ln === "") {
-                $('.ln').text("Enter surname").show();
+            if ($('#lname').val() === "") {
+                flag = false;
+                fieldRequired(".lname", "Enter surname");
             }
 
-            if (em === "") {
-                $('.em').text("Enter email").show();
+            if ($('#e-mail').val() === "") {
+                flag = false;
+                fieldRequired(".email", "Enter email");
             }
 
-            if (p1 !== p2) {
-                $('.ps').text("Passwords do not match").show();
-                return false;
-            } else {
-                return;
+            if ($('#pass1').val() === "") {
+                flag = false;
+                fieldRequired(".pass1", "Password is required");
             }
+
+            if ($('#pass1').val() !== $('#pass2').val()) {
+                flag = false;
+                fieldRequired(".pass2", "Passwords do not match");
+            }
+
+            if ("" === $('#pass1').val() && "" === $('#pass2').val()) {
+                flag = false;
+            }
+
+            return flag
+
         })
     });
+
+
 </script>
 
 

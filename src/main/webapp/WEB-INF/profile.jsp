@@ -36,7 +36,21 @@
 
 <body>
 
-<div class="container" width="970px">
+<style>
+    body {
+        zoom: 110%;
+    }
+</style>
+
+<div class="container">
+
+    <style>
+        .container {
+            width: 970px
+        }
+    </style>
+
+
     <div class="row-fluid">
         <div class="span9"><br/>
 
@@ -88,24 +102,37 @@
                 Account balance:
                 <c:out value="${accountUAH.balance}"></c:out>
                 <div class="control-group form-inline">
-                    <input type="text" name="amount" class="input-small" placeholder="0.00">
+                    <input id="UAH" type="text" name="amount" class="input-small" placeholder="0.00">
                     <input type="hidden" name="currency" value="UAH">
-                    <button formaction="/sendservlet" formmethod="post" class="btn btn-inverse">Add funds</button>
-                    <button type="submit" formaction="/sendPage" formmethod="get" class="btn btn-inverse">Send money</button>
+
+                    <button id="addUAH" formaction="/sendservlet" formmethod="post" type="submit"
+                            class="btn btn-inverse" disabled>
+                        Add funds
+                    </button>
+                    <button id="sendUAH" type="submit" formaction="/sendPage" formmethod="get" class="btn btn-inverse"
+                            disabled>Send
+                        money
+                    </button>
                 </div>
             </form>
         </div>
 
         <div class="span6">
-            <form name="input" class="well">
+            <form name="input2" class="well">
                 <legend>USD</legend>
                 Account balance:
                 <c:out value="${accountUSD.balance}"></c:out>
                 <div class="control-group form-inline">
-                    <input type="text" name="amount" class="input-small" placeholder="0.00">
+                    <input id="USD" type="text" name="amount" class="input-small" placeholder="0.00">
                     <input type="hidden" name="currency" value="USD">
-                    <button formmethod="post" formaction="/sendservlet" class="btn btn-inverse">Add funds</button>
-                    <button type="submit" formaction="/sendPage" formmethod="get" class="btn btn-inverse">Send money</button>
+                    <button id="addUSD" type="submit" formmethod="post" formaction="/sendservlet"
+                            class="btn btn-inverse" disabled>
+                        Add funds
+                    </button>
+                    <button id="sendUSD" type="submit" formaction="/sendPage" formmethod="get" class="btn btn-inverse"
+                            disabled>Send
+                        money
+                    </button>
                 </div>
             </form>
         </div>
@@ -113,29 +140,41 @@
 
     <div class="row-fluid">
         <div class="span6">
-            <form name="input" class="well">
+            <form name="input3" class="well">
                 <legend>EUR</legend>
                 Account balance:
                 <c:out value="${accountEUR.balance}"></c:out>
                 <div class="control-group form-inline">
-                    <input type="text" name="amount" class="input-small" placeholder="0.00">
+                    <input id="EUR" type="text" name="amount" class="input-small" placeholder="0.00">
                     <input type="hidden" name="currency" value="EUR">
-                    <button formmethod="post" formaction="/sendservlet" class="btn btn-inverse">Add funds</button>
-                    <button type="submit" formaction="/sendPage" formmethod="get" class="btn btn-inverse">Send money</button>
+                    <button id="addEUR" type="submit" formmethod="post" formaction="/sendservlet"
+                            class="btn btn-inverse" disabled>
+                        Add funds
+                    </button>
+                    <button id="sendEUR" type="submit" formaction="/sendPage" formmethod="get" class="btn btn-inverse"
+                            disabled>Send
+                        money
+                    </button>
                 </div>
             </form>
         </div>
 
         <div class="span6">
-            <form name="input" class="well">
+            <form name="input4" class="well">
                 <legend>RUB</legend>
                 Account balance:
                 <c:out value="${accountRUB.balance}"></c:out>
                 <div class="control-group form-inline">
-                    <input type="text" name="amount" class="input-small" placeholder="0.00">
+                    <input id="RUB" type="text" name="amount" class="input-small" placeholder="0.00">
                     <input type="hidden" name="currency" value="RUB">
-                    <button formmethod="post" formaction="/sendservlet" class="btn btn-inverse">Add funds</button>
-                    <button type="submit" formaction="/sendPage" formmethod="get" class="btn btn-inverse">Send money</button>
+                    <button id="addRUB" type="submit" formmethod="post" formaction="/sendservlet"
+                            class="btn btn-inverse" disabled>
+                        Add funds
+                    </button>
+                    <button id="sendRUB" type="submit" formaction="/sendPage" formmethod="get" class="btn btn-inverse"
+                            disabled>Send
+                        money
+                    </button>
                 </div>
             </form>
         </div>
@@ -149,62 +188,77 @@
     </div>
 </div>
 
-<div id="theme_switcher">
-    <style>
-        .container {
-            width: 970px
-        }
 
-        #theme_switcher {
-            left: 10px;
-            position: fixed;
-            top: 10px;
-        }
-    </style>
-
-</div>
-
-</div>
-
-</div>
+<%--<script>--%>
+    <%--function sendMoney() {--%>
 
 
-<script src="http://code.jquery.com/jquery.min.js"></script>
-<script src="bootstrap.min.js"></script>
+
+        <%--var formData = $("input1").serialize();--%>
+
+        <%--$.ajax({--%>
+            <%--type: "GET",--%>
+            <%--url: "/sendPage",--%>
+            <%--data: formData,--%>
+              <%--success: function (response) {--%>
+
+            <%--}--%>
+        <%--});--%>
+
+    <%--}--%>
+<%--</script>--%>
 
 
-<script>
-    $(document).ready(function (e) {
-        $('#singlebutton1').click(
-                function () {
-                    if ($(this).hasClass('disabled'))
-                        e.preventDefault();
-                    $(this).addClass('disabled');
+<%--<script>--%>
+    <%--$('input1').on("submit", function (e) {--%>
 
-                    $.ajax({
-                        type: "GET",
-                        url: "/createAcc",
-                        //data: "data",
-                        success: function () {
-                        }
-                    })
-                });
-    });
-</script>
+
+        <%--var formData = $("input1").serialize();--%>
+
+        <%--$.ajax({--%>
+            <%--data: formData,--%>
+            <%--success: function (response) {--%>
+                <%--alert("success")--%>
+            <%--}--%>
+        <%--});--%>
+
+
+    <%--})--%>
+<%--</script>--%>
+
 
 <script>
     $(document).ready(function () {
-        $('#sendMoney').click(
-                function () {
-                    $.ajax({
-                        type: "GET",
-                        url: "/send",
-                        success: function () {
 
-                        }
-                    })
-                });
+        $('input[id="UAH"]').keyup(function () {
+            if ($('input[id="UAH"]').val() !== '') {
+                $('button[id="addUAH"]').removeAttr('disabled');
+                $('button[id="sendUAH"]').removeAttr('disabled');
+            }
+        });
+
+        $('input[id="USD"]').keyup(function () {
+            if ($('input[id="USD"]').val() !== '') {
+                $('button[id="addUSD"]').removeAttr('disabled');
+                $('button[id="sendUSD"]').removeAttr('disabled');
+            }
+        });
+
+        $('input[id="EUR"]').keyup(function () {
+            if ($('input[id="EUR"]').val() !== '') {
+                $('button[id="addEUR"]').removeAttr('disabled');
+                $('button[id="sendEUR"]').removeAttr('disabled');
+            }
+        });
+
+        $('input[id="RUB"]').keyup(function () {
+            if ($('input[id="RUB"]').val() !== '') {
+                $('button[id="addRUB"]').removeAttr('disabled');
+                $('button[id="sendRUB"]').removeAttr('disabled');
+            }
+        });
     });
+
 </script>
 
 

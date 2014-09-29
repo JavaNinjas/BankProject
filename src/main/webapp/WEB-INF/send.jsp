@@ -32,6 +32,12 @@
 </head>
 <body>
 
+<style>
+    body {
+        zoom: 110%;
+    }
+</style>
+
 <div class="container">
 
 
@@ -88,7 +94,7 @@
                 <!-- First name input-->
                 <div class="control-group">
                     <div class="controls">
-                        <input name="senderEmail" type="text" placeholder="Sender's e-mail" class="input-xlarge" value=<c:out value="${client.email}"></c:out>>
+                        <input name="senderEmail" type="text" class="input-xlarge" value='<c:out value="${client.email}"></c:out>'>
                     </div>
                 </div>
 
@@ -102,7 +108,7 @@
                 <!-- E-mail input-->
                 <div class="control-group">
                     <div class="controls">
-                        <input name="amount" type="text" placeholder="0.00" class="input-xlarge">
+                        <input name="amount" type="text" value='<c:out value="${param.amount}"></c:out>' class="input-xlarge">
                     </div>
                 </div>
 

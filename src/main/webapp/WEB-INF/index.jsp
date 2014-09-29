@@ -36,6 +36,12 @@
 
 <body>
 
+<style>
+    body {
+        zoom: 110%;
+    }
+    </style>
+
 <div class="container">
     <div class="row-fluid">
         <div class="span9"><br/>
@@ -66,6 +72,7 @@
                     <ul class="nav">
                         <li class="active"><a href="/main">Homepage</a></li>
                         <li><a href="https://github.com/JavaNinjas/BankProject" target="_blank">GitHub</a></li>
+                        <li class="active"><a href="/main">Demo</a></li>
                     </ul>
                 </div>
                 <!-- /.nav-collapse -->

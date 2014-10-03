@@ -18,9 +18,12 @@ public class Parser {
             sb.append("http://finance.yahoo.com/q?s=").append(exchangeRate).append("=X");
             Document doc = Jsoup.connect(sb.toString()).get();
             data = doc.select("span.time_rtq_ticker");
+
         } catch (Exception e) {
-            getRate(exchangeRate);
-            tries--;
+            if (tries > 0) {
+                getRate(exchangeRate);
+                tries--;
+            }
         }
         return Double.parseDouble(data.text());
     }

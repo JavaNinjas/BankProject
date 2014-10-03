@@ -1,5 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -31,6 +32,8 @@
     <script src="bootstrap/js/application.js"></script>
 </head>
 <body>
+<fmt:setLocale value="${locale}"/>
+<fmt:bundle basename="MessagesBundle">
 
 <style>
     body {
@@ -39,6 +42,12 @@
 </style>
 
 <div class="container">
+
+    <style>
+        .container {
+            width: 970px
+        }
+    </style>
 
 
     <div class="row-fluid">
@@ -71,7 +80,7 @@
 
                 <div class="nav-collapse">
                     <ul class="nav">
-                        <li class="active"><a href="/main">Homepage</a></li>
+                        <li class="active"><a href="/main"><fmt:message key="homepage"/></a></li>
                         <li><a href="https://github.com/JavaNinjas/BankProject" target="_blank">GitHub</a></li>
 
                     </ul>
@@ -89,34 +98,37 @@
             <fieldset>
 
                 <!-- Form Name -->
-                <legend>Send money form</legend>
+                <legend><fmt:message key="sendForm"/></legend>
 
-                <!-- First name input-->
+                <!-- Sender's email -->
                 <div class="control-group">
                     <div class="controls">
-                        <input name="senderEmail" type="text" class="input-xlarge" value='<c:out value="${client.email}"></c:out>'>
+                        <input name="senderEmail" type="text" class="input-xlarge"
+                               value='<c:out value="${client.email}"></c:out>'>
                     </div>
                 </div>
 
-                <!-- Last name input-->
+                <!-- Receiver's email -->
                 <div class="control-group">
                     <div class="controls">
-                        <input name="receiverEmail" type="text" placeholder="Receiver's e-mail" class="input-xlarge">
+                        <input name="receiverEmail" type="text" placeholder="<fmt:message key='receiverEmail'/>"
+                               class="input-xlarge">
                     </div>
                 </div>
 
-                <!-- E-mail input-->
+                <!-- Amount -->
                 <div class="control-group">
                     <div class="controls">
-                        <input name="amount" type="text" value='<c:out value="${param.amount}"></c:out>' class="input-xlarge">
+                        <input name="amount" type="text" value='<c:out value="${param.amount}"></c:out>'
+                               class="input-xlarge">
                     </div>
                 </div>
 
-                <!-- Password input-->
+                <!-- Sender's currency -->
                 <div class="control-group">
                     <div class="controls">
                         <select type="text" name="senderCurrency" class="input-xlarge">
-                            <option value="" disabled selected >Sender's currency</option>
+                            <option value="" disabled selected><fmt:message key="senderCurrency"/></option>
                             <option value="UAH">UAH</option>
                             <option value="USD">USD</option>
                             <option value="EUR">EUR</option>
@@ -124,47 +136,30 @@
                         </select>
                     </div>
 
-                <!-- Password repeat-->
-                <div class="control-group">
-                    <div class="controls">
-                        <select type="text" name="receiverCurrency" class="input-xlarge">
-                            <option value="" disabled selected >Receiver's currency</option>
-                            <option value="UAH">UAH</option>
-                            <option value="USD">USD</option>
-                            <option value="EUR">EUR</option>
-                            <option value="RUB">RUB</option>
-                        </select>
+                    <!-- Receiver's currency -->
+                    <div class="control-group">
+                        <div class="controls">
+                            <select type="text" name="receiverCurrency" class="input-xlarge">
+                                <option value="" disabled selected><fmt:message key="receiverCurrency"/></option>
+                                <option value="UAH">UAH</option>
+                                <option value="USD">USD</option>
+                                <option value="EUR">EUR</option>
+                                <option value="RUB">RUB</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Buttons -->
+                    <div class="control-group">
+                        <div class="controls">
+                            <button id="singlebutton" type="submit" name="singlebutton" class="btn btn-inverse">
+                                <fmt:message key="confirm"/></button>
+                            <a href="/login" class="btn btn-inverse"><fmt:message key="cancel"/></a>
+                        </div>
                     </div>
                 </div>
-
-                <!-- Button -->
-                <div class="control-group">
-                    <div class="controls">
-                        <button id="singlebutton" type="submit" name="singlebutton" class="btn btn-inverse">Confirm</button>
-                        <a href="/login" class="btn btn-inverse">Cancel</a>
-                    </div>
-                </div>
-
             </fieldset>
         </form>
-
-
-    </div>
-
-
-    <div id="theme_switcher">
-        <style>
-            .container {
-                width: 970px
-            }
-
-            #theme_switcher {
-                left: 10px;
-                position: fixed;
-                top: 10px;
-            }
-        </style>
-
     </div>
 </div>
 
@@ -172,16 +167,8 @@
 <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script src="bootstrap.min.js"></script>
 
-<script>
-    $(function () {
-        $('#theme_switcher ul li a').bind('click',
-                function (e) {
-                    $("#switch_style").attr("href", "css/" + $(this).attr('rel') + "/bootstrap.min.css");
-                    return false;
-                }
-        );
-    });
-</script>
+</fmt:bundle>
+
 
 </body>
 </html>

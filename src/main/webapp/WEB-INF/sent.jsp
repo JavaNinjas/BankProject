@@ -1,5 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -31,12 +32,8 @@
     <script src="bootstrap/js/application.js"></script>
 </head>
 <body>
-
-<style>
-    body {
-        zoom: 110%;
-    }
-</style>
+<fmt:setLocale value="${locale}"/>
+<fmt:bundle basename="MessagesBundle">
 
 <div class="container">
 
@@ -71,7 +68,7 @@
 
                 <div class="nav-collapse">
                     <ul class="nav">
-                        <li class="active"><a href="/main">Homepage</a></li>
+                        <li class="active"><a href="/main"><fmt:message key="homepage"/></a></li>
                         <li><a href="https://github.com/JavaNinjas/BankProject" target="_blank">GitHub</a></li>
 
                     </ul>
@@ -90,42 +87,27 @@
 
             <br>
 
-                <a href ="/login" class="btn btn-inverse">Back</a>
+                <a href ="/login" class="btn btn-inverse"><fmt:message key="back"/></a>
 
     </div>
     </div>
 
 
-    <div id="theme_switcher">
+
         <style>
             .container {
                 width: 970px
             }
-
-            #theme_switcher {
-                left: 10px;
-                position: fixed;
-                top: 10px;
-            }
         </style>
 
-    </div>
+
 </div>
 
 
 <script src="http://code.jquery.com/jquery.min.js"></script>
 <script src="bootstrap.min.js"></script>
 
-<script>
-    $(function () {
-        $('#theme_switcher ul li a').bind('click',
-                function (e) {
-                    $("#switch_style").attr("href", "css/" + $(this).attr('rel') + "/bootstrap.min.css");
-                    return false;
-                }
-        );
-    });
-</script>
+    </fmt:bundle>
 
 </body>
 </html>

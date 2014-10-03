@@ -1,5 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt" %>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -36,13 +38,11 @@
 </head>
 <body>
 
-<style>
-    body {
-        zoom: 110%;
-    }
-</style>
+<fmt:setLocale value="${locale}" scope="session"/>
+<fmt:bundle basename="MessagesBundle">
 
 <div class="container">
+
     <style> .container {
         width: 970px
     } </style>
@@ -77,7 +77,7 @@
 
                 <div class="nav-collapse">
                     <ul class="nav">
-                        <li class="active"><a href="/main">Homepage</a></li>
+                        <li class="active"><a href="/main"><fmt:message key="homepage"/></a></li>
                         <li><a href="https://github.com/JavaNinjas/BankProject" target="_blank">GitHub</a></li>
                     </ul>
                 </div>
@@ -92,27 +92,26 @@
         <div class="span7">
             <form id="register" action="/create" method="post" class="well">
                 <div class="form-inline">
-                    <legend>Registration Form</legend>
+                    <legend><fmt:message key="regform"/></legend>
 
-                    <input id="fname" name="firstName" type="text" placeholder="First name" class="input-xlarge">
+                    <input id="fname" name="firstName" type="text" placeholder="<fmt:message key='firstname'/>" class="input-xlarge">
                     <br><span class="fname"></span><br>
 
-                    <input id="lname" name="lastName" type="text" placeholder="Last name" class="input-xlarge">
+                    <input id="lname" name="lastName" type="text" placeholder="<fmt:message key='lastname'/>" class="input-xlarge">
                     <br> <span class="lname"></span> <br>
 
-                    <input id="e-mail" name="email" type="email" placeholder="Email" class="input-xlarge">
+                    <input id="e-mail" name="email" type="email" placeholder="<fmt:message key='email'/>" class="input-xlarge">
                     <br> <span class="email"></span> <br>
 
-                    <input id="pass1" name="password" type="password" placeholder="Type password"
+                    <input id="pass1" name="password" type="password" placeholder="<fmt:message key='typepass'/>"
                            class="input-xlarge">
                     <br><span class="pass1"></span> <br>
 
-                    <input id="pass2" name="passwordConfirm" type="password" placeholder="Re-type password"
+                    <input id="pass2" name="passwordConfirm" type="password" placeholder="<fmt:message key='retype'/>"
                            class="input-xlarge">
                     <br><span class="pass2"></span> <br>
                 </div>
-                <button id="submitButton" type="submit" class="btn btn-inverse">Confirm
-                </button>
+                <button id="submitButton" type="submit" class="btn btn-inverse"><fmt:message key='confirm'/></button>
             </form>
         </div>
     </div>
@@ -126,6 +125,7 @@
 </style>
 
 <script>
+
     function fieldRequired(className, text) {
         $(className).text(text).fadeIn("slow").delay(2000).fadeOut("slow");
     }
@@ -172,6 +172,6 @@
 
 </script>
 
-
+</fmt:bundle>
 </body>
 </html>

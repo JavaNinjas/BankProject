@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Locale;
 
 public class MainServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -31,10 +32,10 @@ public class MainServlet extends HttpServlet {
                 response.addCookie(cookie);
                 response.sendRedirect("/login");
             } else {
-                RequestDispatcher rd = getServletContext().getRequestDispatcher("/WEB-INF/index.jsp");
-                PrintWriter out = response.getWriter();
-                out.println("<font color=red>Either user name or password is wrong.</font>");
-                rd.include(request, response);
+                RequestDispatcher rd = getServletContext().getRequestDispatcher("/WEB-INF/info.jsp");
+                String message = "Either username or password is wrong.\nTry again or register.";
+                request.setAttribute("message", message);
+                rd.forward(request, response);
             }
 
         } catch (IndexOutOfBoundsException e) {

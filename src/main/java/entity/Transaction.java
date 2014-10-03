@@ -16,7 +16,6 @@ import java.util.Calendar;
 @Entity
 @Table(name = "transactions")
 public class Transaction {
-
     @Id
     @GeneratedValue
     @Column(name = "transaction_id")

@@ -1,5 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -16,6 +17,7 @@
     <link href="bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
     <link href="css/docs.css" rel="stylesheet">
     <link href="js/google-code-prettify/prettify.css" rel="stylesheet">
+    <link href="flags/flags.css" rel="stylesheet">
 
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script src="bootstrap/js/jquery.js"></script>
@@ -34,20 +36,25 @@
     <script src="bootstrap/js/application.js"></script>
 </head>
 
-<body>
 
-<style>
-    body {
-        zoom: 110%;
-    }
-    </style>
+<body>
+<fmt:setLocale value="${locale}"/>
+<fmt:bundle basename="MessagesBundle">
 
 <div class="container">
+    <style>
+        .container {
+            width: 970px
+        }
+
+    </style>
     <div class="row-fluid">
         <div class="span9"><br/>
+
             <h1>Bank Project</h1>
         </div>
         <div class="span3"><br/>
+
             <div class="pull-right">
                 <p>
                     USD: <c:out value="${USD}"/>
@@ -70,13 +77,30 @@
 
                 <div class="nav-collapse">
                     <ul class="nav">
-                        <li class="active"><a href="/main">Homepage</a></li>
-                        <li><a href="https://github.com/JavaNinjas/BankProject" target="_blank">GitHub</a></li>
-                        <li class="active"><a href="/main">Demo</a></li>
+                        <li><a href="/main"><fmt:message key="homepage"/></a></li>
+                        <li><a href="https://github.com/JavaNinjas/BankProject" target="_blank"><fmt:message
+                                key="github"/></a></li>
+                        <li><a href="/main"><fmt:message key="demo"/></a></li>
                     </ul>
                 </div>
+
+                    <%--<div class="nav-collapse pull-right"  style="margin: 10px -10px 0 0;">--%>
+                    <%--<ul class="nav">--%>
+                <form class="pull-right form-inline" style="margin: 10px -0px 0 0;">
+                    <input type="submit" formaction="/locale" formmethod="get" name="en_US" value=" "
+                           class="btn flag flag-us" style="border:0px; border-radius: 0px"/>
+                    <input type="submit" formaction="/locale" formmethod="get" name="ru_RU" value=" "
+                           class="btn flag flag-ru" style="border:0px; border-radius: 0px"/>
+                    <input type="submit" formaction="/locale" formmethod="get" name="uk_UA" value=" "
+                           class="btn flag flag-ua" style="border:0px; border-radius: 0px"/>
+                </form>
+                    <%--</ul>--%>
+                    <%--</div>--%>
+
+
                 <!-- /.nav-collapse -->
             </div>
+
         </div>
         <!-- /navbar-inner -->
     </div>
@@ -90,25 +114,25 @@
                     <div class="active item"><img src="../pictures/vanGogh1.jpg" style="width:100%"/>
 
                         <div class="carousel-caption">
-                            <h4>Hibernate</h4>
+                            <h4><fmt:message key="carouselTitle1"/></h4>
 
-                            <p>This project uses Hibernate + Heroku Postresql.</p>
+                            <p><fmt:message key="carouselText1"/></p>
                         </div>
                     </div>
                     <div class="item"><img src="../pictures/vanGogh2.jpg" style="width:100%"/>
 
                         <div class="carousel-caption">
-                            <h4>MVC</h4>
+                            <h4><fmt:message key="carouselTitle2"/></h4>
 
-                            <p>MVC architecture is implemented.</p>
+                            <p><fmt:message key="carouselText2"/></p>
                         </div>
                     </div>
                     <div class="item"><img src="../pictures/vanGogh3.jpg" style="width:100%"/>
 
                         <div class="carousel-caption">
-                            <h4>Feel free to test it</h4>
+                            <h4><fmt:message key="carouselTitle3"/></h4>
 
-                            <p>Add clients, delete them or transfer money.</p>
+                            <p><fmt:message key="carouselText3"/></p>
                         </div>
                     </div>
                 </div>
@@ -119,22 +143,27 @@
         </div>
 
         <div class="span5">
+
+
             <img src="/pictures/stock1.jpg"/><br/><br/>
+
             <form name="input" action="/index" method="get" class="well">
 
-                <h3>Welcome to our bank</h3>
-                <div class ="control-group">
+                <h3><fmt:message key="welcome"/></h3>
 
-                <p style="text-align:justify">
-                    Provide your credentials to enter service.
-                </p>
+                <div class="control-group">
 
-                <input type="email" name="email" placeholder="Email">
-                <input type="password" name="password" placeholder="Password"><br>
-                <button class="btn btn-inverse" type="submit">Sign in</button>
-                <a href="/createPage" class="btn btn-inverse">Register</a>
-                  </div>
+                    <p style="text-align:justify">
+                        <fmt:message key="provide"/>
+                    </p>
+
+                    <input type="email" name="email" placeholder=<fmt:message key="email"/>>
+                    <input type="password" name="password" placeholder=<fmt:message key='password'/>><br>
+                    <button class="btn btn-inverse" type="submit"><fmt:message key="sign_in"/></button>
+                    <a href="/createPage" class="btn btn-inverse"><fmt:message key="register"/></a>
+                </div>
             </form>
+
         </div>
 
     </div>
@@ -147,13 +176,13 @@
                 <div class="modal hide" id="myModal">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">×</button>
-                        <h3>Modal header</h3>
-                        <img src="pictures/bb1.gif" style="width:600px; height:300px"/>
+                        <h3><fmt:message key="modalLorem"/></h3>
+                        <img src="/pictures/modal3.jpg" style="width:600px; height:300px"/>
                     </div>
                 </div>
                 <br/><br/>
 
-                <a class="btn" style="width:285px;" href="#">Lorem Ipsum is simply dummy<br/> text of the printing</a>
+                <a class="btn" style="width:285px;" href="#"><fmt:message key="lorem"/></a>
             </center>
         </div>
         <div class="span4">
@@ -163,13 +192,13 @@
                 <div class="modal hide" id="myModal1">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">×</button>
-                        <h3>Modal header</h3>
-                        <img src="pictures/bb2.gif" style="width:600px; height:300px"/>
+                        <h3><fmt:message key="modalLorem"/></h3>
+                        <img src="/pictures/modal2.jpg" style="width:600px; height:300px"/>
                     </div>
                 </div>
                 <br/><br/>
 
-                <a class="btn" style="width:285px;" href="#">Lorem Ipsum is simply dummy<br/> text of the printing</a>
+                <a class="btn" style="width:285px;" href="#"><fmt:message key="lorem"/></a>
             </center>
 
         </div>
@@ -181,34 +210,18 @@
                 <div class="modal hide" id="myModal1">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">×</button>
-                        <h3>Modal header</h3>
-                        <img src="pictures/bb2.gif" style="width:600px; height:300px"/>
+                        <h3><fmt:message key="modalLorem"/></h3>
+                        <img src="/pictures/modal1.jpg" style="width:600px; height:300px"/>
                     </div>
                 </div>
                 <br/><br/>
 
-                <a class="btn" style="width:285px;" href="#">Lorem Ipsum is simply dummy<br/> text of the printing</a>
+                <a class="btn" style="width:285px;" href="#"><fmt:message key="lorem"/></a>
             </center>
 
         </div>
-    </div>
-
-
-    <div id="theme_switcher">
-        <style>
-            .container {
-                width: 970px
-            }
-
-            #theme_switcher {
-                left: 10px;
-                position: fixed;
-                top: 10px;
-            }
-        </style>
-
     </div>
 </div>
-
+    </fmt:bundle>
 </body>
 </html>

@@ -1,5 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -35,12 +36,8 @@
 </head>
 
 <body>
-
-<style>
-    body {
-        zoom: 110%;
-    }
-</style>
+<fmt:setLocale value="${locale}"/>
+<fmt:bundle basename="MessagesBundle">
 
 <div class="container">
 
@@ -80,7 +77,7 @@
 
                 <div class="nav-collapse">
                     <ul class="nav">
-                        <li class="active"><a href="/main">Homepage</a></li>
+                        <li class="active"><a href="/main"><fmt:message key="homepage"/></a></li>
                         <li><a href="https://github.com/JavaNinjas/BankProject" target="_blank">GitHub</a></li>
                     </ul>
                 </div>
@@ -90,8 +87,8 @@
         <!-- /navbar-inner -->
     </div>
 
-    <h3>Welcome, <c:out value="${client}"/>
-    </h3> <a href="/logout">Logout</a>
+    <h3><fmt:message key="greeting"/>, <c:out value="${client}"/>
+    </h3> <a href="/logout"><fmt:message key="logout"/></a>
     <br>
     <br>
 
@@ -99,7 +96,7 @@
         <div class="span6">
             <form name="input1" class="well">
                 <legend>UAH</legend>
-                Account balance:
+                <fmt:message key="balance"/>:
                 <c:out value="${accountUAH.balance}"></c:out>
                 <div class="control-group form-inline">
                     <input id="UAH" type="text" name="amount" class="input-small" placeholder="0.00">
@@ -107,11 +104,10 @@
 
                     <button id="addUAH" formaction="/sendservlet" formmethod="post" type="submit"
                             class="btn btn-inverse" disabled>
-                        Add funds
+                        <fmt:message key="add"/>
                     </button>
                     <button id="sendUAH" type="submit" formaction="/sendPage" formmethod="get" class="btn btn-inverse"
-                            disabled>Send
-                        money
+                            disabled><fmt:message key="send"/>
                     </button>
                 </div>
             </form>
@@ -120,18 +116,17 @@
         <div class="span6">
             <form name="input2" class="well">
                 <legend>USD</legend>
-                Account balance:
+                <fmt:message key="balance"/>:
                 <c:out value="${accountUSD.balance}"></c:out>
                 <div class="control-group form-inline">
                     <input id="USD" type="text" name="amount" class="input-small" placeholder="0.00">
                     <input type="hidden" name="currency" value="USD">
                     <button id="addUSD" type="submit" formmethod="post" formaction="/sendservlet"
                             class="btn btn-inverse" disabled>
-                        Add funds
+                        <fmt:message key="add"/>
                     </button>
                     <button id="sendUSD" type="submit" formaction="/sendPage" formmethod="get" class="btn btn-inverse"
-                            disabled>Send
-                        money
+                            disabled><fmt:message key="send"/>
                     </button>
                 </div>
             </form>
@@ -142,18 +137,17 @@
         <div class="span6">
             <form name="input3" class="well">
                 <legend>EUR</legend>
-                Account balance:
+                <fmt:message key="balance"/>:
                 <c:out value="${accountEUR.balance}"></c:out>
                 <div class="control-group form-inline">
                     <input id="EUR" type="text" name="amount" class="input-small" placeholder="0.00">
                     <input type="hidden" name="currency" value="EUR">
                     <button id="addEUR" type="submit" formmethod="post" formaction="/sendservlet"
                             class="btn btn-inverse" disabled>
-                        Add funds
+                        <fmt:message key="add"/>
                     </button>
                     <button id="sendEUR" type="submit" formaction="/sendPage" formmethod="get" class="btn btn-inverse"
-                            disabled>Send
-                        money
+                            disabled><fmt:message key="send"/>
                     </button>
                 </div>
             </form>
@@ -162,18 +156,17 @@
         <div class="span6">
             <form name="input4" class="well">
                 <legend>RUB</legend>
-                Account balance:
+                <fmt:message key="balance"/>:
                 <c:out value="${accountRUB.balance}"></c:out>
                 <div class="control-group form-inline">
                     <input id="RUB" type="text" name="amount" class="input-small" placeholder="0.00">
                     <input type="hidden" name="currency" value="RUB">
                     <button id="addRUB" type="submit" formmethod="post" formaction="/sendservlet"
                             class="btn btn-inverse" disabled>
-                        Add funds
+                        <fmt:message key="add"/>
                     </button>
                     <button id="sendRUB" type="submit" formaction="/sendPage" formmethod="get" class="btn btn-inverse"
-                            disabled>Send
-                        money
+                            disabled><fmt:message key="send"/>
                     </button>
                 </div>
             </form>
@@ -182,50 +175,11 @@
 
     <div class="row-fluid">
         <div class="control-group">
-            <legend>Payment history</legend>
-            <a href="/show" class="btn btn-inverse">Show transactions</a>
+            <legend><fmt:message key="history"/></legend>
+            <a href="/show" class="btn btn-inverse"><fmt:message key="show"/></a>
         </div>
     </div>
 </div>
-
-
-<%--<script>--%>
-    <%--function sendMoney() {--%>
-
-
-
-        <%--var formData = $("input1").serialize();--%>
-
-        <%--$.ajax({--%>
-            <%--type: "GET",--%>
-            <%--url: "/sendPage",--%>
-            <%--data: formData,--%>
-              <%--success: function (response) {--%>
-
-            <%--}--%>
-        <%--});--%>
-
-    <%--}--%>
-<%--</script>--%>
-
-
-<%--<script>--%>
-    <%--$('input1').on("submit", function (e) {--%>
-
-
-        <%--var formData = $("input1").serialize();--%>
-
-        <%--$.ajax({--%>
-            <%--data: formData,--%>
-            <%--success: function (response) {--%>
-                <%--alert("success")--%>
-            <%--}--%>
-        <%--});--%>
-
-
-    <%--})--%>
-<%--</script>--%>
-
 
 <script>
     $(document).ready(function () {
@@ -260,7 +214,7 @@
     });
 
 </script>
-
+</fmt:bundle>
 
 </body>
 </html>

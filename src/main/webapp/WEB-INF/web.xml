@@ -37,6 +37,11 @@
     </servlet>
 
     <servlet>
+        <servlet-name>locale</servlet-name>
+        <servlet-class>servlets.LocaleServlet</servlet-class>
+    </servlet>
+
+    <servlet>
         <servlet-name>show</servlet-name>
         <servlet-class>servlets.TransactionsServlet</servlet-class>
     </servlet>
@@ -111,6 +116,11 @@
     <servlet-mapping>
         <servlet-name>sendServlet</servlet-name>
         <url-pattern>/sendservlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>locale</servlet-name>
+        <url-pattern>/locale</url-pattern>
     </servlet-mapping>
 
     <welcome-file-list>

@@ -10,7 +10,6 @@ import java.util.Set;
 @Entity
 @Table(name = "CLIENTS")
 public class Client {
-
     @Id
     @GeneratedValue
     @Column(name = "CLIENT_ID")

@@ -73,22 +73,6 @@ public class Account {
         sb.append(" ").append(balance);
         return sb.toString();
     }
-
-    public static void main(String[] args) {
-//        ClientDaoImpl clientDao = new ClientDaoImpl();
-//        Client john = clientDao.getById(1);
-//        Client paul = clientDao.getById(2);
-//        Client george = clientDao.getById(3);
-//        Client ringo = clientDao.getById(4);
-//
-//        new Transaction(paul, john, "USD", "1", "USD");
-//        new Transaction(george, john, "USD", "1", "USD");
-//        new Transaction(ringo, john, "USD", "1", "USD");
-//
-//        new Transaction(john, paul, "USD", "1", "USD");
-//        new Transaction(john, george, "USD", "1", "USD");
-//        new Transaction(john, ringo, "USD", "1", "USD");
-    }
 }
 
 

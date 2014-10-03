@@ -1,5 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -31,14 +32,16 @@
     <script src="bootstrap/js/application.js"></script>
 </head>
 <body>
-
-<style>
-    body {
-        zoom: 110%;
-    }
-</style>
+<fmt:setLocale value="${locale}"/>
+<fmt:bundle basename="MessagesBundle">
 
 <div class="container">
+    <style>
+        .container {
+            width: 970px
+        }
+
+    </style>
 
 
     <div class="row-fluid">
@@ -54,6 +57,7 @@
                     EUR: <c:out value="${EUR}"/>
                     RUB: <c:out value="${RUB}"/>
                 </p>
+                <br/>
             </div>
         </div>
     </div>
@@ -70,7 +74,7 @@
 
                 <div class="nav-collapse">
                     <ul class="nav">
-                        <li class="active"><a href="/main">Homepage</a></li>
+                        <li class="active"><a href="/main"><fmt:message key="homepage"/></a></li>
                         <li><a href="https://github.com/JavaNinjas/BankProject" target="_blank">GitHub</a></li>
 
                     </ul>
@@ -82,7 +86,7 @@
     </div>
 
     <h3>Welcome, <c:out value="${client}"/></h3>
-    <a href="/logout">Logout</a>
+    <a href="/logout"><fmt:message key="logout"/></a>
     <br>
     <br>
 
@@ -92,18 +96,18 @@
 
 
 
-            <legend>Transactions</legend><br>
+            <legend><fmt:message key="transactions"/></legend><br>
 
             <table class="table">
                 <thead>
                 </thead>
                 <tbody>
                 <tr>
-                    <td>Date</td>
-                    <td>Sender</td>
-                    <td>Currency, amount</td>
-                    <td>Receiver</td>
-                    <td>Currency, amount</td>
+                    <td><fmt:message key="date"/></td>
+                    <td><fmt:message key="sender"/></td>
+                    <td><fmt:message key="currencyAmount"/></td>
+                    <td><fmt:message key="receiver"/></td>
+                    <td><fmt:message key="currencyAmount"/></td>
                 </tr>
 
                 <c:forEach var="transaction" items="${transactions}">
@@ -133,42 +137,23 @@
         </div>
     </div>
 
-    <a href="/login" class="btn btn-inverse">Back</a>
+    <a href="/login" class="btn btn-inverse"><fmt:message key="back"/></a>
     </br>
     </br>
 
 
 
-    <div id="theme_switcher">
-        <style>
-            .container {
-                width: 970px
-            }
 
-            #theme_switcher {
-                left: 10px;
-                position: fixed;
-                top: 10px;
-            }
-        </style>
 
-    </div>
+
 </div>
 
 
 <script src="http://code.jquery.com/jquery.min.js"></script>
 <script src="bootstrap.min.js"></script>
 
-<script>
-    $(function () {
-        $('#theme_switcher ul li a').bind('click',
-                function (e) {
-                    $("#switch_style").attr("href", "css/" + $(this).attr('rel') + "/bootstrap.min.css");
-                    return false;
-                }
-        );
-    });
-</script>
+
+    </fmt:bundle>
 
 </body>
 </html>

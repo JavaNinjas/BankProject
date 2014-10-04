@@ -36,81 +36,80 @@
 <fmt:setLocale value="${locale}"/>
 <fmt:bundle basename="MessagesBundle">
 
-<div class="container">
+    <div class="container">
 
 
-    <div class="row-fluid">
-        <div class="span9"><br/>
+        <div class="row-fluid">
+            <div class="span9"><br/>
 
-            <h1>Bank Project</h1>
-        </div>
-        <div class="span3"><br/>
-
-            <div class="pull-right">
-                <a href="#" original-title="facebook"><img src="../bootstrap/icon/soc1.png" alt="facebook"></a>
-                <a href="#" original-title="Delicious"><img src="../bootstrap/icon/soc2.png" alt="Delicious"></a>
-                <a href="#" original-title="myspace"><img src="../bootstrap/icon/soc3.png" alt="myspace"></a><br/><br/>
+                <h1>Bank Project</h1>
             </div>
-        </div>
-    </div>
+            <div class="span3"><br/>
 
-
-    <div class="navbar">
-        <div class="navbar-inner">
-            <div class="container">
-                <a data-target=".nav-collapse" data-toggle="collapse" class="btn btn-navbar">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </a>
-
-                <div class="nav-collapse">
-                    <ul class="nav">
-                        <li class="active"><a href="/main"><fmt:message key="homepage"/></a></li>
-                        <li><a href="https://github.com/JavaNinjas/BankProject" target="_blank">GitHub</a></li>
-
-                    </ul>
+                <div class="pull-right">
+                    <a href="#" original-title="facebook"><img src="../bootstrap/icon/soc1.png" alt="facebook"></a>
+                    <a href="#" original-title="Delicious"><img src="../bootstrap/icon/soc2.png" alt="Delicious"></a>
+                    <a href="#" original-title="myspace"><img src="../bootstrap/icon/soc3.png"
+                                                              alt="myspace"></a><br/><br/>
                 </div>
-                <!-- /.nav-collapse -->
             </div>
         </div>
-        <!-- /navbar-inner -->
+
+
+        <div class="navbar">
+            <div class="navbar-inner">
+                <div class="container">
+                    <a data-target=".nav-collapse" data-toggle="collapse" class="btn btn-navbar">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </a>
+
+                    <div class="nav-collapse">
+                        <ul class="nav">
+                            <li class="active"><a href="/main"><fmt:message key="homepage"/></a></li>
+                            <li><a href="https://github.com/JavaNinjas/BankProject" target="_blank">GitHub</a></li>
+
+                        </ul>
+                    </div>
+                    <!-- /.nav-collapse -->
+                </div>
+            </div>
+            <!-- /navbar-inner -->
+        </div>
+
+
+        <div class="row-fluid">
+            <div class="span7">
+                <h3><c:out value="${message}"/></h3>
+                <br>
+
+                <a href="/main" class="btn btn-inverse"><fmt:message key="back"></a>
+
+            </div>
+        </div>
+
+
+        <div id="theme_switcher">
+            <style>
+                .container {
+                    width: 970px
+                }
+
+                #theme_switcher {
+                    left: 10px;
+                    position: fixed;
+                    top: 10px;
+                }
+            </style>
+
+        </div>
     </div>
 
 
-    <div class="row-fluid">
-        <div class="span7">
-            <h3><c:out value="${message}"/></h3>
-            <br>
+    <script src="http://code.jquery.com/jquery.min.js"></script>
+    <script src="bootstrap.min.js"></script>
 
-                <a href ="/main" class="btn btn-inverse"><fmt:message key="back"></a>
-
-    </div>
-    </div>
-
-
-    <div id="theme_switcher">
-        <style>
-            .container {
-                width: 970px
-            }
-
-            #theme_switcher {
-                left: 10px;
-                position: fixed;
-                top: 10px;
-            }
-        </style>
-
-    </div>
-</div>
-
-
-<script src="http://code.jquery.com/jquery.min.js"></script>
-<script src="bootstrap.min.js"></script>
-
-
-
-    </fmt:bundle>
+</fmt:bundle>
 </body>
 </html>

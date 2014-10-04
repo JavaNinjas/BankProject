@@ -84,7 +84,7 @@
                 <h3><c:out value="${message}"/></h3>
                 <br>
 
-                <a href="/main" class="btn btn-inverse"><fmt:message key="back"></a>
+                <a href="/main" class="btn btn-inverse"><fmt:message key="back"/></a>
 
             </div>
         </div>

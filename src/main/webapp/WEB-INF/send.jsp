@@ -82,7 +82,7 @@
                     <ul class="nav">
                         <li class="active"><a href="/main"><fmt:message key="homepage"/></a></li>
                         <li><a href="https://github.com/JavaNinjas/BankProject" target="_blank">GitHub</a></li>
-                        <li><a href="https://www.youtube.com/watch?v=DSwcIca_SAM"><fmt:message key="demo"/></a></li>
+                        <li><a href="https://www.youtube.com/watch?v=DSwcIca_SAM" target="_blank"><fmt:message key="demo"/></a></li>
                     </ul>
                 </div>
                 <!-- /.nav-collapse -->

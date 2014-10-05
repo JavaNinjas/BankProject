@@ -80,7 +80,7 @@
                         <li><a href="/main"><fmt:message key="homepage"/></a></li>
                         <li><a href="https://github.com/JavaNinjas/BankProject" target="_blank"><fmt:message
                                 key="github"/></a></li>
-                        <li><a href="https://www.youtube.com/watch?v=DSwcIca_SAM"><fmt:message key="demo"/></a></li>
+                        <li><a href="https://www.youtube.com/watch?v=DSwcIca_SAM" target="_blank"><fmt:message key="demo"/></a></li>
                     </ul>
                 </div>
 
@@ -171,7 +171,7 @@
         <div class="span4">
 
             <center>
-                <a data-toggle="modal" href="#myModal"><img src="../pictures/stock2.jpg"/></a>
+                <a data-toggle="modal" href="#myModal3"><img src="../pictures/stock2.jpg"/></a>
 
                 <div class="modal hide" id="myModal3">
                     <div class="modal-header">
@@ -188,7 +188,7 @@
 
         <div class="span4">
             <center>
-                <a data-toggle="modal" href="#myModal1"><img src="../pictures/stock2.jpg"/></a>
+                <a data-toggle="modal" href="#myModal2"><img src="../pictures/stock2.jpg"/></a>
 
                 <div class="modal hide" id="myModal2">
                     <div class="modal-header">

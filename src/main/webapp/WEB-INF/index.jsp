@@ -80,7 +80,7 @@
                         <li><a href="/main"><fmt:message key="homepage"/></a></li>
                         <li><a href="https://github.com/JavaNinjas/BankProject" target="_blank"><fmt:message
                                 key="github"/></a></li>
-                        <li><a href="/main"><fmt:message key="demo"/></a></li>
+                        <li><a href="https://www.youtube.com/watch?v=DSwcIca_SAM"><fmt:message key="demo"/></a></li>
                     </ul>
                 </div>
 
@@ -173,7 +173,7 @@
             <center>
                 <a data-toggle="modal" href="#myModal"><img src="../pictures/stock2.jpg"/></a>
 
-                <div class="modal hide" id="myModal">
+                <div class="modal hide" id="myModal3">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">×</button>
                         <h3><fmt:message key="modalLorem"/></h3>
@@ -185,11 +185,12 @@
                 <a class="btn" style="width:285px;" href="#"><fmt:message key="lorem"/></a>
             </center>
         </div>
+
         <div class="span4">
             <center>
                 <a data-toggle="modal" href="#myModal1"><img src="../pictures/stock2.jpg"/></a>
 
-                <div class="modal hide" id="myModal1">
+                <div class="modal hide" id="myModal2">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">×</button>
                         <h3><fmt:message key="modalLorem"/></h3>

@@ -5,12 +5,7 @@ import entity.Client;
 import entity.Transaction;
 import org.hibernate.Query;
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
-import org.hibernate.cfg.Configuration;
-import org.hibernate.service.ServiceRegistry;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class TransactionDaoImpl extends GenericDaoImpl {
@@ -29,13 +24,22 @@ public class TransactionDaoImpl extends GenericDaoImpl {
     }
 
     public List<Transaction> getByClient(Client client) {
-        session = HibernateUtil.getSessionFactory().getCurrentSession();
-        List<Transaction> objects = new ArrayList<Transaction>();
-        session.beginTransaction();
-        String hql = "from Transaction t where t.sender.id=" + client.getClient_id();
-        Query query = session.createQuery(hql);
-        objects = query.list();
-        session.getTransaction().commit();
+        List<Transaction> objects = null;
+        try {
+            session = HibernateUtil.getSessionFactory().getCurrentSession();
+            session.beginTransaction();
+            String hql = "from Transaction t where t.sender.id=" + client.getClient_id();
+            Query query = session.createQuery(hql);
+            objects = query.list();
+            session.getTransaction().commit();
+            return objects;
+        } catch (Exception e) {
+            System.err.println(e.getMessage());
+        } finally {
+            if (session != null && session.isOpen()) {
+                session.close();
+            }
+        }
         return objects;
     }
 

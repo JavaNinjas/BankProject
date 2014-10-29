@@ -12,8 +12,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.Locale;
 
 public class MainServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -23,9 +21,19 @@ public class MainServlet extends HttpServlet {
         String email = request.getParameter("email");
         String password = PasswordService.getInstance().encrypt(request.getParameter("password"));
         ClientDaoImpl clientDao = new ClientDaoImpl();
-        try {
-            Client client = clientDao.getByEmail(email);
+        Client client = null;
 
+        if (clientDao.getByEmail(email) != null) {
+            client = clientDao.getByEmail(email);
+        } else {
+            RequestDispatcher rd = getServletContext().getRequestDispatcher("/WEB-INF/info.jsp");
+            String message = "No email found. Please register.";
+            request.setAttribute("message", message);
+            rd.forward(request, response);
+            return;
+        }
+
+        try {
             if (client.getPassword().equals(password)) {
                 Cookie cookie = new Cookie("email", email);
                 cookie.setMaxAge(60 * 60);

@@ -45,7 +45,10 @@ public class SendServlet extends HttpServlet {
         request.setAttribute("accountEUR", EUR);
         request.setAttribute("accountRUB", RUB);
 
-        request.getRequestDispatcher("/WEB-INF/profile.jsp").include(request, response);
+        //request.getRequestDispatcher("/WEB-INF/profile.jsp").include(request, response);
+
+        RequestDispatcher rd = getServletContext().getRequestDispatcher("/WEB-INF/profile.jsp");
+        rd.forward(request, response);
 
 //        request.setAttribute("transaction", transaction);
 //
